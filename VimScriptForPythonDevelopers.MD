@@ -1954,9 +1954,9 @@ echo localtime()
 
 ------------------------------------------------------------------------------
 
-## Classes
+# Classes
 
-# Defining a class
+## Defining a class
 
 **Python:**
 ```python
