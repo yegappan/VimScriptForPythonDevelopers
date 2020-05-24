@@ -178,7 +178,7 @@ let n = len("Hello World")
 let n = strlen("Hello World")
 ```
 
-*Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29), [strlen()](https://vimhelp.org/eval.txt.html#strlen%28%29)
+*Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29), [strlen()](https://vimhelp.org/eval.txt.html#strlen%28%29), [strwidth()](https://vimhelp.org/eval.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/eval.txt.html#strdisplaywidth%28%29)
 
 ### String Concatenation
 **Python:**
@@ -464,12 +464,14 @@ let l[3] = 5
 ```python
 l = []
 l.append(5)
+l += [6, 7]
 ```
    
 **VimScript:**
 ```vim
 let l = []
 call add(l, 5)
+let l += [5, 6]
 ```
 
 *Help:* [add()](https://vimhelp.org/eval.txt.html#add%28%29)
@@ -806,6 +808,7 @@ x = d['red']
 **VimScript:**
 ```vim
 let d = {'red' : 10, 'blue' : 20}
+let x = d['red']
 let x = d.red
 ```
 
@@ -1455,7 +1458,7 @@ ErrLog("Failed to open file")
 
 **VimScript:**
 ```vim
-func! Mylog(subsys, msg)
+function Mylog(subsys, msg)
     echo printf("%s: %s", a:subsys, a:msg)
 endfunction
 
@@ -1512,9 +1515,9 @@ print(F(2))
 **VimScript:**
 ```vim
 function Foo(base)
-    func Bar(val) closure
+    function Bar(val) closure
 	return a:base + a:val
-    endfunc
+    endfunction
     return funcref('Bar')
 endfunction
 
