@@ -914,6 +914,7 @@ if 'red' in d:
 let d = {'red' : 10, 'blue' : 20}
 if d->has_key('red')
     echo "found red key"
+endif
 ```
 
 *Help:* [has_key()](https://vimhelp.org/eval.txt.html#has_key%28%29)
@@ -1265,9 +1266,9 @@ print(Min(6, 3)
     
 **VimScript:**
 ```vim
-func Min(x, y)
+function Min(x, y)
     return a:x < a:y ? a:x : a:y
-endfunc
+endfunction
 
 echo Min(6, 3)
 ```
@@ -1286,9 +1287,9 @@ EchoValue(100)
 
 **VimScript:**
 ```vim
-func EchoValue(v)
+function EchoValue(v)
     echo a:v
-endfunc
+endfunction
 
 call EchoValue(100)
 ```
@@ -1307,9 +1308,9 @@ s = Sum(10, 20)
 
 **VimScript:**
 ```vim
-func Sum(a, b)
+function Sum(a, b)
     return a:a + a:b
-endfunc
+endfunction
 
 let s = Sum(10, 20)
 ```
@@ -1326,9 +1327,9 @@ def AddValues(l):
 
 **VimScript:**
 ```vim
-func AddValues(l)
+function AddValues(l)
     call extend(a:l, [1, 2, 3, 4])
-endfunc
+endfunction
 ```
 
 *Help:* [function-argument](https://vimhelp.org/eval.txt.html#function-argument)
@@ -1346,13 +1347,13 @@ def Sum(v1, *args):
 
 **VimScript:**
 ```vim
-func Sum(v1, ...)
+function Sum(v1, ...)
     let sum = a:v1
     for i in a:000
 	let sum +=i
     endfor
     return sum
-endfunc
+endfunction
 let s1 = Sum(10, 20, 30, 40)
 let s1 = Sum(10)
 ```
@@ -1369,9 +1370,9 @@ def Powerof(base, exp = 2):
 
 **VimScript:**
 ```vim
-func PowerOf(base, exp = 2)
+function PowerOf(base, exp = 2)
     return float2nr(pow(a:base, a:exp))
-endfunc
+endfunction
 let val = PowerOf(4)
 let val = PowerOf(4, 3)
 ```
@@ -1391,9 +1392,9 @@ def Incr():
 **VimScript:**
 ```vim
 let counter = 1
-func Incr()
+function Incr()
     let g:counter += 1
-endfunc
+endfunction
 cal Incr()
 ```
 
@@ -1411,9 +1412,9 @@ Bar()
 
 **VimScript:**
 ```vim
-func Foo()
+function Foo()
     echo "Foo"
-endfunc
+endfunction
 let Bar = function("Foo")
 call Bar()
 ```
@@ -1456,7 +1457,7 @@ ErrLog("Failed to open file")
 ```vim
 func! Mylog(subsys, msg)
     echo printf("%s: %s", a:subsys, a:msg)
-endfunc
+endfunction
 
 let ErrLog = function('Mylog', ['ERR'])
 call ErrLog("Failed to open file")
@@ -1482,10 +1483,10 @@ print(bar(6))
 
 **VimScript:**
 ```vim
-func Foo(arg)
+function Foo(arg)
   let i = 3
   return {x -> x + i - a:arg}
-endfunc
+endfunction
 
 let Bar = Foo(4)
 echo Bar(6)
@@ -1510,12 +1511,12 @@ print(F(2))
 
 **VimScript:**
 ```vim
-func Foo(base)
+function Foo(base)
     func Bar(val) closure
 	return a:base + a:val
     endfunc
     return funcref('Bar')
-endfunc
+endfunction
 
 let F = Foo(10)
 echo F(2)
@@ -1988,32 +1989,32 @@ pt.Print()
 **VimScript:**
 let Point = {}
 
-func Point.New(x, y)
+function Point.New(x, y)
   let newpt = copy(self)
   let newpt.x = a:x
   let newpt.y = a:y
   return newpt
-endfunc
+endfunction
 
-func Point.getX()
+function Point.getX()
   return self.x
-endfunc
+endfunction
 
-func Point.getY()
+function Point.getY()
   return self.y
-endfunc
+endfunction
 
-func Point.setX(x)
+function Point.setX(x)
   let self.x = a:x
-endfunc
+endfunction
 
-func Point.setY(y)
+function Point.setY(y)
   let self.y = a:y
-endfunc
+endfunction
 
-func Point.Print()
+function Point.Print()
   echo "Pt = (" .. self.x .. ", " .. self.y .. ")"
-endfunc
+endfunction
 
 let p = Point.New(10, 20)
 call p.setX(40)
