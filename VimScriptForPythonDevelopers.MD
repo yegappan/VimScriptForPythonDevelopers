@@ -1987,6 +1987,7 @@ pt.Print()
 ```
 
 **VimScript:**
+```vim
 let Point = {}
 
 function Point.New(x, y)
