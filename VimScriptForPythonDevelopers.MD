@@ -4,6 +4,8 @@ A guide to Vim Script development for Python developers. Sample code for the var
 
 For an introduction to Vim Script development, refer to [usr_41.txt](https://vimhelp.org/usr_41.txt.html), [eval.txt](https://vimhelp.org/eval.txt.html) and [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
 
+------------------------------------------------------------------------------
+
 ## Variables
 
 ### Creating a Variable
@@ -1948,3 +1950,76 @@ echo localtime()
 ```
 
 *Help:* [localtime()](https://vimhelp.org/eval.txt.html#localtime%28%29)
+
+------------------------------------------------------------------------------
+
+## Classes
+
+# Defining a class
+
+**Python:**
+```python
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def setX(self, x):
+        self.x = x
+
+    def setY(self, y):
+        self.y = y
+
+    def Print(self):
+        print("Pt = (" + str(self.x) + ", " + str(self.y) + ")")
+
+pt = Point(10, 20)
+pt.setX(40)
+pt.setY(50)
+pt.Print()
+```
+
+**VimScript:**
+let Point = {}
+
+func Point.New(x, y)
+  let newpt = copy(self)
+  let newpt.x = a:x
+  let newpt.y = a:y
+  return newpt
+endfunc
+
+func Point.getX()
+  return self.x
+endfunc
+
+func Point.getY()
+  return self.y
+endfunc
+
+func Point.setX(x)
+  let self.x = a:x
+endfunc
+
+func Point.setY(y)
+  let self.y = a:y
+endfunc
+
+func Point.Print()
+  echo "Pt = (" .. self.x .. ", " .. self.y .. ")"
+endfunc
+
+let p = Point.New(10, 20)
+call p.setX(40)
+call p.setY(50)
+call p.Print()
+```
+
+*Help:* [Dictionary-function](https://vimhelp.org/eval.txt.html#Dictionary-function), [numbered-function](https://vimhelp.org/eval.txt.html#numbered-function), [:func-dict](https://vimhelp.org/eval.txt.html#%3afunc-dict)
+
