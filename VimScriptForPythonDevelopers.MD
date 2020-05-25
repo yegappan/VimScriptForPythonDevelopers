@@ -194,6 +194,8 @@ let c = xor(a, b)
 
 ## String
 
+Vim has functions for dealing with both multibyte and non-multibyte strings. Some functions deal with bytes and some functions deal with characters. Refer to the reference guide for the various functions to get the detailed information.
+
 ### Raw string
 
 **Python:**
@@ -242,17 +244,20 @@ let s = str1 .. str2
 *Help:* [expr-..](https://vimhelp.org/eval.txt.html#expr-..)
 
 ### Getting a substring
+
+In Python, when using an index range to specify a sequence of characters in a string, the character at the end index is not included. In Vim, the character at the end index is included.
+
 **Python:**
 ```python
-str = "Hello World"
+str = "HelloWorld"
 sub = str[2:5]
 ```
 
 **VimScript:**
 ```vim
-let str = "Hello World"
-let sub = str[2:5]
-let sub = strpart(str, 2, 4)
+let str = "HelloWorld"
+let sub = str[2:4]
+let sub = strpart(str, 2, 3)
 ```
 
 *Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/eval.txt.html#strpart%28%29)
@@ -605,6 +610,9 @@ let x = l->index(2)
 *Help:* [index()](https://vimhelp.org/eval.txt.html#index%28%29)
 
 ### List slices
+
+In Python, when using an index range to specify a series of items in a List, the item at the end index is not included. In Vim, the item at the end index is included.
+
 **Python:**
 ```python
 l = [1, 2, 3, 4]
@@ -1305,6 +1313,8 @@ The names of global functions in Vim must start with an uppercase letter.
 The examples in this document use the "function" and "endfunction" keywords for
 defining a function. But these can be abbreviated as "func" and "endfunc".
 
+When a function encounters an error, it will continue to execute the rest of the function unless the "abort" argument is specified when defining the function. So it is recommended to specify the "abort" keyword at the end of the "function" line. To simplify the example code, this keyword is not used in this guide.
+
 ### Defining a Function
 
 **Python:**
@@ -1317,7 +1327,7 @@ print(Min(6, 3)
 
 **VimScript:**
 ```vim
-function Min(x, y)
+function Min(x, y) abort
     return a:x < a:y ? a:x : a:y
 endfunction
 
@@ -1613,36 +1623,42 @@ pt.Print()
 
 **VimScript:**
 ```vim
-let Point = {}
-
-function Point.New(x, y)
+function s:new(x, y) dict
   let newpt = copy(self)
   let newpt.x = a:x
   let newpt.y = a:y
   return newpt
 endfunction
 
-function Point.getX()
+function s:getX() dict
   return self.x
 endfunction
 
-function Point.getY()
+function s:getY() dict
   return self.y
 endfunction
 
-function Point.setX(x)
+function s:setX(x) dict
   let self.x = a:x
 endfunction
 
-function Point.setY(y)
+function s:setY(y) dict
   let self.y = a:y
 endfunction
 
-function Point.Print()
+function s:Print() dict
   echo "Pt = (" .. self.x .. ", " .. self.y .. ")"
 endfunction
 
-let p = Point.New(10, 20)
+let Point = {}
+let Point.new = function("s:new")
+let Point.getX = function("s:getX")
+let Point.getY = function("s:getY")
+let Point.setX = function("s:setX")
+let Point.setY = function("s:setY")
+let Point.Print = function("s:Print")
+
+let p = Point.new(10, 20)
 call p.setX(40)
 call p.setY(50)
 call p.Print()
@@ -2287,7 +2303,6 @@ endif
 
 *Help:* [expr-=~](https://vimhelp.org/eval.txt.html#expr-%3d~), [expr-!~](https://vimhelp.org/eval.txt.html#expr-%21~)
 
-
 ### Finding the beginning or ending index of a pattern in a string
 
 **Python:**
@@ -2429,4 +2444,3 @@ non-whitespace|  \\S  |  \\S
 word character|  \\w  |  \\w
 non-word character|  \\W  |  \\W
 ignore case|  (?i)  |  \\c
-case sensitive|  (?-i)  |  \\C
