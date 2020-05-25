@@ -50,9 +50,9 @@ Assigning multi-line values to a variable.
 **Python:**
 ```python
 i = """
-    Hello
-    World
-    Good
+    one
+    two
+    three
 """
 i = i.strip().split()
 ```
@@ -60,9 +60,9 @@ i = i.strip().split()
 **VimScript:**
 ```vim
 let i =<< trim END
-    Hello
-    World
-    Good
+    one
+    two
+    three
 END
 ```
 
@@ -2396,17 +2396,37 @@ echo s
 
 ### Regular expression comparison
 
+Note that the below table shows only the regular expressions that are present in both Python and Vim.
+
 What|Python|Vim
 ----|------|---
 single character|  .  |  .
-start of string|  ^  |  $
+start of string|  ^  |  ^
 end of string|  $  |  $
 0 or more matches|  *  |  *
-1 or more matches|  +  |  \+
-0 or 1 match|  ?  |  \?
-non-greedy match|  \*?  |  \{-}
-fixed matches|  {n}  |  \{n}
-m to n matches|  {m,n}  |  \{m,n}
-m to n non-greedy matches|  {m,n}?  | \{-m,n}
-character class|  []  |  []
-
+1 or more matches|  +  |  \\+
+0 or 1 match|  ?  |  \\?
+non-greedy match|  \*?  |  \\{-}
+fixed matches|  {n}  |  \\{n}
+m to n matches|  {m,n}  |  \\{m,n}
+m to n non-greedy matches|  {m,n}?  | \\{-m,n}
+character class|  [...]  |  [...]
+negated character class|  [\^...]  |  [\^...]
+range|  [a-z]  |  [a-z]
+either-or branch|  \|  | \\\|
+capturing group|  (...)  |  \\(...\\)
+non-capturing match|  (?:...)  |  \\%(...\\)
+positive look-ahead|  (?=...)  |  \\(...\\)\\@=
+negative look-ahead|  (?!...)  |  \\(...\\)\\@!
+positive look-behind|  (?<=...)  |   \\(...\\)\\@<=
+negative look-behind|  (?\<!...)  |  \\(...\\)\\@\<!
+start of word|  \\b  |  \\<
+end of word|  \\b  |  \\>
+digit|  \\d  |  \\d
+non-digit|  \\D  |  \\D
+whitespace|  \\s  |  \\s
+non-whitespace|  \\S  |  \\S
+word character|  \\w  |  \\w
+non-word character|  \\W  |  \\W
+ignore case|  (?i)  |  \\c
+case sensitive|  (?-i)  |  \\C
