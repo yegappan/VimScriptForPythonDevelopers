@@ -1531,41 +1531,76 @@ echo F(2)
 
 ------------------------------------------------------------------------------
 
-## Formatted Output
+# Classes
+
+## Defining a class
 
 **Python:**
 ```python
-name = "John"
-id = 1001
-print("Name: %s, ID: %d" % (name, id))
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def setX(self, x):
+        self.x = x
+
+    def setY(self, y):
+        self.y = y
+
+    def Print(self):
+        print("Pt = (" + str(self.x) + ", " + str(self.y) + ")")
+
+pt = Point(10, 20)
+pt.setX(40)
+pt.setY(50)
+pt.Print()
 ```
 
 **VimScript:**
 ```vim
-let name = "John"
-let id = 1001
-echo printf("Name: %s, ID: %d", name, id)
+let Point = {}
+
+function Point.New(x, y)
+  let newpt = copy(self)
+  let newpt.x = a:x
+  let newpt.y = a:y
+  return newpt
+endfunction
+
+function Point.getX()
+  return self.x
+endfunction
+
+function Point.getY()
+  return self.y
+endfunction
+
+function Point.setX(x)
+  let self.x = a:x
+endfunction
+
+function Point.setY(y)
+  let self.y = a:y
+endfunction
+
+function Point.Print()
+  echo "Pt = (" .. self.x .. ", " .. self.y .. ")"
+endfunction
+
+let p = Point.New(10, 20)
+call p.setX(40)
+call p.setY(50)
+call p.Print()
 ```
 
-*Help:* [printf()](https://vimhelp.org/eval.txt.html#printf%28%29)
-
-------------------------------------------------------------------------------
-
-## Line Continuation
-
-**Python:**
-```python
-a = 1 + 2 + 3 + \
-      4 + 5 + 6
-```
-
-**VimScript:**
-```vim
-let a = 1 + 2 + 3 +
-      \ 4 + 5 + 6
-```
-
-*Help:* [line-continuation](https://vimhelp.org/eval.txt.html#line-continuation)
+*Help:* [Dictionary-function](https://vimhelp.org/eval.txt.html#Dictionary-function), [numbered-function](https://vimhelp.org/eval.txt.html#numbered-function), [:func-dict](https://vimhelp.org/eval.txt.html#%3afunc-dict)
 
 ------------------------------------------------------------------------------
 
@@ -1665,6 +1700,44 @@ endtry
 ```
 
 *Help:* [throw-catch](https://vimhelp.org/eval.txt.html#throw-catch)
+
+------------------------------------------------------------------------------
+
+## Formatted Output
+
+**Python:**
+```python
+name = "John"
+id = 1001
+print("Name: %s, ID: %d" % (name, id))
+```
+
+**VimScript:**
+```vim
+let name = "John"
+let id = 1001
+echo printf("Name: %s, ID: %d", name, id)
+```
+
+*Help:* [printf()](https://vimhelp.org/eval.txt.html#printf%28%29)
+
+------------------------------------------------------------------------------
+
+## Line Continuation
+
+**Python:**
+```python
+a = 1 + 2 + 3 + \
+      4 + 5 + 6
+```
+
+**VimScript:**
+```vim
+let a = 1 + 2 + 3 +
+      \ 4 + 5 + 6
+```
+
+*Help:* [line-continuation](https://vimhelp.org/eval.txt.html#line-continuation)
 
 ------------------------------------------------------------------------------
 
@@ -1957,74 +2030,70 @@ echo localtime()
 
 ------------------------------------------------------------------------------
 
-# Classes
+## External commands
 
-## Defining a class
+### Getting the output of an external command as a string
 
 **Python:**
 ```python
-class Point:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def getX(self):
-        return self.x
-
-    def getY(self):
-        return self.y
-
-    def setX(self, x):
-        self.x = x
-
-    def setY(self, y):
-        self.y = y
-
-    def Print(self):
-        print("Pt = (" + str(self.x) + ", " + str(self.y) + ")")
-
-pt = Point(10, 20)
-pt.setX(40)
-pt.setY(50)
-pt.Print()
+import subprocess
+procObj = subprocess.Popen('grep class *.java',
+			stdout=subprocess.PIPE,
+			shell=True)
+lines, err = procObj.communicate()
+print(lines)
+print("Error = " + str(procObj.returncode))
 ```
 
 **VimScript:**
 ```vim
-let Point = {}
-
-function Point.New(x, y)
-  let newpt = copy(self)
-  let newpt.x = a:x
-  let newpt.y = a:y
-  return newpt
-endfunction
-
-function Point.getX()
-  return self.x
-endfunction
-
-function Point.getY()
-  return self.y
-endfunction
-
-function Point.setX(x)
-  let self.x = a:x
-endfunction
-
-function Point.setY(y)
-  let self.y = a:y
-endfunction
-
-function Point.Print()
-  echo "Pt = (" .. self.x .. ", " .. self.y .. ")"
-endfunction
-
-let p = Point.New(10, 20)
-call p.setX(40)
-call p.setY(50)
-call p.Print()
+let lines = system('grep class *.java')
+echo lines
+echo "Error = " .. v:shell_error
 ```
 
-*Help:* [Dictionary-function](https://vimhelp.org/eval.txt.html#Dictionary-function), [numbered-function](https://vimhelp.org/eval.txt.html#numbered-function), [:func-dict](https://vimhelp.org/eval.txt.html#%3afunc-dict)
+*Help:* [system()](https://vimhelp.org/eval.txt.html#system%28%29), [v:shell_error](https://vimhelp.org/eval.txt.html#v%3ashell_error)
+
+### Splitting the output of an external command into lines
+
+**Python:**
+```python
+import subprocess
+procObj = subprocess.Popen('grep class *.java',
+			stdout=subprocess.PIPE,
+			shell=True)
+lines, err = procObj.communicate()
+print("Number of matches = " + str(len(lines.split("\n"))))
+```
+
+**VimScript:**
+```vim
+let lines = systemlist('grep class *.java')
+echo "Number of matches = " .. len(lines)
+```
+
+*Help:* [systemlist()](https://vimhelp.org/eval.txt.html#systemlist%28%29)
+
+### Sending input to an external command and getting the output
+
+**Python:**
+```python
+import subprocess
+procObj = subprocess.Popen('wc',
+			stdout=subprocess.PIPE,
+			stdin=subprocess.PIPE,
+			shell=True)
+lines, err = procObj.communicate("one\ntwo\n")
+print(lines)
+print("Error = " + str(procObj.returncode))
+```
+
+**VimScript:**
+```vim
+let lines = system('wc', "one\ntwo\n")
+echo lines
+echo "Error = " .. v:shell_error
+```
+
+*Help:* [system()](https://vimhelp.org/eval.txt.html#system%28%29)
 
