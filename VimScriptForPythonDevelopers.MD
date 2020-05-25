@@ -2146,7 +2146,7 @@ call setenv('FOO', 'BAR')
 let $FOO = 'BAR'
 ```
 
-*Help:* [setenv()](https://vimhelp.org/eval.txt.html#setenv%28%29), [let-environment](https://vimhelp.org/eval.txt.html#let-environment)
+*Help:* [setenv()](https://vimhelp.org/eval.txt.html#setenv%28%29), [:let-environment](https://vimhelp.org/eval.txt.html#%3alet-environment)
 
 ### Removing an environment variable
 
@@ -2179,3 +2179,29 @@ echo environ()
 ```
 
 *Help:* [environ()](https://vimhelp.org/eval.txt.html#environ%28%29)
+
+------------------------------------------------------------------------------
+
+## Command-line Arguments
+
+### Displaying the command-line arguments
+
+**Python:**
+```python
+import sys
+print("Number of arguments = " + str(len(sys.argv)))
+print("Arguments = " + str(sys.argv))
+for arg in sys.argv:
+    print(arg)
+```
+
+**VimScript:**
+```vim
+echo "Number of arguments = " .. len(v:argv)
+echo "Arguments = " .. string(v:argv)
+for arg in v:argv
+    echo arg
+endfor
+```
+
+*Help:* [v:argv](https://vimhelp.org/eval.txt.html#v%3aargv)
