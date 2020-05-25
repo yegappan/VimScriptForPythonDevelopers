@@ -2097,3 +2097,85 @@ echo "Error = " .. v:shell_error
 
 *Help:* [system()](https://vimhelp.org/eval.txt.html#system%28%29)
 
+------------------------------------------------------------------------------
+
+## Environment Variables
+
+### Getting the value of an environment variable
+
+**Python:**
+```python
+import os
+h = os.environ.get('HOME', '')
+if h == '':
+    print("HOME is not set")
+else:
+    print("HOME = " + h)
+```
+
+**VimScript:**
+```vim
+let h = getenv('HOME')
+if h == v:null
+    echo 'HOME is not set'
+else
+    echo 'HOME = ' .. h
+endif
+
+if !exists('$HOME')
+    echo 'HOME is not set'
+else
+    echo 'HOME = ' .. $HOME
+endif
+```
+
+*Help:* [getenv()](https://vimhelp.org/eval.txt.html#getenv%28%29), [expr-env](https://vimhelp.org/eval.txt.html#expr-env), [exists()](https://vimhelp.org/eval.txt.html#exists%28%29)
+
+### Setting an environment variable
+
+**Python:**
+```python
+import os
+os.environ['FOO'] = "BAR"
+```
+
+**VimScript:**
+```vim
+call setenv('FOO', 'BAR')
+
+let $FOO = 'BAR'
+```
+
+*Help:* [setenv()](https://vimhelp.org/eval.txt.html#setenv%28%29), [let-environment](https://vimhelp.org/eval.txt.html#let-environment)
+
+### Removing an environment variable
+
+**Python:**
+```python
+import os
+del os.environ['FOO']
+```
+
+**VimScript:**
+```vim
+call setenv('FOO', v:null)
+
+unlet $FOO
+```
+
+*Help:* [setenv()](https://vimhelp.org/eval.txt.html#setenv%28%29), [:unlet-environment](https://vimhelp.org/eval.txt.html#%3aunlet-environment)
+
+### Getting all the environment variables
+
+**Python:**
+```python
+import os
+print(os.environ)
+```
+
+**VimScript:**
+```vim
+echo environ()
+```
+
+*Help:* [environ()](https://vimhelp.org/eval.txt.html#environ%28%29)
