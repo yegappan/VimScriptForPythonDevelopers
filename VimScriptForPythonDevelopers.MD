@@ -4,6 +4,10 @@ A guide to Vim Script development for Python developers. Sample code for the var
 
 For an introduction to Vim Script development, refer to [usr_41.txt](https://vimhelp.org/usr_41.txt.html), [eval.txt](https://vimhelp.org/eval.txt.html) and [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
 
+For a similar guide for JavaScript developers, refer to [Vim Script for the JavaScripter](https://w0rp.com/blog/post/vim-script-for-the-javascripter/)
+
+This guide only describes the programming constructs that are present in both Python and Vim. The constructs that are unique to Vim (e.g. [autocommands](https://vimhelp.org/autocmd.txt.html#autocommands), [key-mapping](https://vimhelp.org/map.txt.html#key-mapping), [abbreviations](https://vimhelp.org/map.txt.html#abbreviations), [user-commands](https://vimhelp.org/map.txt.html#user-commands), [plugins](https://vimhelp.org/usr_05.txt.html#plugin), etc.) are not described in this guide.
+
 ------------------------------------------------------------------------------
 
 ## Variables
@@ -39,6 +43,30 @@ unlet str
 ```
 
 *Help:* [:unlet](https://vimhelp.org/eval.txt.html#%3Aunlet)
+
+### Here Document
+Assigning multi-line values to a variable.
+
+**Python:**
+```python
+i = """
+    Hello
+    World
+    Good
+"""
+i = i.strip().split()
+```
+
+**VimScript:**
+```vim
+let i =<< trim END
+    Hello
+    World
+    Good
+END
+```
+
+*Help:* [:let-heredoc](https://vimhelp.org/eval.txt.html#%3Alet-heredoc)
 
 ## Print an expression
 
@@ -166,12 +194,28 @@ let c = xor(a, b)
 
 ## String
 
+### Raw string
+
+**Python:**
+```python
+s1 = r"one\ntwo\n"
+s2 = "one\ntwo\n"
+```
+
+**VimScript:**
+```vim
+let s1 = 'one\ntwo\n'
+let s2 = "one\ntwo\n"
+```
+
+*Help:* [literal-string](https://vimhelp.org/eval.txt.html#literal-string), [string](https://vimhelp.org/eval.txt.html#string)
+
 ### Finding string length
 **Python:**
 ```python
 n = len("Hello World")
 ```
-   
+
 **VimScript:**
 ```vim
 let n = len("Hello World")
@@ -187,7 +231,7 @@ str1 = "blue"
 str2 = "sky"
 s = str1 + str2
 ```
-   
+
 **VimScript:**
 ```vim
 let str1 = "blue"
@@ -203,7 +247,7 @@ let s = str1 .. str2
 str = "Hello World"
 sub = str[2:5]
 ```
-   
+
 **VimScript:**
 ```vim
 let str = "Hello World"
@@ -219,7 +263,7 @@ let sub = strpart(str, 2, 4)
 str = "Hello World"
 c = str.count("l")
 ```
-   
+
 **VimScript:**
 ```vim
 let str = "Hello World"
@@ -235,7 +279,7 @@ str = "running"
 idx = str.find("nn")
 idx = str.rfind("ing")
 ```
-   
+
 **VimScript:**
 ```vim
 let str = "running"
@@ -255,7 +299,7 @@ if str.startswith("run"):
 if str.endswith("ing"):
     print("ends with ing")
 ```
-   
+
 **VimScript:**
 ```vim
 let str = "running"
@@ -273,7 +317,7 @@ endif
 ```python
 s = ":".join(['a', 'b', 'c'])
 ```
-   
+
 **VimScript:**
 ```vim
 let s = join(['a', 'b', 'c'], ':')
@@ -288,7 +332,7 @@ s = "Hello World"
 l = s.lower()
 l = s.upper()
 ```
-   
+
 **VimScript:**
 ```vim
 let s = "Hello World"
@@ -304,7 +348,7 @@ let l = s->toupper()
 s = "Hello World"
 s2 = s.replace("Hello", "New")
 ```
-   
+
 **VimScript:**
 ```vim
 let s = "Hello World"
@@ -319,14 +363,14 @@ let s2 = s->substitute("Hello", "New", 'g')
 s = "a:b:c"
 s2 = s.split(":")
 ```
-   
+
 **VimScript:**
 ```vim
 let s = "a:b:c"
 let s2 = s->split(":")
 ```
 
-*Help:* [split()](https://vimhelp.org/eval.txt.html#split%28%29)
+*Help:* [split()](https://vimhelp.org/eval.txt.html#split%28%29), [join()](https://vimhelp.org/eval.txt.html#join%28%29),
 
 ### Stripping leading and trailing whitespace from a string
 **Python:**
@@ -334,7 +378,7 @@ let s2 = s->split(":")
 s = "  vim  "
 s2 = s.strip()
 ```
-   
+
 **VimScript:**
 ```vim
 let s = "  vim  "
@@ -360,7 +404,7 @@ if s.isupper():
 if s.islower():
     print("Contains only lowercase characters")
 ```
-   
+
 **VimScript:**
 ```vim
 let s = "text"
@@ -416,7 +460,7 @@ let s = string({'a' : 1, 'b' : 2})
 ```python
 l = [1, 2, 3, 4]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3, 4]
@@ -432,7 +476,7 @@ l = [1, 2, 3, 4]
 v1 = l[2]
 v2 = l[-2]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3, 4]
@@ -449,7 +493,7 @@ let v2 = l[-2]
 l = [1, 2, 3, 4]
 l[3] = 5
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3, 4]
@@ -466,7 +510,7 @@ l = []
 l.append(5)
 l += [6, 7]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = []
@@ -484,7 +528,7 @@ l = []
 l.extend([2, 3])
 l += [6, 7]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = []
@@ -501,7 +545,7 @@ let l += [6, 7]
 l = [1, 3]
 l.insert(1, 2)
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 3]
@@ -518,7 +562,7 @@ l = [4, 5, 6]
 l.remove(5)
 del l[0]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [4, 5, 6]
@@ -535,7 +579,7 @@ unlet l[0]
 l = [1, 2, 3]
 v = l.pop()
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3]
@@ -551,7 +595,7 @@ let v = l->remove(-1)
 l = [1, 2, 3]
 x = l.index(2)
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3]
@@ -567,7 +611,7 @@ l = [1, 2, 3, 4]
 m = l[1:3]
 m = l[2:]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3, 4]
@@ -583,7 +627,7 @@ let m = l[2:]
 ```python
 l = [1, 2] + [3 ,4]
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2] + [3 ,4]
@@ -597,7 +641,7 @@ let l = [1, 2] + [3 ,4]
 ```python
 l = ['vim'] * 4
 ```
-   
+
 **VimScript:**
 ```vim
 let l = ['vim']->repeat(4)
@@ -612,7 +656,7 @@ let l = ['vim']->repeat(4)
 l = [2, 4, 4, 5]
 x = l.count(4)
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [2, 4, 4, 5]
@@ -628,7 +672,7 @@ let x = l->count(2)
 l = ['a', 'b', 'c']
 n = len(l)
 ```
-   
+
 **VimScript:**
 ```vim
 let l = ['a', 'b', 'c']
@@ -644,7 +688,7 @@ let n = l->len()
 l = [3, 2, 1]
 l.sort()
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [3, 2, 1]
@@ -660,7 +704,7 @@ call sort(l)
 l = [1, 2, 3]
 l.reverse()
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [1, 2, 3]
@@ -676,7 +720,7 @@ call reverse(l)
 l = [3, 2, 1]
 l2 = l.copy()
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [3, 2, 1]
@@ -692,7 +736,7 @@ let l2 = l->copy()
 l = [3, 2, 1]
 l.clear()
 ```
-   
+
 **VimScript:**
 ```vim
 let l = [3, 2, 1]
@@ -710,7 +754,7 @@ l2 = [1, 2]
 if l1 == l2:
     print("Lists are equal")
 ```
-   
+
 **VimScript:**
 ```vim
 let l1 = [1, 2]
@@ -728,7 +772,7 @@ endif
 ```python
 odd = filter(lambda x: x %2, range(10))
 ```
-   
+
 **VimScript:**
 ```vim
 let odd = filter(range(10), {idx, v -> v % 2})
@@ -742,7 +786,7 @@ let odd = filter(range(10), {idx, v -> v % 2})
 ```python
 num_str = map(lambda x: str(x), range(10))
 ```
-   
+
 **VimScript:**
 ```vim
 let num_str = map(range(10), {idx, v -> string(v)})
@@ -757,7 +801,7 @@ let num_str = map(range(10), {idx, v -> string(v)})
 n = max([3, 10, 8])
 n = min([3, 10, 8])
 ```
-   
+
 **VimScript:**
 ```vim
 let n = max([3, 10, 8])
@@ -772,7 +816,7 @@ let n = min([3, 10, 8])
 ```python
 s = str([3, 5, 7])
 ```
-   
+
 **VimScript:**
 ```vim
 let s = string([3, 5, 7])
@@ -789,7 +833,7 @@ let s = string([3, 5, 7])
 d = {'red' : 10, 'blue' : 20}
 x = {}
 ```
-   
+
 **VimScript:**
 ```vim
 let d = {'red' : 10, 'blue' : 20}
@@ -804,7 +848,7 @@ let x = {}
 d = {'red' : 10, 'blue' : 20}
 x = d['red']
 ```
-   
+
 **VimScript:**
 ```vim
 let d = {'red' : 10, 'blue' : 20}
@@ -820,7 +864,7 @@ let x = d.red
 d = {'red' : 10, 'blue' : 20}
 d['red'] = 15
 ```
-   
+
 **VimScript:**
 ```vim
 let d = {'red' : 10, 'blue' : 20}
@@ -884,7 +928,7 @@ d.clear()
 **VimScript:**
 ```vim
 let d = {'red' : 10, 'blue' : 20}
-let d = {}
+call filter(d, "0")
 ```
 
 *Help:* [dict-modification](https://vimhelp.org/eval.txt.html#dict-modification)
@@ -1001,7 +1045,7 @@ let new_d = d->copy()
 ```python
 d = str({'a' : 1, 'b' : 2})
 ```
-   
+
 **VimScript:**
 ```vim
 let d = string({'a' : 1, 'b' : 2})
@@ -1018,7 +1062,7 @@ d2 = {'a' : 10, 'b' : 20}
 if d1 == d2:
     print("Dicts are equal")
 ```
-   
+
 **VimScript:**
 ```vim
 let d1 = {'a' : 10, 'b' : 20}
@@ -1254,8 +1298,12 @@ let i = 0    " First iteration
 *Help:* [:comment](https://vimhelp.org/cmdline.txt.html#%3acomment)
 
 ------------------------------------------------------------------------------
-    
+
 ## Functions
+
+The names of global functions in Vim must start with an uppercase letter.
+The examples in this document use the "function" and "endfunction" keywords for
+defining a function. But these can be abbreviated as "func" and "endfunc".
 
 ### Defining a Function
 
@@ -1266,7 +1314,7 @@ def Min(x, y):
 
 print(Min(6, 3)
 ```
-    
+
 **VimScript:**
 ```vim
 function Min(x, y)
@@ -2205,3 +2253,160 @@ endfor
 ```
 
 *Help:* [v:argv](https://vimhelp.org/eval.txt.html#v%3aargv)
+
+------------------------------------------------------------------------------
+
+## Regular Expressions
+
+### Finding whether a pattern matches a string
+
+**Python:**
+```python
+import re
+s = 'Test failed with error E123:'
+if re.search(r'E\d+:', s):
+    print('Error code found')
+
+s = 'Test successful'
+if re.search(r'E\d+:', s) == None:
+    print("Test passed")
+```
+
+**VimScript:**
+```vim
+let s = 'Test failed with error E123:'
+if s =~# 'E\d\+:'
+    echo "Error code found"
+endif
+
+let s = 'Test successful'
+if s !~# 'E\d\+:'
+    echo "Test passed"
+endif
+```
+
+*Help:* [expr-=~](https://vimhelp.org/eval.txt.html#expr-%3d~), [expr-!~](https://vimhelp.org/eval.txt.html#expr-%21~)
+
+
+### Finding the beginning or ending index of a pattern in a string
+
+**Python:**
+```python
+import re
+m = re.search(r'\d+', "Abc 123 Def")
+if m != None:
+    idx = m.start()
+    end_idx = m.end()
+```
+
+**VimScript:**
+```vim
+let idx = match("Abc 123 Def", '\d\+')
+let end_idx = matchend("Abc 123 Def", '\d\+')
+
+let l = matchstrpos("Abc 123 Def", '\d\+')
+echo "start:" l[1] "end:" l[2]
+```
+
+*Help:* [match()](https://vimhelp.org/eval.txt.html#match%28%29), [matchend()](https://vimhelp.org/eval.txt.html#matchend%28%29), [matchstrpos()](https://vimhelp.org/eval.txt.html#matchstrpos%28%29)
+
+### Getting matching substring using a pattern
+
+**Python:**
+```python
+import re
+m = re.search(r'\d+', "Abc 123 Def")
+if m != None:
+    s = m.group(0)
+    print s
+```
+
+**VimScript:**
+```vim
+let s = matchstr("Abc 123 Def", '\d\+')
+```
+
+*Help:* [matchstr()](https://vimhelp.org/eval.txt.html#matchstr%28%29)
+
+### Getting multiple matches using a pattern
+
+**Python:**
+```python
+import re
+m = re.match(r'(\w+) (\w+) (\w+)', "foo bar baz")
+if m != None:
+    print("Full match: " + m.group(0))
+    print("1: " + m.group(1) + " 2: " + m.group(2) + " 3: " + m.group(3))
+```
+
+**VimScript:**
+```vim
+let list = matchlist("foo bar baz", '\(\w\+\) \(\w\+\) \(\w\+\)')
+echo "Full match:" list[0]
+echo "1:" list[1] "2:" list[2] "3:" list[3]
+```
+
+*Help:* [matchlist()](https://vimhelp.org/eval.txt.html#matchlist%28%29)
+
+### Substituting text using a pattern
+
+**Python:**
+```python
+import re
+s = re.sub(r'bar', r'baz', "foo bar")
+print(s)
+```
+
+**VimScript:**
+```vim
+let s = substitute("foo bar", 'bar', 'baz', '')
+echo s
+```
+
+*Help:* [substitute()](https://vimhelp.org/eval.txt.html#substitute%28%29)
+
+### Using a function to get the replacement string
+
+**Python:**
+```python
+import re
+def Dashrepl(m):
+  if m.group(0) == '-':
+    return ' '
+  else:
+    return '-'
+s = re.sub('-{1,2}', Dashrepl, 'pro----gram-files')
+print(s)
+```
+
+**VimScript:**
+```vim
+function Dashrepl(m)
+  if a:m[0] == '-'
+    return ' '
+  else
+    return '-'
+  endif
+endfunction
+let s = substitute("pro----gram-files", '-\{1,2}', function('Dashrepl'), 'g')
+echo s
+```
+
+*Help:* [substitute()](https://vimhelp.org/eval.txt.html#substitute%28%29)
+
+### Regular expression comparison
+
+What|Python|Vim
+----|------|---
+single character|  .  |  .
+start of string|  ^  |  $
+end of string|  $  |  $
+0 or more matches|  *  |  *
+1 or more matches|  +  |  \+
+0 or 1 match|  ?  |  \?
+non-greedy match|  \*?  |  \{-}
+fixed matches|  {n}  |  \{n}
+m to n matches|  {m,n}  |  \{m,n}
+m to n non-greedy matches|  {m,n}?  | \{-m,n}
+character class|  []  |  []
+
