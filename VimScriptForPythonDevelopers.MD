@@ -8,6 +8,8 @@ For a similar guide for JavaScript developers, refer to [Vim Script for the Java
 
 This guide only describes the programming constructs that are present in both Python and Vim. The constructs that are unique to Vim (e.g. [autocommands](https://vimhelp.org/autocmd.txt.html#autocommands), [key-mapping](https://vimhelp.org/map.txt.html#key-mapping), [abbreviations](https://vimhelp.org/map.txt.html#abbreviations), [user-commands](https://vimhelp.org/map.txt.html#user-commands), [plugins](https://vimhelp.org/usr_05.txt.html#plugin), etc.) are not described in this guide.
 
+Some of the features described in this guide are available are only in recent versions of Vim (8.1).
+
 ------------------------------------------------------------------------------
 
 ## Variables
@@ -2444,3 +2446,67 @@ non-whitespace|  \\S  |  \\S
 word character|  \\w  |  \\w
 non-word character|  \\W  |  \\W
 ignore case|  (?i)  |  \\c
+
+------------------------------------------------------------------------------
+
+## Binary Data
+
+### Storing binary data in a variable
+
+**Python:**
+```python
+data = bytearray(b'\x12\xF6\xAB\xFF\x49\xC0\x88\x3A\xE2\xC1\x42\xAA')
+print(data)
+print(data[0:4])
+```
+
+**VimScript:**
+```vim
+let data = 0z12F6ABFF.49C0883A.E2C142AA
+echo data
+echo data[0:3]
+```
+
+*Help:* [blob](https://vimhelp.org/eval.txt.html#blob)
+
+### Manipulating binary data stored in a variable
+
+**Python:**
+```python
+data = bytearray(b'')
+data.append(0xC2)
+data += b'\xB3\xF7\xA5'
+del data[2]
+print(data)
+```
+
+**VimScript:**
+```vim
+let data = 0z
+let data[0] = 0xC2
+let data += 0zB3F7A5
+call remove(data, 2)
+echo data
+```
+
+*Help:* [blob-index](https://vimhelp.org/eval.txt.html#blob-index), [blob-modification](https://vimhelp.org/eval.txt.html#blob-modification)
+
+### Reading and writing binary data from a file
+
+**Python:**
+```python
+with open("datafile.bin", "rb") as bin_fh:
+    data = bytearray(bin_fh.read())
+
+with open("data2.bin", "wb") as bin_fh:
+    bin_fh.write(data)
+```
+
+**VimScript:**
+```vim
+let data = readfile('datafile.bin', 'B')
+call writefile(data, 'data2.bin')
+```
+
+*Help:* [readfile()](https://vimhelp.org/eval.txt.html#readfile%28%29), [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
+
