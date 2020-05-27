@@ -1775,6 +1775,8 @@ endtry
 ```python
 name = "John"
 id = 1001
+print(f"Name: {name}, ID: {id}")
+print("Name: {}, ID: {}".format(name, id))
 print("Name: %s, ID: %d" % (name, id))
 ```
 
