@@ -457,6 +457,40 @@ let s = string({'a' : 1, 'b' : 2})
 
 *Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
 
+## Evaluating a string
+
+**Python:**
+```python
+x = 10
+y = eval("x * 2")
+print(y)
+n = eval("min([4, 3, 5])")
+```
+
+**VimScript:**
+```vim
+let x = 10
+let y = eval("x * 2")
+echo y
+let n = eval("min([4, 3, 5])")
+```
+
+*Help:* [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
+
+## Executing commands in a string
+
+**Python:**
+```python
+exec("for i in range(5):\n    print(i)\n")
+```
+
+**VimScript:**
+```vim
+execute "for i in range(5)\necho i\nendfor"
+```
+
+*Help:* [:execute](https://vimhelp.org/eval.txt.html#:execute)
+
 ------------------------------------------------------------------------------
 
 ## List
@@ -1811,7 +1845,10 @@ let a = 1 + 2 + 3 +
 
 ## File Operations
 
-### Reading all the lines in a file
+### Reading all the lines from a file
+
+Vim has a function to read the entire file but doesn't have a function to read a file one line at a time.
+
 **Python:**
 ```python
 with open('myfile.txt', 'r') as f:
@@ -1836,6 +1873,21 @@ with open('myfile.txt', 'w') as fh:
 **VimScript:**
 ```vim
 call writefile(['line1', 'line2'], 'myfile.txt')
+```
+
+*Help:* [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
+
+### Appending lines to a file
+**Python:**
+```python
+lines = ["line3\n", "line4\n"]
+with open('myfile.txt', 'a') as fh:
+    fh.writelines(lines)
+```
+
+**VimScript:**
+```vim
+call writefile(['line3', 'line4'], 'myfile.txt', 'a')
 ```
 
 *Help:* [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
