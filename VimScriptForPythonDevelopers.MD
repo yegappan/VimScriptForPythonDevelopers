@@ -485,7 +485,7 @@ execute "for i in range(5)\necho i\nendfor"
 
 ## String Methods/Functions
 
-What|Python|VimScript
+Method|Python|VimScript
 ----|------|---------
 capitalize()| 'one two'.capitalize() | 'one two'-\>substitute('.', '\u&', '')
 center()| 'abc'.center(10) | None
@@ -507,15 +507,15 @@ join()| ':'.join(['a', 'b', 'c']) | join(['a', 'b', 'c'], ':')
 ljust()| 'abc'.ljust(10) | None
 lower()| 'Hello'.lower() | 'Hello'-\>tolower()
 lstrip()| '  vim  '.lstrip() | '  vim  '-\>trim(' ', 1)
-partition()| 'ab:cd:ef'.partition(':') | 'ab:cd:ef'-\>matchlist('\\(.\\{-}\\)\\(:\\)\\(.\*\\)')[1:3]
+partition()| 'ab\:cd\:ef'.partition(':') | 'ab\:cd\:ef'-\>matchlist('\\(.\\{-}\\)\\(:\\)\\(.\*\\)')[1:3]
 replace()| 'abc'.replace('abc', 'xyz') | 'abc'-\>substitute('abc', 'xyz', 'g')
 rfind()| 'running'.rfind('ing') | 'running'-\>strridx('ing')
 rindex()| 'running'.rindex('ing') | 'running'-\>strridx('ing')
 rjust()| 'abc'.rjust(10) | None
-rpartition()| 'ab:cd:ef'.rpartition(':') | 'ab:cd:ef'-\>matchlist('\\(.\*\\)\\(:\\)\\(.\*\\)')[1:3]
-rsplit()| 'a:b:c:d'.rsplit(':', 2) | None
+rpartition()| 'ab\:cd\:ef'.rpartition(':') | 'ab\:cd\:ef'-\>matchlist('\\(.\*\\)\\(:\\)\\(.\*\\)')[1:3]
+rsplit()| 'a\:b\:c\:d'.rsplit(':', 2) | None
 rstrip()| '  vim  '.rstrip() | '  vim  '-\>trim(' ', 2)
-split()| 'a:b:c'.split(':') | 'a:b:c'-\>split(':')
+split()| 'a\:b\:c'.split(':') | 'a\:b\:c'-\>split(':')
 splitlines()| "one\ntwo".splitlines() | "one\ntwo"-\>split("\n")
 startswith()| 'running'.startswith('run') | 'running' =~# '^run'
 strip()| '  vim  '.strip() | '  vim  '-\>trim()
