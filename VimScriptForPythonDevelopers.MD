@@ -130,25 +130,14 @@ let a = floor(10 / 3.0)
 
 ## Comparison Operators
 
-**Python:**
-```python
-a > b
-a < b
-a == b
-a != b
-a >= b
-a <= b
-```
-
-**VimScript:**
-```vim
-a > b
-a < b
-a == b
-a != b
-a >= b
-a <= b
-```
+What|Python|VimScript
+----|------|---------
+greater than|  a > b |  a > b
+less than|  a < b  |  a < b
+equal to|  a == b  |  a == b
+not equal|  a != b  |  a != b
+greater than or equal to|  a >= b  |  a >= b
+less than or equal to|  a <= b  |  a <= b
 
 *Help:* [expr4](https://vimhelp.org/eval.txt.html#expr4)
 
