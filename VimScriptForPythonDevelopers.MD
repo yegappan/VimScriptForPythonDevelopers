@@ -205,8 +205,12 @@ n = len("Hello World")
 
 **VimScript:**
 ```vim
+" count the number of bytes in a string
 let n = len("Hello World")
+" count the number of bytes in a string
 let n = strlen("Hello World")
+" count the number of characters in a string
+let n = strwidth("Hello World")
 ```
 
 *Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29), [strlen()](https://vimhelp.org/eval.txt.html#strlen%28%29), [strwidth()](https://vimhelp.org/eval.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/eval.txt.html#strdisplaywidth%28%29)
@@ -241,8 +245,12 @@ sub = str[2:5]
 **VimScript:**
 ```vim
 let str = "HelloWorld"
+" use byte index
 let sub = str[2:4]
+" use byte index and length
 let sub = strpart(str, 2, 3)
+" use character index and length
+let sub = strcharpart(str, 2, 3)
 ```
 
 *Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/eval.txt.html#strpart%28%29)
@@ -293,9 +301,10 @@ if str.endswith("ing"):
 **VimScript:**
 ```vim
 let str = "running"
-if str =~# "^ing"
+if str =~# '^ing'
     echo "starts with ing"
-if str =~# "ing$"
+endif
+if str =~# 'ing$'
     echo "ends with ing"
 endif
 ```
