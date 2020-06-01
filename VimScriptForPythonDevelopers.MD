@@ -53,21 +53,25 @@ Assigning multi-line values to a variable.
 
 **Python:**
 ```python
-i = """
+import textwrap
+i = textwrap.dedent("""
     one
-    two
-    three
-"""
-i = i.strip().split()
+    two three
+      four
+    five
+""".lstrip('\n')).splitlines()
+# i == ['one', 'two three', '  four', 'five']
 ```
 
 **VimScript:**
 ```vim
 let i =<< trim END
     one
-    two
-    three
+    two three
+      four
+    five
 END
+" i == ['one', 'two three', '  four', 'five']
 ```
 
 *Help:* [:let-heredoc](https://vimhelp.org/eval.txt.html#%3Alet-heredoc)
