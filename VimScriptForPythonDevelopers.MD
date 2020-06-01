@@ -493,29 +493,29 @@ count()| "abbc".count('b') | "abbc"-\>count('b')
 decode()| str.decode() | None
 encode()| str.encode() | None
 endswith()| 'running'.endswith('ing') | 'running' =~# 'ing$'
-expandtabs()| "a\tb".expandtabs() | "a\tb"-\>substitute("\t", '        ', 'g')
+expandtabs()| "a\tb".expandtabs() | "a\tb"-\>substitute("\t", repeat(' ', 8), 'g')
 find()| "running".find('nn') | "running"-\>stridx('nn')
-index()| 'hello'.index('e') | 'hello'-\>index('e')
-isalnum()| str.isalnum() | str =~ '^[:alnum:]\\+'
+index()| 'hello'.index('e') | 'hello'-\>stridx('e')
+isalnum()| str.isalnum() | str =~ '^[[:alnum:]]\\+'
 isalpha()| str.isalpha() | str =~ '^\\a\\+$'
 isdigit()| str.isdigit() | str =~ '^\\d\\+$'
 islower()| str.islower() | str =~ '^\\l\\+$'
 isspace()| str.isspace() | str =~ '^\\s\\+$'
-istitle()| str.istitle() | str =~ '\(\<\u\l\+\>\)\s\?'
+istitle()| str.istitle() | str =~ '\\(\\<\\u\\l\\+\\>\\)\\s\\?'
 isupper()| str.isupper() | str =~ '^\\u\\+$'
 join()| ':'.join(['a', 'b', 'c']) | join(['a', 'b', 'c'], ':')
 ljust()| 'abc'.ljust(10) | None
 lower()| 'Hello'.lower() | 'Hello'-\>tolower()
 lstrip()| '  vim  '.lstrip() | '  vim  '-\>trim(' ', 1)
-partition()| 'ab\:cd\:ef'.partition(':') | 'ab\:cd\:ef'-\>matchlist('\\(.\\{-}\\)\\(:\\)\\(.\*\\)')[1:3]
+partition()| 'ab\-cd\-ef'.partition('-') | 'ab\-cd\-ef'-\>matchlist('\\(.\\{-}\\)\\(-\\)\\(.\*\\)')[1:3]
 replace()| 'abc'.replace('abc', 'xyz') | 'abc'-\>substitute('abc', 'xyz', 'g')
 rfind()| 'running'.rfind('ing') | 'running'-\>strridx('ing')
 rindex()| 'running'.rindex('ing') | 'running'-\>strridx('ing')
 rjust()| 'abc'.rjust(10) | None
-rpartition()| 'ab\:cd\:ef'.rpartition(':') | 'ab\:cd\:ef'-\>matchlist('\\(.\*\\)\\(:\\)\\(.\*\\)')[1:3]
-rsplit()| 'a\:b\:c\:d'.rsplit(':', 2) | None
+rpartition()| 'ab\-cd\-ef'.rpartition('-') | 'ab\-cd\-ef'-\>matchlist('\\(.\*\\)\\(-\\)\\(.\*\\)')[1:3]
+rsplit()| 'a\-b\-c\-d'.rsplit('-', 2) | None
 rstrip()| '  vim  '.rstrip() | '  vim  '-\>trim(' ', 2)
-split()| 'a\:b\:c'.split(':') | 'a\:b\:c'-\>split(':')
+split()| 'a\-b\-c'.split('-') | 'a\-b\-c'-\>split('-')
 splitlines()| "one\ntwo".splitlines() | "one\ntwo"-\>split("\n")
 startswith()| 'running'.startswith('run') | 'running' =~# '^run'
 strip()| '  vim  '.strip() | '  vim  '-\>trim()
