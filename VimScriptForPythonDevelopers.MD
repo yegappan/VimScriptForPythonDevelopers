@@ -772,7 +772,8 @@ endif
 
 **Python:**
 ```python
-odd = filter(lambda x: x %2, range(10))
+odd = list(filter(lambda x: x % 2, range(10)))
+odd = [x for x in range(10) if x % 2]
 ```
 
 **VimScript:**
@@ -786,7 +787,8 @@ let odd = filter(range(10), {idx, v -> v % 2})
 
 **Python:**
 ```python
-num_str = map(lambda x: str(x), range(10))
+num_str = list(map(lambda x: str(x), range(10)))
+num_str = [str(x) for x in range(10)]
 ```
 
 **VimScript:**
