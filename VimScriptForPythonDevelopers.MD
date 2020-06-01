@@ -94,35 +94,19 @@ echo "Editor = " .. s
 
 ## Arithmetic Operators
 
-**Python:**
-```python
-a = 10 + 20
-a = 30 - 10
-a = 3 * 5
-a = 22 / 7
-a += 1
-a -= 2
-a *= 4
-a /= 2
-a = 10 % 3
-a = 2 ** 3
-a = 10 // 3
-```
-
-**VimScript:**
-```vim
-let a = 10 + 20
-let a = 30 - 10
-let a = 3 * 5
-let a = 22 / 7
-let a += 1
-let a -= 2
-let a *= 4
-let a /= 2
-let a = 10 % 3
-let a = float2nr(pow(2, 3))
-let a = floor(10 / 3.0)
-```
+What|Python|VimScript
+----|------|---------
+addition| a = 10 + 20 | let a = 10 + 20
+subtraction| a = 30 - 10 | let a = 30 - 10
+multiplication| a = 3 * 5 | let a = 3 * 5
+division| a = 22 / 7 | let a = 22 / 7
+addition| a += 1 | let a += 1
+subtraction| a -= 2 | let a -= 2
+multiplication| a *= 4 | let a *= 4
+division| a /= 2 | let a /= 2
+modulus| a = 10 % 3 | let a = 10 % 3
+exponentiation| a = 2 ** 3 | let a = float2nr(pow(2, 3))
+floor division| a = 10 // 3 | let a = floor(10 / 3.0)
 
 *Help:* [expr5](https://vimhelp.org/eval.txt.html#expr5)
 
@@ -132,10 +116,10 @@ let a = floor(10 / 3.0)
 
 What|Python|VimScript
 ----|------|---------
+equal to|  a == b  |  a == b
+not equal to|  a != b  |  a != b
 greater than|  a > b |  a > b
 less than|  a < b  |  a < b
-equal to|  a == b  |  a == b
-not equal|  a != b  |  a != b
 greater than or equal to|  a >= b  |  a >= b
 less than or equal to|  a <= b  |  a <= b
 
@@ -145,19 +129,11 @@ less than or equal to|  a <= b  |  a <= b
 
 ## Logical Operators
 
-**Python:**
-```python
-x and y
-x or y
-not x
-```
-
-**VimScript:**
-```vim
-x && y
-x || y
-!x
-```
+What|Python|VimScript
+----|------|---------
+logical and| x and y | x && y
+logical or| x or y | x \|\| y
+logical not| not x | !x
 
 *Help:* [expr2](https://vimhelp.org/eval.txt.html#expr2)
 
@@ -165,21 +141,12 @@ x || y
 
 ## Bitwise Operators
 
-**Python:**
-```python
-c = a & b
-c = a | b
-c = ~a
-c = x ^ y
-```
-
-**VimScript:**
-```vim
-let c = and(a, b)
-let c = or(a, b)
-let c = invert(a)
-let c = xor(a, b)
-```
+What|Python|VimScript
+----|------|---------
+bitwise AND| c = a & b | let c = and(a, b)
+bitwise OR| c = a \| b | let c = or(a, b)
+bitwise NOT| c = ~a | let c = invert(a)
+bitwise XOR| c = x ^ y | let c = xor(a, b)
 
 *Help:* [and()](https://vimhelp.org/eval.txt.html#and%28%29), [or()](https://vimhelp.org/eval.txt.html#or%28%29), [invert()](https://vimhelp.org/eval.txt.html#invert%28%29), [xor()](https://vimhelp.org/eval.txt.html#xor%28%29)
 
