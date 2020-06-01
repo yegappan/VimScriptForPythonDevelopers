@@ -10,6 +10,8 @@ This guide only describes the programming constructs that are present in both Py
 
 Some of the features described in this guide are available are only in recent versions of Vim (8.1).
 
+The Github repository for this gist is available at: https://github.com/yegappan/VimScriptForPythonDevelopers.
+
 ------------------------------------------------------------------------------
 
 ## Variables
@@ -881,6 +883,7 @@ x = {}
 **VimScript:**
 ```vim
 let d = {'red' : 10, 'blue' : 20}
+let d = #{red : 10, blue : 20}
 let x = {}
 ```
 
@@ -895,7 +898,7 @@ x = d['red']
 
 **VimScript:**
 ```vim
-let d = {'red' : 10, 'blue' : 20}
+let d = #{red : 10, blue : 20}
 let x = d['red']
 let x = d.red
 ```
@@ -911,7 +914,7 @@ d['red'] = 15
 
 **VimScript:**
 ```vim
-let d = {'red' : 10, 'blue' : 20}
+let d = #{red : 10, blue : 20}
 let d.red = 15
 ```
 
@@ -2467,7 +2470,7 @@ echo s
 
 ### Regular expression comparison
 
-Note that the below table shows only the regular expressions that are present in both Python and Vim.
+Note that the below table contains only the regular expressions that are present in both Python and Vim. There are some minor differences between the behavior of Vim and Python regular expression atoms listed below. For example, in Python the (?i) atom ignores case after the atom. But in Vim, the \c atom ignores case everywhere before and after the atom. Refer to the help pages for these atoms for more information.
 
 What|Python|Vim
 ----|------|---
@@ -2500,6 +2503,8 @@ non-whitespace|  \\S  |  \\S
 word character|  \\w  |  \\w
 non-word character|  \\W  |  \\W
 ignore case|  (?i)  |  \\c
+
+*Help:* [pattern](https://vimhelp.org/pattern.txt.html#pattern)
 
 ------------------------------------------------------------------------------
 
