@@ -146,7 +146,7 @@ less than or equal to| `a <= b` | `a <= b`
 What|Python|VimScript
 ----|------|---------
 logical and| `x and y` | `x && y`
-logical or| `x or y` | `x || y`
+logical or| `x or y` | `x \|\| y`
 logical not| `not x` | `!x`
 
 *Help:* [expr2](https://vimhelp.org/eval.txt.html#expr2)
@@ -158,7 +158,7 @@ logical not| `not x` | `!x`
 What|Python|VimScript
 ----|------|---------
 bitwise AND| `c = a & b` | `let c = and(a, b)`
-bitwise OR| `c = a | b` | `let c = or(a, b)`
+bitwise OR| `c = a \| b` | `let c = or(a, b)`
 bitwise NOT| `c = ~a` | `let c = invert(a)`
 bitwise XOR| `c = x ^ y` | `let c = xor(a, b)`
 
