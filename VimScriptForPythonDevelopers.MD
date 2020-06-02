@@ -76,24 +76,6 @@ END
 
 *Help:* [:let-heredoc](https://vimhelp.org/eval.txt.html#%3Alet-heredoc)
 
-## Print an expression
-
-**Python:**
-```python
-print("Hello World\n")
-s = "vim"
-print("Editor = %s" % (s))
-```
-
-**VimScript:**
-```vim
-echo "Hello World"
-let s = "vim"
-echo "Editor = " .. s
-```
-
-*Help:* [:echo](https://vimhelp.org/eval.txt.html#%3Aecho)
-
 ------------------------------------------------------------------------------
 
 ## Arithmetic Operators
@@ -160,7 +142,9 @@ What|Python|VimScript
 bitwise AND| `c = a & b` | `let c = and(a, b)`
 bitwise OR| `c = a \| b` | `let c = or(a, b)`
 bitwise NOT| `c = ~a` | `let c = invert(a)`
-bitwise XOR| `c = x ^ y` | `let c = xor(a, b)`
+bitwise XOR| `c = a ^ b` | `let c = xor(a, b)`
+left shift| `c = a << b` | `let c = a * float2nr(pow(2, b))`
+right shift| `c = a >> b` | `let c = float2nr(floor(a / pow(2, b)))`
 
 *Help:* [and()](https://vimhelp.org/eval.txt.html#and%28%29), [or()](https://vimhelp.org/eval.txt.html#or%28%29), [invert()](https://vimhelp.org/eval.txt.html#invert%28%29), [xor()](https://vimhelp.org/eval.txt.html#xor%28%29)
 
@@ -1885,28 +1869,6 @@ endtry
 
 ------------------------------------------------------------------------------
 
-## Formatted Output
-
-**Python:**
-```python
-name = "John"
-id = 1001
-print(f"Name: {name}, ID: {id}")
-print("Name: {}, ID: {}".format(name, id))
-print("Name: %s, ID: %d" % (name, id))
-```
-
-**VimScript:**
-```vim
-let name = "John"
-let id = 1001
-echo printf("Name: %s, ID: %d", name, id)
-```
-
-*Help:* [printf()](https://vimhelp.org/eval.txt.html#printf%28%29)
-
-------------------------------------------------------------------------------
-
 ## Line Continuation
 
 **Python:**
@@ -2271,6 +2233,81 @@ echo "Error = " .. v:shell_error
 ```
 
 *Help:* [system()](https://vimhelp.org/eval.txt.html#system%28%29)
+
+------------------------------------------------------------------------------
+
+## User input/output
+
+### Getting input from the user
+
+**Python:**
+```python
+choice = input("coffee or tea? ")
+print("You selected " + choice)
+```
+
+**VimScript:**
+```vim
+let ans = input("coffee or tea? ", "tea")
+echo "You selected " .. ans
+```
+
+*Help:* [input()](https://vimhelp.org/eval.txt.html#input%28%29), [inputlist()](https://vimhelp.org/eval.txt.html#inputlist%28%29), [inputdialog()](https://vimhelp.org/eval.txt.html#inputdialog()%28%29)
+
+### Getting password from the user
+
+**Python:**
+```python
+import getpass
+passwd = getpass.getpass("Password: ")
+print("You entered " + passwd)
+```
+
+**VimScript:**
+```vim
+let passwd = inputsecret("Password: ")
+echo "You entered " .. passwd
+```
+
+*Help:* [inputsecret()](https://vimhelp.org/eval.txt.html#inputsecret%28%29)
+
+### Print an expression
+
+**Python:**
+```python
+print("Hello World\n")
+s = "vim"
+print("Editor = %s" % (s))
+```
+
+**VimScript:**
+```vim
+echo "Hello World"
+let s = "vim"
+echo "Editor = " .. s
+```
+
+*Help:* [:echo](https://vimhelp.org/eval.txt.html#%3Aecho), [:echon](https://vimhelp.org/eval.txt.html#%3Aechon), [echoraw()](https://vimhelp.org/eval.txt.html#echoraw%28%29), [:echohl](https://vimhelp.org/eval.txt.html#%3Aechohl), [:echoerr](https://vimhelp.org/eval.txt.html#%3Aechoerr), [:echomsg](https://vimhelp.org/eval.txt.html#%3Aechomsg)
+
+### Formatted Output
+
+**Python:**
+```python
+name = "John"
+id = 1001
+print(f"Name: {name}, ID: {id}")
+print("Name: {}, ID: {}".format(name, id))
+print("Name: %s, ID: %d" % (name, id))
+```
+
+**VimScript:**
+```vim
+let name = "John"
+let id = 1001
+echo printf("Name: %s, ID: %d", name, id)
+```
+
+*Help:* [printf()](https://vimhelp.org/eval.txt.html#printf%28%29)
 
 ------------------------------------------------------------------------------
 
