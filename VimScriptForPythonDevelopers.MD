@@ -100,13 +100,13 @@ echo "Editor = " .. s
 
 What|Python|VimScript
 ----|------|---------
-addition| a = 10 + 20 | let a = 10 + 20
-subtraction| a = 30 - 10 | let a = 30 - 10
-multiplication| a = 3 * 5 | let a = 3 * 5
-division| a = 22 / 7 | let a = 22 / 7
-modulus| a = 10 % 3 | let a = 10 % 3
-exponentiation| a = 2 \*\* 3 | let a = float2nr(pow(2, 3))
-floor division| a = 10 // 3 | let a = floor(10 / 3.0)
+addition| `a = 10 + 20` | `let a = 10 + 20`
+subtraction| `a = 30 - 10` | `let a = 30 - 10`
+multiplication| `a = 3 * 5` | `let a = 3 * 5`
+division| `a = 22 / 7` | `let a = 22 / 7`
+modulus| `a = 10 % 3` | `let a = 10 % 3`
+exponentiation| `a = 2 ** 3` | `let a = float2nr(pow(2, 3))`
+floor division| `a = 10 // 3` | `let a = floor(10 / 3.0)`
 
 *Help:* [expr5](https://vimhelp.org/eval.txt.html#expr5)
 
@@ -116,11 +116,11 @@ floor division| a = 10 // 3 | let a = floor(10 / 3.0)
 
 What|Python|VimScript
 ----|------|---------
-addition| a += 1 | let a += 1
-subtraction| a -= 2 | let a -= 2
-multiplication| a \*= 4 | let a \*= 4
-division| a /= 2 | let a /= 2
-modulus| a %= 2 | let a %= 2
+addition| `a += 1` | `let a += 1`
+subtraction| `a -= 2` | `let a -= 2`
+multiplication| `a *= 4` | `let a *= 4`
+division| `a /= 2` | `let a /= 2`
+modulus| `a %= 2` | `let a %= 2`
 
 *Help:* [:let+=](https://vimhelp.org/eval.txt.html#%3alet+=)
 
@@ -130,12 +130,12 @@ modulus| a %= 2 | let a %= 2
 
 What|Python|VimScript
 ----|------|---------
-equal to|  a == b  |  a == b
-not equal to|  a != b  |  a != b
-greater than|  a > b |  a > b
-less than|  a < b  |  a < b
-greater than or equal to|  a >= b  |  a >= b
-less than or equal to|  a <= b  |  a <= b
+equal to| `a == b` | `a == b`
+not equal to| `a != b` | `a != b`
+greater than| `a > b` | `a > b`
+less than| `a < b` | `a < b`
+greater than or equal to| `a >= b` | `a >= b`
+less than or equal to| `a <= b` | `a <= b`
 
 *Help:* [expr4](https://vimhelp.org/eval.txt.html#expr4)
 
@@ -145,9 +145,9 @@ less than or equal to|  a <= b  |  a <= b
 
 What|Python|VimScript
 ----|------|---------
-logical and| x and y | x && y
-logical or| x or y | x \|\| y
-logical not| not x | !x
+logical and| `x and y` | `x && y`
+logical or| `x or y` | `x || y`
+logical not| `not x` | `!x`
 
 *Help:* [expr2](https://vimhelp.org/eval.txt.html#expr2)
 
@@ -157,10 +157,10 @@ logical not| not x | !x
 
 What|Python|VimScript
 ----|------|---------
-bitwise AND| c = a & b | let c = and(a, b)
-bitwise OR| c = a \| b | let c = or(a, b)
-bitwise NOT| c = ~a | let c = invert(a)
-bitwise XOR| c = x ^ y | let c = xor(a, b)
+bitwise AND| `c = a & b` | `let c = and(a, b)`
+bitwise OR| `c = a | b` | `let c = or(a, b)`
+bitwise NOT| `c = ~a` | `let c = invert(a)`
+bitwise XOR| `c = x ^ y` | `let c = xor(a, b)`
 
 *Help:* [and()](https://vimhelp.org/eval.txt.html#and%28%29), [or()](https://vimhelp.org/eval.txt.html#or%28%29), [invert()](https://vimhelp.org/eval.txt.html#invert%28%29), [xor()](https://vimhelp.org/eval.txt.html#xor%28%29)
 
@@ -170,8 +170,8 @@ bitwise XOR| c = x ^ y | let c = xor(a, b)
 
 What|Python|VimScript
 ----|------|---------
-is| x is y | x is y
-is not| x is not y | x isnot y
+is| `x is y` | `x is y`
+is not| `x is not y` | `x isnot y`
 
 *Help:* [expr-is](https://vimhelp.org/eval.txt.html#expr-is), [expr-isnot](https://vimhelp.org/eval.txt.html#expr-isnot)
 
@@ -489,7 +489,7 @@ Method|Python|VimScript
 ----|------|---------
 capitalize()| `'one two'.capitalize()` | `'one two'->substitute('.', '\u&', '')`
 center()| `'abc'.center(10)` | None
-count()| "abbc".count('b') | `"abbc"->count('b')`
+count()| `"abbc".count('b')` | `"abbc"->count('b')`
 decode()| `str.decode()` | None
 encode()| `str.encode()` | None
 endswith()| `'running'.endswith('ing')` | `'running' =~# 'ing$'`
