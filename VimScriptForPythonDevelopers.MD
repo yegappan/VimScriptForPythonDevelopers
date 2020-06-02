@@ -2252,7 +2252,7 @@ let ans = input("coffee or tea? ", "tea")
 echo "You selected " .. ans
 ```
 
-*Help:* [input()](https://vimhelp.org/eval.txt.html#input%28%29), [inputlist()](https://vimhelp.org/eval.txt.html#inputlist%28%29), [inputdialog()](https://vimhelp.org/eval.txt.html#inputdialog()%28%29)
+*Help:* [input()](https://vimhelp.org/eval.txt.html#input%28%29), [inputlist()](https://vimhelp.org/eval.txt.html#inputlist%28%29), [inputdialog()](https://vimhelp.org/eval.txt.html#inputdialog%28%29)
 
 ### Getting password from the user
 
