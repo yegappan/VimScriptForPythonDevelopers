@@ -525,6 +525,8 @@ translate()| `'abcd'.translate(string.maketrans('bd', '12'))` | `'abcd'->tr('bd'
 upper()| `'Hello'.upper()` | `'Hello'->toupper()`
 zfill()| `str.zfill(10)` | None
 
+*Help:* [string-functions](https://vimhelp.org/usr_41.txt.html#string-functions)
+
 ------------------------------------------------------------------------------
 
 ## List
@@ -925,6 +927,8 @@ sort()| `m.sort()` | `m->sort()`
 copy()| `m.copy()` | `m->copy()`
 clear()| `m.clear()` | `unlet m[:]`
 
+*Help:* [list-functions](https://vimhelp.org/usr_41.txt.html#list-functions)
+
 ------------------------------------------------------------------------------
 
 ## Dictionary
@@ -1175,6 +1179,25 @@ endif
 ```
 
 *Help:* [dict-identity](https://vimhelp.org/eval.txt.html#dict-identity)
+
+### Dictionary Methods
+
+Method|Python|VimScript
+----|------|---------
+clear()| `d.clear()` | `call filter(d, '0')`
+copy()| `newDict = d.copy()` | `let newDict = d->copy()`
+fromkeys()| `d = dict.fromkeys(x)` | None
+get()| `v = d.get('red')` | `let v = d->get('red')`
+in or has_key() | `'red' in d` | `d->has_key('red')`
+items()| `d.items()` | `d->items()`
+keys()| `d.keys()` | `d->keys()`
+pop()| `d.pop('red')` | `call d->remove('red')`
+popitem()| `d.popitem()` | None
+setdefault()| `d.setdefault('red', 10)` | None
+update()| `d.update({'a' : 10, 'b' : 20}` | `d->update({'a' : 10, 'b' : 20})`
+values()| `d.values()` | `d->values()`
+
+*Help:* [dict-functions](https://vimhelp.org/usr_41.txt.html#dict-functions)
 
 ------------------------------------------------------------------------------
 
