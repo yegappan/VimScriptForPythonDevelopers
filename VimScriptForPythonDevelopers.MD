@@ -270,20 +270,21 @@ let c = str->count("l")
 
 *Help:* [count()](https://vimhelp.org/eval.txt.html#count%28%29)
 
-### Checking whether a substring is present
+### Finding the position of a substring
 **Python:**
 ```python
 str = "running"
-idx = str.find("nn")
-idx = str.rfind("ing")
+idx = str.find("nn")    # leftmost
+idx = str.rfind("ing")  # rightmost
+# idx == -1 if the substring is not present
 ```
 
 **VimScript:**
 ```vim
 let str = "running"
-let idx = str->stridx("nn")
-let idx = str->strridx("ing")
-endif
+let idx = str->stridx("nn")    " leftmost
+let idx = str->strridx("ing")  " rightmost
+" idx == -1 if the substring is not present
 ```
 
 *Help:* [stridx()](https://vimhelp.org/eval.txt.html#stridx%28%29), [strridx()](https://vimhelp.org/eval.txt.html#strridx%28%29)
