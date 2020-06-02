@@ -641,7 +641,10 @@ del l[0]
 **VimScript:**
 ```vim
 let l = [4, 5, 6]
-call remove(l, index(l, 5))
+let idx = index(l, 5)
+if idx != -1
+  call remove(l, idx)
+endif
 unlet l[0]
 ```
 
@@ -846,6 +849,8 @@ endif
 
 ### Filter selected elements from a List
 
+Note that Vim does not support List comprehensions.
+
 **Python:**
 ```python
 odd = list(filter(lambda x: x % 2, range(10)))
@@ -903,6 +908,22 @@ let s = string([3, 5, 7])
 ```
 
 *Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
+
+### List Methods
+
+Method|Python|VimScript
+----|------|---------
+append()| `m.append(6)` | `m->add(6)`
+extend()| `m.extend([5, 6])` | `m->extend([5, 6])`
+insert()| `m.insert(2, 9)` | `m->insert(9, 2)`
+remove()| `m.remove(6)` | `m->remove(m->index(6))`
+index()| `m.index(6)` | `m-index(6)`
+count()| `m.count(6)` | `m->count(6)`
+pop()| `m.pop()` | `m->remove(-1)`
+reverse()| `m.reverse()` | `m->reverse()`
+sort()| `m.sort()` | `m->sort()`
+copy()| `m.copy()` | `m->copy()`
+clear()| `m.clear()` | `unlet m[:]`
 
 ------------------------------------------------------------------------------
 
