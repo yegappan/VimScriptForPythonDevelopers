@@ -2128,28 +2128,28 @@ let r = rand(seed)
 
 ## Mathematical functions
 
-What|Python|VimScript
+Function|Python|VimScript
 ----|------|---------
-ceil|f = math.ceil(1.2) | let f = ceil(1.2)
-abs|f = math.fabs(-10) | let f = abs(-10)
-floor|f = math.floor(1.4) | let f = floor(1.4)
-mod|f = math.fmod(4, 3) | let f = fmod(4, 3)
-trunc|f = math.trunc(1.3) | let f = trunc(1.3)
-exp|f = math.exp(2) | let f = exp(2)
-log|f = math.log(12) | let f = log(12)
-log10|f = math.log10(100) | let f = log10(100)
-pow|f = math.pow(2, 3) | let f = pow(2, 3)
-sqrt|f = math.sqrt(9) | let f = sqrt(9)
-cos|f = math.cos(4) | let f = cos(4)
-sin|f = math.sin(4) | let f = sin(4)
-tan|f = math.tan(4) | let f = tan(4)
-cosh|f = math.cosh(4) | let f = cosh(4)
-sinh|f = math.sinh(4) | let f = sinh(4)
-tanh|f = math.tanh(4) | let f = tanh(4)
-acos|f = math.acos(0.8) | let f = acos(0.8)
-asin|f = math.asin(0.8) | let f = asin(0.8)
-atan|f = math.atan(0.8) | let f = atan(0.8)
-atan2|f = math.atan2(0.4, 0.8) | let f = atan2(0.4, 0.8)
+ceil| `f = math.ceil(1.2)` | `let f = ceil(1.2)`
+abs| `f = math.fabs(-10)` | `let f = abs(-10)`
+floor| `f = math.floor(1.4)` | `let f = floor(1.4)`
+mod| `f = math.fmod(4, 3)` | `let f = fmod(4, 3)`
+trunc| `f = math.trunc(1.3)` | `let f = trunc(1.3)`
+exp| `f = math.exp(2)` | `let f = exp(2)`
+log| `f = math.log(12)` | `let f = log(12)`
+log10| `f = math.log10(100)` | `let f = log10(100)`
+pow| `f = math.pow(2, 3)` | `let f = pow(2, 3)`
+sqrt| `f = math.sqrt(9)` | `let f = sqrt(9)`
+cos| `f = math.cos(4)` | `let f = cos(4)`
+sin| `f = math.sin(4)` | `let f = sin(4)`
+tan| `f = math.tan(4)` | `let f = tan(4)`
+cosh| `f = math.cosh(4)` | `let f = cosh(4)`
+sinh| `f = math.sinh(4)` | `let f = sinh(4)`
+tanh| `f = math.tanh(4)` | `let f = tanh(4)`
+acos| `f = math.acos(0.8)` | `let f = acos(0.8)`
+asin| `f = math.asin(0.8)` | `let f = asin(0.8)`
+atan| `f = math.atan(0.8)` | `let f = atan(0.8)`
+atan2| `f = math.atan2(0.4, 0.8)` | `let f = atan2(0.4, 0.8)`
 
 *Help:* [ceil()](https://vimhelp.org/eval.txt.html#ceil%28%29), [abs()](https://vimhelp.org/eval.txt.html#abs%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [fmod()](https://vimhelp.org/eval.txt.html#fmod%28%29), [trunc()](https://vimhelp.org/eval.txt.html#trunc%28%29), [exp()](https://vimhelp.org/eval.txt.html#exp%28%29), [log()](https://vimhelp.org/eval.txt.html#log%28%29), [log10()](https://vimhelp.org/eval.txt.html#log10%28%29), [pow()](https://vimhelp.org/eval.txt.html#pow%28%29), [sqrt()](https://vimhelp.org/eval.txt.html#sqrt%28%29), [cos()](https://vimhelp.org/eval.txt.html#cos%28%29), [sin()](https://vimhelp.org/eval.txt.html#sin%28%29), [tan()](https://vimhelp.org/eval.txt.html#tan%28%29), [cosh()](https://vimhelp.org/eval.txt.html#cosh%28%29), [sinh()](https://vimhelp.org/eval.txt.html#sinh%28%29), [tanh()](https://vimhelp.org/eval.txt.html#tanh%28%29), [acos()](https://vimhelp.org/eval.txt.html#acos%28%29), [asin()](https://vimhelp.org/eval.txt.html#asin%28%29), [atan()](https://vimhelp.org/eval.txt.html#atan%28%29), [atan2()](https://vimhelp.org/eval.txt.html#atan2%28%29)
 
