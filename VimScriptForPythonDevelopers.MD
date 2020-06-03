@@ -15,17 +15,34 @@ The Github repository for this gist is available at: https://github.com/yegappan
 ------------------------------------------------------------------------------
 
 ## Table of Contents
-* [Literals](#literals) 
-* [Variables](#variables) 
-* [Operators](#operators) 
-* [String](#string) 
-* [List](#list) 
-* [Dictionary](#dictionary) 
-* [if statement](#if-statement) 
-* [for loop](#for-loop) 
-* [while loop](#while-loop) 
-* [Comment](#comment) 
-* [Function](#function) 
+* [Literals](#literals)
+* [Variables](#variables)
+* [Operators](#operators)
+* [String](#string)
+* [List](#list)
+* [Dictionary](#dictionary)
+* [If Statement](#if-statement)
+* [For Loop](#for-loop)
+* [While Loop](#while-loop)
+* [Comment](#comment)
+* [Function](#function)
+* [Lambda Function](#lambda-function)
+* [Partial Function](#partial-function)
+* [Closure](#closure)
+* [Class](#class)
+* [Exception Handling](#exception-handling)
+* [Line Continuation](#line-continuation)
+* [File Operations](#file-operations)
+* [Directory Operations](#directory-operations)
+* [Random Numbers](#random-numbers)
+* [Mathematical Functions](#mathematical-functions)
+* [Date/Time Functions](#datetime-functions)
+* [External Commands](#external-commands)
+* [User Input/Output](#user-inputoutput)
+* [Environment Variables](#environment-variables)
+* [Command Line Arguments](#command-line-arguments)
+* [Regular Expressions](#regular-expressions)
+* [Binary Data](#binary-data)
 
 ------------------------------------------------------------------------------
 
@@ -1658,7 +1675,7 @@ call ErrLog("Failed to open file")
 
 ------------------------------------------------------------------------------
 
-## Closures
+## Closure
 
 ### Closure with a lambda function
 
@@ -1719,9 +1736,9 @@ echo F(2)
 
 ------------------------------------------------------------------------------
 
-# Classes
+## Class
 
-## Defining a class
+### Defining a class
 
 **Python:**
 ```python
@@ -2116,7 +2133,7 @@ let r = rand(seed)
 
 ------------------------------------------------------------------------------
 
-## Mathematical functions
+## Mathematical Functions
 
 Function|Python|VimScript
 ----|------|---------
@@ -2264,7 +2281,7 @@ echo "Error = " .. v:shell_error
 
 ------------------------------------------------------------------------------
 
-## User input/output
+## User Input/Output
 
 ### Getting input from the user
 
