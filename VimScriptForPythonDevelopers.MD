@@ -1942,11 +1942,13 @@ Vim has a function to read the entire file but doesn't have a function to read a
 ```python
 with open('myfile.txt', 'r') as f:
     lines = f.readlines()
+# lines == ['line1\n', 'line2\n'] 
 ```
 
 **VimScript:**
 ```vim
 let lines = readfile("myfile.txt")
+" lines == ['line1', 'line2'] 
 ```
 
 *Help:* [readfile()](https://vimhelp.org/eval.txt.html#readfile%28%29)
@@ -1954,9 +1956,13 @@ let lines = readfile("myfile.txt")
 ### Writing lines to a file
 **Python:**
 ```python
+lines = ['line1\n', 'line2\n']
+with open('myfile.txt', 'w') as fh:
+    fh.writelines(lines)
+    
 lines = ['line1', 'line2']
 with open('myfile.txt', 'w') as fh:
-    fh.writelines("\n".join(lines))
+    print(*lines, sep='\n', file=fh)
 ```
 
 **VimScript:**
