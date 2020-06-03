@@ -2168,9 +2168,9 @@ atan2| `f = math.atan2(0.4, 0.8)` | `let f = atan2(0.4, 0.8)`
 
 **Python:**
 ```python
-from datetime import date
-d = date.today()
-print d.strftime("%c")
+from datetime import datetime
+d = datetime.now()
+print(d.strftime("%c"))
 ```
 
 **VimScript:**
