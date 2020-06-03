@@ -2251,7 +2251,7 @@ procObj = subprocess.Popen('grep class *.java',
 			stdout=subprocess.PIPE,
 			shell=True)
 lines, err = procObj.communicate()
-print("Number of matches = " + str(len(lines.split("\n"))))
+print("Number of matches = " + str(len(lines.splitlines())))
 ```
 
 **VimScript:**
