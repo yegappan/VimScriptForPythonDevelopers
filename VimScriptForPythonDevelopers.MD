@@ -909,6 +909,35 @@ let num_str = map(range(10), {idx, v -> string(v)})
 
 *Help:* [map()](https://vimhelp.org/eval.txt.html#map%28%29)
 
+### Reducing List elements
+
+**Python:**
+```python
+# using a lambda function
+from functools import reduce
+sum = reduce((lambda x, y: x + y), [1, 2, 3, 4])
+
+# using a function
+def SumNum(a, b):
+    return a + b
+sum = reduce(SumNum, [1, 2, 3, 4])
+```
+
+**VimScript:**
+```vim
+" using a lambda function
+let sum = reduce([1, 2, 3, 4], {x, y -> x + y})
+
+" using a function
+func SumNum(x, y)
+  return a:x + a:y
+endfunc
+let sum = reduce([1, 2, 3, 4], function('SumNum'))
+echo sum
+```
+
+*Help:* [reduce()](https://vimhelp.org/eval.txt.html#reduce%28%29)
+
 ### Finding the max/min value in a List
 
 **Python:**
@@ -944,16 +973,16 @@ let s = string([3, 5, 7])
 Method|Python|VimScript
 ----|------|---------
 append()| `m.append(6)` | `m->add(6)`
-extend()| `m.extend([5, 6])` | `m->extend([5, 6])`
-insert()| `m.insert(2, 9)` | `m->insert(9, 2)`
-remove()| `m.remove(6)` | `m->remove(m->index(6))`
-index()| `m.index(6)` | `m-index(6)`
+clear()| `m.clear()` | `unlet m[:]`
+copy()| `m.copy()` | `m->copy()`
 count()| `m.count(6)` | `m->count(6)`
+extend()| `m.extend([5, 6])` | `m->extend([5, 6])`
+index()| `m.index(6)` | `m-index(6)`
+insert()| `m.insert(2, 9)` | `m->insert(9, 2)`
 pop()| `m.pop()` | `m->remove(-1)`
+remove()| `m.remove(6)` | `m->remove(m->index(6))`
 reverse()| `m.reverse()` | `m->reverse()`
 sort()| `m.sort()` | `m->sort()`
-copy()| `m.copy()` | `m->copy()`
-clear()| `m.clear()` | `unlet m[:]`
 
 *Help:* [list-functions](https://vimhelp.org/usr_41.txt.html#list-functions)
 
@@ -2143,26 +2172,26 @@ let r = rand(seed)
 
 Function|Python|VimScript
 ----|------|---------
-ceil| `f = math.ceil(1.2)` | `let f = ceil(1.2)`
 abs| `f = math.fabs(-10)` | `let f = abs(-10)`
-floor| `f = math.floor(1.4)` | `let f = floor(1.4)`
-mod| `f = math.fmod(4, 3)` | `let f = fmod(4, 3)`
-trunc| `f = math.trunc(1.3)` | `let f = trunc(1.3)`
-exp| `f = math.exp(2)` | `let f = exp(2)`
-log| `f = math.log(12)` | `let f = log(12)`
-log10| `f = math.log10(100)` | `let f = log10(100)`
-pow| `f = math.pow(2, 3)` | `let f = pow(2, 3)`
-sqrt| `f = math.sqrt(9)` | `let f = sqrt(9)`
-cos| `f = math.cos(4)` | `let f = cos(4)`
-sin| `f = math.sin(4)` | `let f = sin(4)`
-tan| `f = math.tan(4)` | `let f = tan(4)`
-cosh| `f = math.cosh(4)` | `let f = cosh(4)`
-sinh| `f = math.sinh(4)` | `let f = sinh(4)`
-tanh| `f = math.tanh(4)` | `let f = tanh(4)`
 acos| `f = math.acos(0.8)` | `let f = acos(0.8)`
 asin| `f = math.asin(0.8)` | `let f = asin(0.8)`
 atan| `f = math.atan(0.8)` | `let f = atan(0.8)`
 atan2| `f = math.atan2(0.4, 0.8)` | `let f = atan2(0.4, 0.8)`
+ceil| `f = math.ceil(1.2)` | `let f = ceil(1.2)`
+cos| `f = math.cos(4)` | `let f = cos(4)`
+cosh| `f = math.cosh(4)` | `let f = cosh(4)`
+exp| `f = math.exp(2)` | `let f = exp(2)`
+floor| `f = math.floor(1.4)` | `let f = floor(1.4)`
+log| `f = math.log(12)` | `let f = log(12)`
+log10| `f = math.log10(100)` | `let f = log10(100)`
+mod| `f = math.fmod(4, 3)` | `let f = fmod(4, 3)`
+pow| `f = math.pow(2, 3)` | `let f = pow(2, 3)`
+sin| `f = math.sin(4)` | `let f = sin(4)`
+sinh| `f = math.sinh(4)` | `let f = sinh(4)`
+sqrt| `f = math.sqrt(9)` | `let f = sqrt(9)`
+tan| `f = math.tan(4)` | `let f = tan(4)`
+tanh| `f = math.tanh(4)` | `let f = tanh(4)`
+trunc| `f = math.trunc(1.3)` | `let f = trunc(1.3)`
 
 *Help:* [ceil()](https://vimhelp.org/eval.txt.html#ceil%28%29), [abs()](https://vimhelp.org/eval.txt.html#abs%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [fmod()](https://vimhelp.org/eval.txt.html#fmod%28%29), [trunc()](https://vimhelp.org/eval.txt.html#trunc%28%29), [exp()](https://vimhelp.org/eval.txt.html#exp%28%29), [log()](https://vimhelp.org/eval.txt.html#log%28%29), [log10()](https://vimhelp.org/eval.txt.html#log10%28%29), [pow()](https://vimhelp.org/eval.txt.html#pow%28%29), [sqrt()](https://vimhelp.org/eval.txt.html#sqrt%28%29), [cos()](https://vimhelp.org/eval.txt.html#cos%28%29), [sin()](https://vimhelp.org/eval.txt.html#sin%28%29), [tan()](https://vimhelp.org/eval.txt.html#tan%28%29), [cosh()](https://vimhelp.org/eval.txt.html#cosh%28%29), [sinh()](https://vimhelp.org/eval.txt.html#sinh%28%29), [tanh()](https://vimhelp.org/eval.txt.html#tanh%28%29), [acos()](https://vimhelp.org/eval.txt.html#acos%28%29), [asin()](https://vimhelp.org/eval.txt.html#asin%28%29), [atan()](https://vimhelp.org/eval.txt.html#atan%28%29), [atan2()](https://vimhelp.org/eval.txt.html#atan2%28%29)
 
