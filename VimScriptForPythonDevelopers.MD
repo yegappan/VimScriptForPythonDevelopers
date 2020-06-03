@@ -15,17 +15,17 @@ The Github repository for this gist is available at: https://github.com/yegappan
 ------------------------------------------------------------------------------
 
 ## Table of Contents
-[Literals](#literals)
-[Variables](#variables)
-[Operators](#operators)
-[String](#string)
-[List](#list)
-[Dictionary](#dictionary)
-[if statement](#if%20statement)
-[for loop](#for%20loop)
-[while loop](#while%20loop)
-[Comments](#comments)
-[Function](#function)
+[Literals](#literals) 
+[Variables](#variables) 
+[Operators](#operators) 
+[String](#string) 
+[List](#list) 
+[Dictionary](#dictionary) 
+[if statement](#if-statement) 
+[for loop](#for-loop) 
+[while loop](#while-loop) 
+[Comment](#comment) 
+[Function](#function) 
 
 ------------------------------------------------------------------------------
 
@@ -1419,7 +1419,7 @@ endwhile
 
 ------------------------------------------------------------------------------
 
-## Comments
+## Comment
 
 **Python:**
 ```python
