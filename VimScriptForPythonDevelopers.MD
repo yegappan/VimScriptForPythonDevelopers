@@ -14,6 +14,25 @@ The Github repository for this gist is available at: https://github.com/yegappan
 
 ------------------------------------------------------------------------------
 
+## Literals
+
+Type| Python | VimScript
+----|--------|---------
+integer| `-1, 0, 5` | `-1, 0, 5`
+binary| `0b1011` | `0b1011`
+octal| `0o477` | `0477`
+hexadecimal| `0x1AE` | `0x1AE`
+float| `3.14, -1.5e2` | `3.14, -1.5e2`
+string| `"hello", 'world'` | `"hello", 'world'`
+boolean| `True, False` | `v:true, v:false`
+list| `[], [5, 9], ['a', 'b']` | `[], [5, 9], ['a', 'b']`
+dict| `{}, {'idx' : 2, 'name' : 'abc'}` | `{}, {'idx' : 2, 'name' : 'abc'}`
+special| `None` | `v:none, v:null`
+
+*Help:* [expr-number](https://vimhelp.org/eval.txt.html#expr-number), [string](https://vimhelp.org/eval.txt.html#string), [Boolean](https://vimhelp.org/eval.txt.html#Boolean), [list](https://vimhelp.org/eval.txt.html#list), [dict](https://vimhelp.org/eval.txt.html#dict), [v:none](https://vimhelp.org/eval.txt.html#v:none), [v:null](https://vimhelp.org/eval.txt.html#v:null)
+
+------------------------------------------------------------------------------
+
 ## Variables
 
 ### Creating a Variable
