@@ -2483,7 +2483,7 @@ if re.search(r'E\d+:', s):
     print('Error code found')
 
 s = 'Test successful'
-if re.search(r'E\d+:', s) == None:
+if re.search(r'E\d+:', s) is None:
     print("Test passed")
 ```
 
@@ -2508,7 +2508,7 @@ endif
 ```python
 import re
 m = re.search(r'\d+', "Abc 123 Def")
-if m != None:
+if m is not None:
     idx = m.start()
     end_idx = m.end()
 ```
@@ -2530,7 +2530,7 @@ echo "start:" l[1] "end:" l[2]
 ```python
 import re
 m = re.search(r'\d+', "Abc 123 Def")
-if m != None:
+if m is not None:
     s = m.group(0)
     print s
 ```
@@ -2548,7 +2548,7 @@ let s = matchstr("Abc 123 Def", '\d\+')
 ```python
 import re
 m = re.match(r'(\w+) (\w+) (\w+)', "foo bar baz")
-if m != None:
+if m is not None:
     print("Full match: " + m.group(0))
     print("1: " + m.group(1) + " 2: " + m.group(2) + " 3: " + m.group(3))
 ```
