@@ -14,6 +14,21 @@ The Github repository for this gist is available at: https://github.com/yegappan
 
 ------------------------------------------------------------------------------
 
+## Table of Contents
+[Literals](#literals)
+[Variables](#variables)
+[Operators](#operators)
+[String](#string)
+[List](#list)
+[Dictionary](#dictionary)
+[if statement](#if%20statement)
+[for loop](#for%20loop)
+[while loop](#while%20loop)
+[Comments](#comments)
+[Function](#function)
+
+------------------------------------------------------------------------------
+
 ## Literals
 
 Type| Python | VimScript
@@ -97,7 +112,9 @@ END
 
 ------------------------------------------------------------------------------
 
-## Arithmetic Operators
+## Operators
+
+### Arithmetic Operators
 
 What|Python|VimScript
 ----|------|---------
@@ -111,9 +128,7 @@ floor division| `a = 10 // 3` | `let a = floor(10 / 3.0)`
 
 *Help:* [expr5](https://vimhelp.org/eval.txt.html#expr5)
 
-------------------------------------------------------------------------------
-
-## Assignment Operators
+### Assignment Operators
 
 What|Python|VimScript
 ----|------|---------
@@ -125,9 +140,7 @@ modulus| `a %= 2` | `let a %= 2`
 
 *Help:* [:let+=](https://vimhelp.org/eval.txt.html#%3alet+=)
 
-------------------------------------------------------------------------------
-
-## Comparison Operators
+### Comparison Operators
 
 What|Python|VimScript
 ----|------|---------
@@ -140,9 +153,7 @@ less than or equal to| `a <= b` | `a <= b`
 
 *Help:* [expr4](https://vimhelp.org/eval.txt.html#expr4)
 
-------------------------------------------------------------------------------
-
-## Logical Operators
+### Logical Operators
 
 What|Python|VimScript
 ----|------|---------
@@ -152,9 +163,7 @@ logical not| `not x` | `!x`
 
 *Help:* [expr2](https://vimhelp.org/eval.txt.html#expr2)
 
-------------------------------------------------------------------------------
-
-## Bitwise Operators
+### Bitwise Operators
 
 What|Python|VimScript
 ----|------|---------
@@ -167,9 +176,7 @@ right shift| `c = a >> b` | `let c = float2nr(floor(a / pow(2, b)))`
 
 *Help:* [and()](https://vimhelp.org/eval.txt.html#and%28%29), [or()](https://vimhelp.org/eval.txt.html#or%28%29), [invert()](https://vimhelp.org/eval.txt.html#invert%28%29), [xor()](https://vimhelp.org/eval.txt.html#xor%28%29)
 
-------------------------------------------------------------------------------
-
-## Identity Operators
+### Identity Operators
 
 What|Python|VimScript
 ----|------|---------
@@ -936,6 +943,7 @@ clear()| `m.clear()` | `unlet m[:]`
 ------------------------------------------------------------------------------
 
 ## Dictionary
+
 ### Creating a Dict
 **Python:**
 ```python
@@ -1309,6 +1317,7 @@ endif
 ------------------------------------------------------------------------------
 
 ## For Loop
+
 **Python:**
 ```python
 for i in range(5) :
@@ -1428,7 +1437,7 @@ let i = 0    " First iteration
 
 ------------------------------------------------------------------------------
 
-## Functions
+## Function
 
 The names of global functions in Vim must start with an uppercase letter.
 The examples in this document use the "function" and "endfunction" keywords for
