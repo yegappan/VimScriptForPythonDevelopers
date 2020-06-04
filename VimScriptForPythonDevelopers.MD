@@ -2656,7 +2656,7 @@ m to n non-greedy matches| `{m,n}?` | `\{-m,n}`
 character class| `[...]` | `[...]`
 negated character class| `[^...]` | `[^...]`
 range| `[a-z]` | `[a-z]`
-either-or branch| `|` | `\|`
+either-or branch| `\|` | `\\|`
 capturing group| `(...)` | `\(...\)`
 non-capturing match| `(?:...)` | `\%(...\)`
 positive look-ahead| `(?=...)` | `\(...\)\@=`
