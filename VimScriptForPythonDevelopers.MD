@@ -2662,7 +2662,7 @@ non-capturing match| `(?:...)` | `\%(...\)`
 positive look-ahead| `(?=...)` | `\(...\)\@=`
 negative look-ahead| `(?!...)` | `\(...\)\@!`
 positive look-behind| `(?<=...)` | `\(...\)\@<=`
-negative look-behind| `(?\<!...)` | `\(...\)\@<!`
+negative look-behind| `(?<!...)` | `\(...\)\@<!`
 start of word| `\b` | `\<`
 end of word| `\b` | `\>`
 digit| `\d` | `\d`
