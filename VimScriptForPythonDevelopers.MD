@@ -2639,7 +2639,7 @@ echo s
 
 ### Regular expression comparison
 
-Note that the below table contains only the regular expressions that are present in both Python and Vim. There are some minor differences between the behavior of Vim and Python regular expression atoms listed below. For example, in Python the (?i) atom ignores case after the atom. But in Vim, the \c atom ignores case everywhere before and after the atom. Refer to the help pages for these atoms for more information.
+Note that the below table contains only the regular expressions that are present in both Python and Vim.
 
 What|Python|Vim
 ----|------|---
