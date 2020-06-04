@@ -255,6 +255,9 @@ s = str1 + str2
 let str1 = "blue"
 let str2 = "sky"
 let s = str1 .. str2
+
+" Deprecated way of concatenating strings
+let s = str1 . str2
 ```
 
 *Help:* [expr-..](https://vimhelp.org/eval.txt.html#expr-..)
@@ -272,8 +275,11 @@ sub = str[2:5]
 **VimScript:**
 ```vim
 let str = "HelloWorld"
-" use byte index
+" use byte index range
 let sub = str[2:4]
+" use a negative byte range
+let sub = str[-3:]
+let sub = str[2:-3]
 " use byte index and length
 let sub = strpart(str, 2, 3)
 " use character index and length
@@ -330,10 +336,14 @@ if str.endswith("ing"):
 ```vim
 let str = "running"
 if str =~# '^run'
-    echo "starts with run"
+  echo "starts with run"
 endif
+if str[:len('run') - 1] is# 'run'
+  echo "starts with run"
+endif
+
 if str =~# 'ing$'
-    echo "ends with ing"
+  echo "ends with ing"
 endif
 ```
 
@@ -409,7 +419,12 @@ s2 = s.strip()
 **VimScript:**
 ```vim
 let s = "  vim  "
+" strip leading and trailing whitespace
 let s2 = s->trim()
+" strip leading space characters
+let s2 = s->trim(' ', 1)
+" strip trailing space characters
+let s2 = s->trim(' ', 2)
 ```
 
 *Help:* [trim()](https://vimhelp.org/eval.txt.html#trim%28%29)
@@ -511,7 +526,7 @@ execute "for i in range(5)\necho i\nendfor"
 
 *Help:* [:execute](https://vimhelp.org/eval.txt.html#:execute)
 
-## String Methods/Functions
+## String Methods
 
 Method|Python|VimScript
 ----|------|---------
@@ -654,7 +669,10 @@ l.insert(1, 2)
 **VimScript:**
 ```vim
 let l = [1, 3]
-call insert(l, 2, 1)
+" insert before index 1
+eval l->insert(2, 1)
+" insert at the begining
+eval l->insert(5)
 ```
 
 *Help:* [insert()](https://vimhelp.org/eval.txt.html#insert%28%29)
@@ -728,6 +746,7 @@ m = l[2:]
 let l = [1, 2, 3, 4]
 let m = l[1:3]
 let m = l[2:]
+let m = l[-2:]
 ```
 
 *Help:* [sublist](https://vimhelp.org/eval.txt.html#sublist)
@@ -964,6 +983,37 @@ s = str([3, 5, 7])
 **VimScript:**
 ```vim
 let s = string([3, 5, 7])
+```
+
+### List comparison
+
+**Python:**
+```python
+l1 = [1, 2]
+l2 = l1
+if l1 is l2:
+  print("Lists l1 and l2 refer to the same list")
+if l1 is not l2:
+  print("Lists l1 and l2 do not refer to the same list")
+l3 = [1, 2]
+if l1 == l3:
+  print("Lists l1 and l3 contain the same elements")
+```
+
+**VimScript:**
+```vim
+let l1 = [1, 2]
+let l2 = l1
+if l1 is l2
+  echo "Lists l1 and l2 refer to the same list"
+endif
+if l1 isnot l2
+  echo "Lists l1 and l2 do not refer to the same list"
+endif
+let l3 = [1, 2]
+if l1 == l3
+  echo "Lists l1 and l3 contain the same elements"
+endif
 ```
 
 *Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
@@ -1224,7 +1274,12 @@ let d = string({'a' : 1, 'b' : 2})
 d1 = {'a' : 10, 'b' : 20}
 d2 = {'a' : 10, 'b' : 20}
 if d1 == d2:
-    print("Dicts are equal")
+    print("Dicts d1 and d2 have the same content")
+d3 = d1
+if d1 is d3:
+  print("Dicts d1 and d3 refer to the same dict")
+if d2 is not d3:
+  print("Dicts d2 and d3 do not refer to the same dict")
 ```
 
 **VimScript:**
@@ -1232,7 +1287,14 @@ if d1 == d2:
 let d1 = {'a' : 10, 'b' : 20}
 let d2 = {'a' : 10, 'b' : 20}
 if d1 == d2
-    echo "Dicts are equal"
+  echo "Dicts d1 and d2 have the same content"
+endif
+let d3 = d1
+if d1 is d3
+  echo "Dicts d1 and d3 refer to the same dict"
+endif
+if d2 isnot d3
+  echo "Dicts d2 and d3 do not refer to the same dict"
 endif
 ```
 
