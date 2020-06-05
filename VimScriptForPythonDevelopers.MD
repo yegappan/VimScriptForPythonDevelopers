@@ -21,7 +21,6 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [String](#string)
 * [List](#list)
 * [Dictionary](#dictionary)
-* [Variable Types](#variable-types)
 * [If Statement](#if-statement)
 * [For Loop](#for-loop)
 * [While Loop](#while-loop)
@@ -127,6 +126,49 @@ END
 ```
 
 *Help:* [:let-heredoc](https://vimhelp.org/eval.txt.html#%3Alet-heredoc)
+
+### Types
+
+Type|Python|VimScript
+----|------|---------
+Number| `num = 10` | `let num = 10`
+Float| `f = 3.4` | `let f = 3.4`
+Booelan| `done = True` | `let done = v:true`
+String| `str = "green"` | `let str = "green"`
+List| `l = [1, 2, 3]` | `let l = [1, 2, 3]`
+Dictionary| `d = {'a' : 5, 'b' : 6}` | `let d = #{a : 5, b : 6}`
+
+*Help:* [variables](https://vimhelp.org/eval.txt.html#variables)
+
+### Type Conversion
+
+Conversion|Python|VimScript
+----------|------|---------
+Number to Float| `float(n)` | `floor(n)`
+Float to Number| `int(f)` | `float2nr(f)`
+Number to String| `str(n)` | `string(n)`
+String to Number| `int(str)` | `str2nr(str)`
+Float to String| `str(f)` | `string(f)`
+String to Float| `float(str)` | `str2float(str)`
+List to String| `str(l)` | `string(l)`
+String to List| `eval(str)` | `eval(str)`
+Dict to String| `str(d)` | `string(d)`
+String to Dict| `eval(str)` | `eval(str)`
+
+*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29), [str2nr()](https://vimhelp.org/eval.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/eval.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/eval.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
+
+### Type Check
+
+Type|Python|VimScript
+----|------|---------
+Number| `isintance(x, int)` | `type(x) is v:t_number`
+String| `isinstance(x, str)` | `type(x) is v:t_string`
+List| `isintance(x, list)` | `type(x) is v:t_list`
+Dictionary| `isintance(x, dict)` | `type(x) is v:t_dict`
+Float| `isintance(x, float)` | `type(x) is v:t_float`
+Boolean| `isinstance(x, bool)` | `type(x) is v:t_bool`
+
+*Help:* [type()](https://vimhelp.org/eval.txt.html#type%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -1380,40 +1422,6 @@ update()| `d.update({'a' : 10, 'b' : 20}` | `d->update({'a' : 10, 'b' : 20})`
 values()| `d.values()` | `d->values()`
 
 *Help:* [dict-functions](https://vimhelp.org/usr_41.txt.html#dict-functions)
-
-------------------------------------------------------------------------------
-
-## Variable Types
-
-### Type Conversion
-
-Conversion|Python|VimScript
-----------|------|---------
-Number to Float| `float(n)` | `floor(n)`
-Float to Number| `int(f)` | `float2nr(f)`
-Number to String| `str(n)` | `string(n)`
-String to Number| `int(str)` | `str2nr(str)`
-Float to String| `str(f)` | `string(f)`
-String to Float| `float(str)` | `str2float(str)`
-List to String| `str(l)` | `string(l)`
-String to List| `eval(str)` | `eval(str)`
-Dict to String| `str(d)` | `string(d)`
-String to Dict| `eval(str)` | `eval(str)`
-
-*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29), [str2nr()](https://vimhelp.org/eval.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/eval.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/eval.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
-
-### Type Check
-
-Type|Python|VimScript
-----|------|---------
-Number| `isintance(x, int)` | `type(x) is v:t_number`
-String| `isinstance(x, str)` | `type(x) is v:t_string`
-List| `isintance(x, list)` | `type(x) is v:t_list`
-Dictionary| `isintance(x, dict)` | `type(x) is v:t_dict`
-Float| `isintance(x, float)` | `type(x) is v:t_float`
-Boolean| `isinstance(x, bool)` | `type(x) is v:t_bool`
-
-*Help:* [type()](https://vimhelp.org/eval.txt.html#type%28%29)
 
 ------------------------------------------------------------------------------
 
