@@ -645,6 +645,22 @@ execute "for i in range(5)\necho i\nendfor"
 
 *Help:* [:execute](https://vimhelp.org/eval.txt.html#:execute)
 
+## Getting the Unicode value of a character and vice versa
+
+**Python:**
+```python
+print("Ordinal value of 'a' is " + str(ord("a")))
+print("Character with value 65 is " + chr(65))
+```
+
+**VimScript:**
+```vim
+echo "Ordinal value of 'a' is " .. char2nr('a')
+echo "Character with value 65 is " .. nr2char(65)
+```
+
+*Help:* [char2nr()](https://vimhelp.org/eval.txt.html#chr%28%29), [nr2char()](https://vimhelp.org/eval.txt.html#or%28%29)
+
 ## String Methods
 
 Method|Python|VimScript
@@ -2987,4 +3003,31 @@ call timer_stopall()
 ```
 
 *Help:* [timer_start()](https://vimhelp.org/eval.txt.html#timer_start%28%29)
+
+------------------------------------------------------------------------------
+
+## JSON encoder and decoder
+
+**Python:**
+```python
+import json
+v = ['foo', {'a' : 3}, True]
+# encode data to JSON
+str = json.dumps(v)
+# decode data from JSON
+x = json.loads(str)
+```
+
+**VimScript:**
+```vim
+let v = ['foo', {'a' : 3}, v:true]
+" encode data to JSON
+let str = v->json_encode()
+echo str
+" decode data from JSON
+let x = str->json_decode()
+echo x
+```
+
+*Help:* [json_encode()](https://vimhelp.org/eval.txt.html#json_encode%28%29), [json_decode()](https://vimhelp.org/eval.txt.html#json_decode%28%29), [js_encode()](https://vimhelp.org/eval.txt.html#js_encode%28%29), [js_decode()](https://vimhelp.org/eval.txt.html#js_decode%28%29)
 
