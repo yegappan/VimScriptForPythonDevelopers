@@ -44,6 +44,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [Regular Expressions](#regular-expressions)
 * [Binary Data](#binary-data)
 * [Timers](#timers)
+* [JSON encoder and decoder](#json-encoder-and-decoder)
 
 ------------------------------------------------------------------------------
 
