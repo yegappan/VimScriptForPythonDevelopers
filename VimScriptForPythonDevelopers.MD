@@ -21,6 +21,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [String](#string)
 * [List](#list)
 * [Dictionary](#dictionary)
+* [Variable Types](#variable-types)
 * [If Statement](#if-statement)
 * [For Loop](#for-loop)
 * [While Loop](#while-loop)
@@ -225,6 +226,7 @@ let s2 = "one\ntwo\n"
 *Help:* [literal-string](https://vimhelp.org/eval.txt.html#literal-string), [string](https://vimhelp.org/eval.txt.html#string)
 
 ### Finding string length
+
 **Python:**
 ```python
 n = len("Hello World")
@@ -243,6 +245,7 @@ let n = strwidth("Hello World")
 *Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29), [strlen()](https://vimhelp.org/eval.txt.html#strlen%28%29), [strwidth()](https://vimhelp.org/eval.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/eval.txt.html#strdisplaywidth%28%29)
 
 ### String Concatenation
+
 **Python:**
 ```python
 str1 = "blue"
@@ -260,7 +263,71 @@ let s = str1 .. str2
 let s = str1 . str2
 ```
 
-*Help:* [expr-..](https://vimhelp.org/eval.txt.html#expr-..)
+### String Comparison
+
+**Python:**
+```python
+# compare strings matching case
+str1 = "blue"
+str2 = "blue"
+str3 = "sky"
+if str1 == str2:
+  print("str1 and str2 are same")
+if str1 is str2:
+  print("str1 and str2 are same")
+if str1 != str3:
+  print("str1 and str3 are not same")
+if str1 is not str3:
+  print("str1 and str3 are not same")
+
+# compare strings ignoring case
+str1 = "Blue"
+str2 = "BLUE"
+str3 = "sky"
+if str1.lower() == str2.lower():
+  print("str1 and str2 are same")
+if str1.lower() != str3.lower():
+  print("str1 and str3 are not same")
+```
+
+**VimScript:**
+```vim
+" compare strings matching case
+let str1 = "blue"
+let str2 = "blue"
+let str3 = "sky"
+if str1 ==# str2
+  echo "str1 and str2 are same"
+endif
+if str1 is# str2
+  echo "str1 and str2 are same"
+endif
+if str1 !=# str3
+  echo "str1 and str3 are not same"
+endif
+if str1 isnot# str3
+  echo "str1 and str3 are not same"
+endif
+
+" compare strings ignoring case
+let str1 = "Blue"
+let str2 = "BLUE"
+let str3 = "sky"
+if str1 ==? str2
+  echo "str1 and str2 are same"
+endif
+if str1 is? str2
+  echo "str1 and str2 are same"
+endif
+if str1 !=? str3
+  echo "str1 and str3 are not same"
+endif
+if str1 isnot? str3
+  echo "str1 and str3 are not same"
+endif
+```
+
+*Help:* [expr4](https://vimhelp.org/eval.txt.html#expr4)
 
 ### Getting a substring
 
@@ -289,6 +356,7 @@ let sub = strcharpart(str, 2, 3)
 *Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/eval.txt.html#strpart%28%29)
 
 ### Counting the occurrences of a substring
+
 **Python:**
 ```python
 str = "Hello World"
@@ -304,6 +372,7 @@ let c = str->count("l")
 *Help:* [count()](https://vimhelp.org/eval.txt.html#count%28%29)
 
 ### Finding the position of a substring
+
 **Python:**
 ```python
 str = "running"
@@ -323,6 +392,7 @@ let idx = str->strridx("ing")  " rightmost
 *Help:* [stridx()](https://vimhelp.org/eval.txt.html#stridx%28%29), [strridx()](https://vimhelp.org/eval.txt.html#strridx%28%29)
 
 ### Checking whether a string starts with or ends with a substring
+
 **Python:**
 ```python
 str = "running"
@@ -349,7 +419,8 @@ endif
 
 *Help:* [expr-=~#](https://vimhelp.org/eval.txt.html#expr-=~#)
 
-### Merging strings in a List with a separator
+### Joining strings in a List with a separator
+
 **Python:**
 ```python
 s = ":".join(['a', 'b', 'c'])
@@ -363,6 +434,7 @@ let s = join(['a', 'b', 'c'], ':')
 *Help:* [join()](https://vimhelp.org/eval.txt.html#join%28%29)
 
 ### Changing the case of letters in a string
+
 **Python:**
 ```python
 s = "Hello World"
@@ -380,6 +452,7 @@ let l = s->toupper()
 *Help:* [tolower()](https://vimhelp.org/eval.txt.html#tolower%28%29), [toupper()](https://vimhelp.org/eval.txt.html#toupper%28%29)
 
 ### Replace a substring
+
 **Python:**
 ```python
 s = "Hello World"
@@ -395,6 +468,7 @@ let s2 = s->substitute("Hello", "New", 'g')
 *Help:* [substitute()](https://vimhelp.org/eval.txt.html#substitute%28%29)
 
 ### Split a string
+
 **Python:**
 ```python
 s = "a:b:c"
@@ -410,6 +484,7 @@ let s2 = s->split(":")
 *Help:* [split()](https://vimhelp.org/eval.txt.html#split%28%29), [join()](https://vimhelp.org/eval.txt.html#join%28%29),
 
 ### Stripping leading and trailing whitespace from a string
+
 **Python:**
 ```python
 s = "  vim  "
@@ -430,6 +505,7 @@ let s2 = s->trim(' ', 2)
 *Help:* [trim()](https://vimhelp.org/eval.txt.html#trim%28%29)
 
 ### Checking whether a string contains specific type of characters
+
 **Python:**
 ```python
 s = "text"
@@ -451,22 +527,22 @@ if s.islower():
 ```vim
 let s = "text"
 if s =~ '^[:alnum:]\+'
-    echo "Contains only alphanumeric characters"
+  echo "Contains only alphanumeric characters"
 endif
 if s =~ '^\a\+$'
-    echo "Contains only alphabetic characters"
+  echo "Contains only alphabetic characters"
 endif
 if s =~ '^\d\+$'
-    echo "Contains only digits"
+  echo "Contains only digits"
 endif
 if s =~ '^\s\+$'
-    echo "Contains only whitespace characters"
+  echo "Contains only whitespace characters"
 endif
 if s =~ '^\u\+$'
-    echo "Contains only uppercase characters"
+  echo "Contains only uppercase characters"
 endif
 if s =~ '^\l\+$'
-    echo "Contains only lowercase characters"
+  echo "Contains only lowercase characters"
 endif
 ```
 
@@ -880,17 +956,34 @@ unlet l[:]
 **Python:**
 ```python
 l1 = [1, 2]
-l2 = [1, 2]
-if l1 == l2:
-    print("Lists are equal")
+l2 = l1
+l3 = [1, 2]
+if l1 is l2:
+  print("Lists l1 and l2 refer to the same list")
+if l1 is not l3:
+  print("Lists l1 and l3 do not refer to the same list")
+if l1 == l3:
+  print("Lists l1 and l3 contain the same elements")
+if l1 != l3:
+  print("Lists l1 and l3 are different")
 ```
 
 **VimScript:**
 ```vim
 let l1 = [1, 2]
-let l2 = [1, 2]
-if l1 == l2
-    echo "Lists are equal"
+let l2 = l1
+let l3 = [1, 2]
+if l1 is l2
+  echo "Lists l1 and l2 refer to the same list"
+endif
+if l1 isnot l3
+  echo "Lists l1 and l2 do not refer to the same list"
+endif
+if l1 == l3
+  echo "Lists l1 and l3 contain the same elements"
+endif
+if l1 != l3
+  echo "Lists l1 and l3 are different"
 endif
 ```
 
@@ -983,37 +1076,6 @@ s = str([3, 5, 7])
 **VimScript:**
 ```vim
 let s = string([3, 5, 7])
-```
-
-### List comparison
-
-**Python:**
-```python
-l1 = [1, 2]
-l2 = l1
-if l1 is l2:
-  print("Lists l1 and l2 refer to the same list")
-if l1 is not l2:
-  print("Lists l1 and l2 do not refer to the same list")
-l3 = [1, 2]
-if l1 == l3:
-  print("Lists l1 and l3 contain the same elements")
-```
-
-**VimScript:**
-```vim
-let l1 = [1, 2]
-let l2 = l1
-if l1 is l2
-  echo "Lists l1 and l2 refer to the same list"
-endif
-if l1 isnot l2
-  echo "Lists l1 and l2 do not refer to the same list"
-endif
-let l3 = [1, 2]
-if l1 == l3
-  echo "Lists l1 and l3 contain the same elements"
-endif
 ```
 
 *Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
@@ -1174,7 +1236,7 @@ if 'red' in d:
 ```vim
 let d = {'red' : 10, 'blue' : 20}
 if d->has_key('red')
-    echo "found red key"
+  echo "found red key"
 endif
 ```
 
@@ -1194,10 +1256,10 @@ for k in d:
 ```vim
 let d = {'red' : 10, 'blue' : 20}
 for k in keys(d)
-    echo k
+  echo k
 endfor
 for k in d->keys()
-    echo d[k]
+  echo d[k]
 endfor
 ```
 
@@ -1215,7 +1277,7 @@ for v in d.values():
 ```vim
 let d = {'red' : 10, 'blue' : 20}
 for v in d->values()
-    echo v
+  echo v
 endfor
 ```
 
@@ -1233,7 +1295,7 @@ for k, v in d.items():
 ```vim
 let d = {'red' : 10, 'blue' : 20}
 for [k, v] in d->items()
-    echo k v
+  echo k v
 endfor
 ```
 
@@ -1321,6 +1383,40 @@ values()| `d.values()` | `d->values()`
 
 ------------------------------------------------------------------------------
 
+## Variable Types
+
+### Type Conversion
+
+Conversion|Python|VimScript
+----------|------|---------
+Number to Float| `float(n)` | `floor(n)`
+Float to Number| `int(f)` | `float2nr(f)`
+Number to String| `str(n)` | `string(n)`
+String to Number| `int(str)` | `str2nr(str)`
+Float to String| `str(f)` | `string(f)`
+String to Float| `float(str)` | `str2float(str)`
+List to String| `str(l)` | `string(l)`
+String to List| `eval(str)` | `eval(str)`
+Dict to String| `str(d)` | `string(d)`
+String to Dict| `eval(str)` | `eval(str)`
+
+*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29), [str2nr()](https://vimhelp.org/eval.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/eval.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/eval.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
+
+### Type Check
+
+Type|Python|VimScript
+----|------|---------
+Number| `isintance(x, int)` | `type(x) is v:t_number`
+String| `isinstance(x, str)` | `type(x) is v:t_string`
+List| `isintance(x, list)` | `type(x) is v:t_list`
+Dictionary| `isintance(x, dict)` | `type(x) is v:t_dict`
+Float| `isintance(x, float)` | `type(x) is v:t_float`
+Boolean| `isinstance(x, bool)` | `type(x) is v:t_bool`
+
+*Help:* [type()](https://vimhelp.org/eval.txt.html#type%28%29)
+
+------------------------------------------------------------------------------
+
 ## If statement
 
 ### Basic If statement
@@ -1334,7 +1430,7 @@ if a > b:
 **VimScript:**
 ```vim
 if a > b
-    echo "a is greater than b"
+  echo "a is greater than b"
 endif
 ```
 
@@ -1353,9 +1449,9 @@ else:
 **VimScript:**
 ```vim
 if a > b
-    echo "a is greater than b"
+  echo "a is greater than b"
 else
-    echo "a is less than or equal to b"
+  echo "a is less than or equal to b"
 endif
 ```
 
@@ -1376,11 +1472,11 @@ else:
 **VimScript:**
 ```vim
 if a > b
-    echo "a is greater than b"
+  echo "a is greater than b"
 elseif a < b
-    echo "a is less than b"
+  echo "a is less than b"
 else
-    echo "a is equal to b"
+  echo "a is equal to b"
 endif
 ```
 
@@ -1397,7 +1493,7 @@ if a > b and (a > c or a > d):
 **VimScript:**
 ```vim
 if a > b && (a > c || a > d)
-    echo "a is greater than b and greater than c or d"
+  echo "a is greater than b and greater than c or d"
 endif
 ```
 
@@ -1414,9 +1510,9 @@ if status == True:
 **VimScript:**
 ```vim
 if status == v:true
-    if a >= 1
-	echo "Nested if"
-    endif
+  if a >= 1
+    echo "Nested if"
+  endif
 endif
 ```
 
@@ -1435,7 +1531,7 @@ for i in range(5) :
 **VimScript:**
 ```vim
 for i in range(5)
-    echo i
+  echo i
 endfor
 ```
 
@@ -1453,10 +1549,10 @@ for i in ['a', 'b', 'c']:
 **VimScript:**
 ```vim
 for i in ['a', 'b', 'c']
-    if i == 'b'
-        break
-    endif
-    echo i
+  if i == 'b'
+    break
+  endif
+  echo i
 endfor
 ```
 
@@ -1474,10 +1570,10 @@ for i in ['a', 'b', 'c']:
 **VimScript:**
 ```vim
 for i in ['a', 'b', 'c']
-    if i == 'b'
-        continue
-    endif
-    echo i
+  if i == 'b'
+    continue
+  endif
+  echo i
 endfor
 ```
 
@@ -1494,9 +1590,9 @@ for i in range(10):
 **VimScript:**
 ```vim
 for i in range(4)
-    for j in range(4)
-	echo i .. 'x' .. j .. '=' .. i * j
-    endfor
+  for j in range(4)
+    echo i .. 'x' .. j .. '=' .. i * j
+  endfor
 endfor
 ```
 
@@ -1518,8 +1614,8 @@ while i <= 5 :
 ```vim
 let i = 1
 while i <= 5
-    echo i
-    let i += 1
+  echo i
+  let i += 1
 endwhile
 ```
 
@@ -1566,7 +1662,7 @@ print(Min(6, 3)
 **VimScript:**
 ```vim
 function Min(x, y) abort
-    return a:x < a:y ? a:x : a:y
+  return a:x < a:y ? a:x : a:y
 endfunction
 
 echo Min(6, 3)
@@ -1587,7 +1683,7 @@ EchoValue(100)
 **VimScript:**
 ```vim
 function EchoValue(v)
-    echo a:v
+  echo a:v
 endfunction
 
 call EchoValue(100)
@@ -1608,7 +1704,7 @@ s = Sum(10, 20)
 **VimScript:**
 ```vim
 function Sum(a, b)
-    return a:a + a:b
+  return a:a + a:b
 endfunction
 
 let s = Sum(10, 20)
@@ -1627,7 +1723,7 @@ def AddValues(l):
 **VimScript:**
 ```vim
 function AddValues(l)
-    call extend(a:l, [1, 2, 3, 4])
+  call extend(a:l, [1, 2, 3, 4])
 endfunction
 ```
 
@@ -1647,11 +1743,11 @@ def Sum(v1, *args):
 **VimScript:**
 ```vim
 function Sum(v1, ...)
-    let sum = a:v1
-    for i in a:000
-	let sum +=i
-    endfor
-    return sum
+  let sum = a:v1
+  for i in a:000
+    let sum +=i
+  endfor
+  return sum
 endfunction
 let s1 = Sum(10, 20, 30, 40)
 let s1 = Sum(10)
@@ -1670,7 +1766,7 @@ def Powerof(base, exp = 2):
 **VimScript:**
 ```vim
 function PowerOf(base, exp = 2)
-    return float2nr(pow(a:base, a:exp))
+  return float2nr(pow(a:base, a:exp))
 endfunction
 let val = PowerOf(4)
 let val = PowerOf(4, 3)
@@ -1692,7 +1788,7 @@ def Incr():
 ```vim
 let counter = 1
 function Incr()
-    let g:counter += 1
+  let g:counter += 1
 endfunction
 cal Incr()
 ```
@@ -1712,7 +1808,7 @@ Bar()
 **VimScript:**
 ```vim
 function Foo()
-    echo "Foo"
+  echo "Foo"
 endfunction
 let Bar = function("Foo")
 call Bar()
@@ -1755,7 +1851,7 @@ ErrLog("Failed to open file")
 **VimScript:**
 ```vim
 function Mylog(subsys, msg)
-    echo printf("%s: %s", a:subsys, a:msg)
+  echo printf("%s: %s", a:subsys, a:msg)
 endfunction
 
 let ErrLog = function('Mylog', ['ERR'])
@@ -1811,10 +1907,10 @@ print(F(2))
 **VimScript:**
 ```vim
 function Foo(base)
-    function Bar(val) closure
-	return a:base + a:val
-    endfunction
-    return funcref('Bar')
+  function Bar(val) closure
+    return a:base + a:val
+  endfunction
+  return funcref('Bar')
 endfunction
 
 let F = Foo(10)
@@ -1923,9 +2019,9 @@ except IOError:
 **VimScript:**
 ```vim
 try
-    let l = readfile('buf.java')
+  let l = readfile('buf.java')
 catch /E484:/
-    echo "Failed to read file"
+  echo "Failed to read file"
 endtry
 ```
 
@@ -1946,9 +2042,9 @@ except Exception as e:
 **VimScript:**
 ```vim
 try
-    let l = readfile('buf.java')
+  let l = readfile('buf.java')
 catch
-    echo "Caught " .. v:exception
+  echo "Caught " .. v:exception
 endtry
 ```
 
@@ -1969,9 +2065,9 @@ finally:
 **VimScript:**
 ```vim
 try
-    let l = readfile('buf.java')
+  let l = readfile('buf.java')
 finally
-    echo "executing code in finally block"
+  echo "executing code in finally block"
 endtry
 ```
 
@@ -1993,11 +2089,11 @@ finally:
 **VimScript:**
 ```vim
 try
-    throw 'MyException'
+  throw 'MyException'
 catch /MyException/
-    echo "Caught MyException"
+  echo "Caught MyException"
 finally
-    echo "Finally block"
+  echo "Finally block"
 endtry
 ```
 
@@ -2089,7 +2185,7 @@ if os.path.isfile('myfile.txt'):
 **VimScript:**
 ```vim
 if filereadable('myfile.txt')
-    echo "File is readable"
+  echo "File is readable"
 endif
 ```
 
@@ -2471,15 +2567,15 @@ else:
 ```vim
 let h = getenv('HOME')
 if h == v:null
-    echo 'HOME is not set'
+  echo 'HOME is not set'
 else
-    echo 'HOME = ' .. h
+  echo 'HOME = ' .. h
 endif
 
 if !exists('$HOME')
-    echo 'HOME is not set'
+  echo 'HOME is not set'
 else
-    echo 'HOME = ' .. $HOME
+  echo 'HOME = ' .. $HOME
 endif
 ```
 
@@ -2554,7 +2650,7 @@ for arg in sys.argv:
 echo "Number of arguments = " .. len(v:argv)
 echo "Arguments = " .. string(v:argv)
 for arg in v:argv
-    echo arg
+  echo arg
 endfor
 ```
 
@@ -2582,12 +2678,12 @@ if re.search(r'E\d+:', s) is None:
 ```vim
 let s = 'Test failed with error E123:'
 if s =~# 'E\d\+:'
-    echo "Error code found"
+  echo "Error code found"
 endif
 
 let s = 'Test successful'
 if s !~# 'E\d\+:'
-    echo "Test passed"
+  echo "Test passed"
 endif
 ```
 
