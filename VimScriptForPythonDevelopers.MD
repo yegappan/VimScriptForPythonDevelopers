@@ -667,10 +667,10 @@ echo "Character with value 65 is " .. nr2char(65)
 Method|Python|VimScript
 ----|------|---------
 capitalize()| `'one two'.capitalize()` | `'one two'->substitute('.', '\u&', '')`
-center()| `'abc'.center(10)` | None
+center()| `'abc'.center(10)` | `Not availalbe`
 count()| `"abbc".count('b')` | `"abbc"->count('b')`
-decode()| `str.decode()` | None
-encode()| `str.encode()` | None
+decode()| `str.decode()` | `Not availalbe`
+encode()| `str.encode()` | `Not availalbe`
 endswith()| `'running'.endswith('ing')` | `'running' =~# 'ing$'`
 expandtabs()| `"a\tb".expandtabs()` | `"a\tb"->substitute("\t", repeat(' ', 8), 'g')`
 find()| `"running".find('nn')` | `"running"->stridx('nn')`
@@ -683,26 +683,26 @@ isspace()| `str.isspace()` | `str =~ '^\s\+$'`
 istitle()| `str.istitle()` | `str =~ '\(\<\u\l\+\>\)\s\?'`
 isupper()| `str.isupper()` | `str =~ '^\u\+$'`
 join()| `':'.join(['a', 'b', 'c'])` | `join(['a', 'b', 'c'], ':')`
-ljust()| `'abc'.ljust(10)` | None
+ljust()| `'abc'.ljust(10)` | `Not availalbe`
 lower()| `'Hello'.lower()` | `'Hello'->tolower()`
 lstrip()| `'  vim  '.lstrip()` | `'  vim  '->trim(' ', 1)`
 partition()| `'ab-cd-ef'.partition('-')` | `'ab-cd-ef'->matchlist('\(.\{-}\)\(-\)\(.*\)')[1:3]`
 replace()| `'abc'.replace('abc', 'xyz')` | `'abc'->substitute('abc', 'xyz', 'g')`
 rfind()| `'running'.rfind('ing')` | `'running'->strridx('ing')`
 rindex()| `'running'.rindex('ing')` | `'running'->strridx('ing')`
-rjust()| `'abc'.rjust(10)` | None
+rjust()| `'abc'.rjust(10)` | `Not availalbe`
 rpartition()| `'ab-cd-ef'.rpartition('-')` | `'ab-cd-ef'->matchlist('\(.*\)\(-\)\(.*\)')[1:3]`
-rsplit()| `'a-b-c-d'.rsplit('-', 2)` | None
+rsplit()| `'a-b-c-d'.rsplit('-', 2)` | `Not availalbe`
 rstrip()| `'  vim  '.rstrip()` | `'  vim  '->trim(' ', 2)`
 split()| `'a-b-c'.split('-')` | `'a-b-c'->split('-')`
 splitlines()| `"one\ntwo".splitlines()` | `"one\ntwo"->split("\n")`
 startswith()| `'running'.startswith('run')` | `'running' =~# '^run'`
 strip()| `'  vim  '.strip()` | `'  vim  '->trim()`
-swapcase()| `'Abc'.swapcase()` | None
+swapcase()| `'Abc'.swapcase()` | `Not availalbe`
 title()| `'onE twO'.title()` | `'onE twO'->substitute('\<\(.\)\(\S\+\)\>', '\u\1\L\2', 'g')`
 translate()| `'abcd'.translate(string.maketrans('bd', '12'))` | `'abcd'->tr('bd', '12')`
 upper()| `'Hello'.upper()` | `'Hello'->toupper()`
-zfill()| `str.zfill(10)` | None
+zfill()| `str.zfill(10)` | `Not availalbe`
 
 *Help:* [string-functions](https://vimhelp.org/usr_41.txt.html#string-functions)
 
@@ -776,7 +776,7 @@ let l += [5, 6]
 
 *Help:* [add()](https://vimhelp.org/eval.txt.html#add%28%29)
 
-### Extending a List using a List
+### Extending a List using another List
 
 **Python:**
 ```python
@@ -979,7 +979,7 @@ call reverse(l)
 
 *Help:* [reverse()](https://vimhelp.org/eval.txt.html#reverse%28%29)
 
-### Copy a List
+### Copying a List
 
 **Python:**
 ```python
@@ -994,6 +994,23 @@ let l2 = l->copy()
 ```
 
 *Help:* [copy()](https://vimhelp.org/eval.txt.html#copy%28%29)
+
+### Deep Copying a List
+
+**Python:**
+```python
+import copy
+a = [[1, 2], [3, 4]]
+b = copy.deepcopy(a)
+```
+
+**VimScript:**
+```vim
+let a = [[1, 2], [3, 4]]
+let b = a->deepcopy()
+```
+
+*Help:* [deepcopy()](https://vimhelp.org/eval.txt.html#deepcopy%28%29)
 
 ### Empty a List
 
@@ -1051,7 +1068,7 @@ endif
 
 ### Filter selected elements from a List
 
-Note that Vim does not support List comprehensions.
+Note that Vim does not support List comprehension.
 
 **Python:**
 ```python
@@ -1067,6 +1084,8 @@ let odd = filter(range(10), {idx, v -> v % 2})
 *Help:* [filter()](https://vimhelp.org/eval.txt.html#filter%28%29)
 
 ### Map List elements
+
+Note that Vim does not support List comprehension.
 
 **Python:**
 ```python
@@ -1110,18 +1129,22 @@ echo sum
 
 *Help:* [reduce()](https://vimhelp.org/eval.txt.html#reduce%28%29)
 
-### Finding the max/min value in a List
+### Finding the mix/max value in a List
 
 **Python:**
 ```python
-n = max([3, 10, 8])
-n = min([3, 10, 8])
+l = [3, 10, 8]
+v1 = min(l)
+v2 = max(l)
+print(v1, v2)
 ```
 
 **VimScript:**
 ```vim
-let n = max([3, 10, 8])
-let n = min([3, 10, 8])
+let l = [3, 10, 8]
+let v1 = l->min()
+let v2 = l->max()
+echo v1 v2
 ```
 
 *Help:* [max()](https://vimhelp.org/eval.txt.html#max%28%29), [min()](https://vimhelp.org/eval.txt.html#min%28%29)
@@ -1163,6 +1186,7 @@ sort()| `m.sort()` | `m->sort()`
 ## Dictionary
 
 ### Creating a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1179,6 +1203,7 @@ let x = {}
 *Help:* [Dict](https://vimhelp.org/eval.txt.html#Dict)
 
 ### Retrieving the value of a Dict item
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1195,6 +1220,7 @@ let x = d.red
 *Help:* [dict](https://vimhelp.org/eval.txt.html#dict)
 
 ### Changing the value of a Dict item
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1210,6 +1236,7 @@ let d.red = 15
 *Help:* [dict-modification](https://vimhelp.org/eval.txt.html#dict-modification)
 
 ### Accessing a Dict item
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1225,6 +1252,7 @@ let v = get(d, 'red')
 *Help:* [get()](https://vimhelp.org/eval.txt.html#get%28%29)
 
 ### Adding a new Dict item
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1239,7 +1267,24 @@ let d.green = 30
 
 *Help:* [dict-modification](https://vimhelp.org/eval.txt.html#dict-modification)
 
-### Removing a Dict item
+### Extending a Dict using another Dict
+
+**Python:**
+```python
+d = {}
+d.update({'color' : 'grey'})
+```
+
+**VimScript:**
+```vim
+let d = {}
+eval d->extend({'color' : 'grey'})
+```
+
+*Help:* [extend()](https://vimhelp.org/eval.txt.html#extend%28%29)
+
+### Removing an item from a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1254,7 +1299,8 @@ call remove(d, 'red')
 
 *Help:* [remove()](https://vimhelp.org/eval.txt.html#remove%28%29),
 
-### Clearing all the  items from a Dict
+### Clearing all the items from a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1270,6 +1316,7 @@ call filter(d, "0")
 *Help:* [dict-modification](https://vimhelp.org/eval.txt.html#dict-modification)
 
 ### Getting the size of a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1284,7 +1331,26 @@ let n = d->len()
 
 *Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29)
 
+### Count the number of occurrences of a value in a Dict
+
+**Python:**
+```python
+d = {'red' : 10, 'blue' : 10}
+x = sum(n == 10 for n in d.values())
+print(x)
+```
+
+**VimScript:**
+```vim
+let d = {'red' : 10, 'blue' : 10}
+let x = d->count(10)
+echo x
+```
+
+*Help:* [count()](https://vimhelp.org/eval.txt.html#count%28%29)
+
 ### Checking Dict membership
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1303,6 +1369,7 @@ endif
 *Help:* [has_key()](https://vimhelp.org/eval.txt.html#has_key%28%29)
 
 ### Iterating through all the keys in a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1326,6 +1393,7 @@ endfor
 *Help:* [keys()](https://vimhelp.org/eval.txt.html#keys%28%29)
 
 ### Iterating through all the values in a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1344,6 +1412,7 @@ endfor
 *Help:* [values()](https://vimhelp.org/eval.txt.html#values%28%29)
 
 ### Iterating through all the key, value pairs in a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1362,6 +1431,7 @@ endfor
 *Help:* [items()](https://vimhelp.org/eval.txt.html#items%28%29)
 
 ### Copying a Dict
+
 **Python:**
 ```python
 d = {'red' : 10, 'blue' : 20}
@@ -1376,18 +1446,22 @@ let new_d = d->copy()
 
 *Help:* [copy()](https://vimhelp.org/eval.txt.html#copy%28%29)
 
-### Converting a Dict to a string
+### Deep Copying a Dict
+
 **Python:**
 ```python
-d = str({'a' : 1, 'b' : 2})
+import copy
+a = {'x' : [1, 2], 'y' : [3, 4]}
+b = copy.deepcopy(a)
 ```
 
 **VimScript:**
 ```vim
-let d = string({'a' : 1, 'b' : 2})
+let a = {'x' : [1, 2], 'y' : [3, 4]}
+let b = a->deepcopy()
 ```
 
-*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
+*Help:* [deepcopy()](https://vimhelp.org/eval.txt.html#deepcopy%28%29)
 
 ### Comparing two Dicts
 
@@ -1422,21 +1496,105 @@ endif
 
 *Help:* [dict-identity](https://vimhelp.org/eval.txt.html#dict-identity)
 
+### Filter selected elements from a Dict
+
+Note that Vim does not support Dict comprehension.
+
+**Python:**
+```python
+d1 = {'red' : 10, 'green' : 20, 'blue' : 10}
+# filter dict items with value 10
+d2 = dict(filter(lambda e : e[1] == 10, d1.items()))
+print(d1, d2)
+# use dict comprehension
+d3 = {k: v for [k, v] in d1.items() if v == 10}
+print(d1, d3)
+```
+
+**VimScript:**
+```vim
+let d1 = {'red' : 10, 'green' : 20, 'blue' : 10}
+" filter dict items with value 10
+let d2 = copy(d1)->filter({k, v -> v == 10})
+echo d1 d2
+```
+
+*Help:* [filter()](https://vimhelp.org/eval.txt.html#filter%28%29)
+
+### Map Dict elements
+
+Note that Vim does not support Dict comprehension.
+
+**Python:**
+```python
+d1 = {'red' : 10, 'green' : 20, 'blue' : 30}
+# increment the values by 5
+d2 = dict(map(lambda e : (e[0], e[1] + 5), d1.items()))
+print(d1, d2)
+# use dict comprehension
+d3 = {k: v + 5 for k, v in d1.items()}
+print(d1, d3)
+```
+
+**VimScript:**
+```vim
+let d1 = {'red' : 10, 'green' : 20, 'blue' : 30}
+" increment the values by 5
+let d2 = copy(d1)->map({k, v -> v + 5})
+echo d1 d2
+```
+
+*Help:* [map()](https://vimhelp.org/eval.txt.html#map%28%29)
+
+### Finding the min/max value in a Dict
+
+**Python:**
+```python
+d = {'red' : 10, 'green' : 20}
+v1 = min(d.values())
+v2 = max(d.values())
+print(v1, v2)
+```
+
+**VimScript:**
+```vim
+let d = {'red' : 10, 'green' : 20}
+let v1 = d->min()
+let v2 = d->max()
+echo v1 v2
+```
+
+*Help:* [max()](https://vimhelp.org/eval.txt.html#max%28%29), [min()](https://vimhelp.org/eval.txt.html#min%28%29)
+
+### Converting a Dict to a string
+
+**Python:**
+```python
+d = str({'a' : 1, 'b' : 2})
+```
+
+**VimScript:**
+```vim
+let d = string({'a' : 1, 'b' : 2})
+```
+
+*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
+
 ### Dictionary Methods
 
 Method|Python|VimScript
 ----|------|---------
 clear()| `d.clear()` | `call filter(d, '0')`
 copy()| `newDict = d.copy()` | `let newDict = d->copy()`
-fromkeys()| `d = dict.fromkeys(x)` | None
+fromkeys()| `d = dict.fromkeys(x)` | `Not availalbe`
 get()| `v = d.get('red')` | `let v = d->get('red')`
 in or has_key() | `'red' in d` | `d->has_key('red')`
 items()| `d.items()` | `d->items()`
 keys()| `d.keys()` | `d->keys()`
 pop()| `d.pop('red')` | `call d->remove('red')`
-popitem()| `d.popitem()` | None
-setdefault()| `d.setdefault('red', 10)` | None
-update()| `d.update({'a' : 10, 'b' : 20}` | `d->update({'a' : 10, 'b' : 20})`
+popitem()| `d.popitem()` | `Not availalbe`
+setdefault()| `d.setdefault('red', 10)` | `Not availalbe`
+update()| `d.update({'a' : 10, 'b' : 20}` | `d->extend({'a' : 10, 'b' : 20})`
 values()| `d.values()` | `d->values()`
 
 *Help:* [dict-functions](https://vimhelp.org/usr_41.txt.html#dict-functions)
