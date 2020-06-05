@@ -592,7 +592,7 @@ endif
 
 *Help:* [/collection](https://vimhelp.org/pattern.txt.html#%2fcollection)
 
-## Data type conversion to string
+### Data type conversion to string
 
 **Python:**
 ```python
@@ -612,7 +612,7 @@ let s = string({'a' : 1, 'b' : 2})
 
 *Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
 
-## Evaluating a string
+### Evaluating a string
 
 **Python:**
 ```python
@@ -632,7 +632,7 @@ let n = eval("min([4, 3, 5])")
 
 *Help:* [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
 
-## Executing commands in a string
+### Executing commands in a string
 
 **Python:**
 ```python
@@ -646,7 +646,7 @@ execute "for i in range(5)\necho i\nendfor"
 
 *Help:* [:execute](https://vimhelp.org/eval.txt.html#:execute)
 
-## Getting the Unicode value of a character and vice versa
+### Getting the Unicode value of a character and vice versa
 
 **Python:**
 ```python
@@ -662,7 +662,7 @@ echo "Character with value 65 is " .. nr2char(65)
 
 *Help:* [char2nr()](https://vimhelp.org/eval.txt.html#chr%28%29), [nr2char()](https://vimhelp.org/eval.txt.html#or%28%29)
 
-## String Methods
+### String Methods
 
 Method|Python|VimScript
 ----|------|---------
