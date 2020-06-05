@@ -1,14 +1,14 @@
 # Vim Script for Python Developers
 
-A guide to Vim Script development for Python developers. Sample code for the various expressions, statements, functions and programming constructs is shown in both Python and Vim Script. This is not intended to be a tutorial for developing Vim scripts. It is assumed that the reader is familiar with programming in Python.
+A guide to Vim Script development for Python developers. Sample code for the various expressions, statements, functions and programming constructs is shown in both Python and Vim Script. This is not intended to be a tutorial for developing Vim scripts. It is assumed that the reader is familiar with Python programming.
 
 For an introduction to Vim Script development, refer to [usr_41.txt](https://vimhelp.org/usr_41.txt.html), [eval.txt](https://vimhelp.org/eval.txt.html) and [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
 
-For a similar guide for JavaScript developers, refer to [Vim Script for the JavaScripter](https://w0rp.com/blog/post/vim-script-for-the-javascripter/)
+For a guide similar to this one for JavaScript developers, refer to [Vim Script for the JavaScripter](https://w0rp.com/blog/post/vim-script-for-the-javascripter/)
 
 This guide only describes the programming constructs that are present in both Python and Vim. The constructs that are unique to Vim (e.g. [autocommands](https://vimhelp.org/autocmd.txt.html#autocommands), [key-mapping](https://vimhelp.org/map.txt.html#key-mapping), [abbreviations](https://vimhelp.org/map.txt.html#abbreviations), [user-commands](https://vimhelp.org/map.txt.html#user-commands), [plugins](https://vimhelp.org/usr_05.txt.html#plugin), etc.) are not described in this guide.
 
-Some of the features described in this guide are available are only in recent versions of Vim (8.1).
+Some of the features described in this guide are available only in the recent versions of Vim (8.2).
 
 The Github repository for this gist is available at: https://github.com/yegappan/VimScriptForPythonDevelopers.
 
@@ -2586,6 +2586,32 @@ echo localtime()
 ```
 
 *Help:* [localtime()](https://vimhelp.org/eval.txt.html#localtime%28%29)
+
+### Measuring elapsed time
+
+**Python:**
+```python
+import time
+start_time = time.perf_counter()
+sum = 1
+for i in range(1000):
+    sum += i
+end_time = time.perf_counter()
+print("Elapsed time " + str(end_time - start_time))
+```
+
+**VimScript:**
+```vim
+let start = reltime()
+let sum = 0
+for i in range(1000)
+  let sum += i
+endfor
+let elapsed_time = reltime(start)
+echo "Elasped time" reltimefloat(elapsed_time)
+```
+
+*Help:* [reltime()](https://vimhelp.org/eval.txt.html#reltime%28%29), [reltimestr()](https://vimhelp.org/eval.txt.html#reltimestr%28%29), [reltimefloat()](https://vimhelp.org/eval.txt.html#reltimefloat%28%29)
 
 ------------------------------------------------------------------------------
 
