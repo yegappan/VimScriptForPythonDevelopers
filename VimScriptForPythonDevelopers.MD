@@ -43,6 +43,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [Command Line Arguments](#command-line-arguments)
 * [Regular Expressions](#regular-expressions)
 * [Binary Data](#binary-data)
+* [Timers](#timers)
 
 ------------------------------------------------------------------------------
 
@@ -2903,4 +2904,87 @@ call writefile(data, 'data2.bin')
 ```
 
 *Help:* [readfile()](https://vimhelp.org/eval.txt.html#readfile%28%29), [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
+
+------------------------------------------------------------------------------
+
+## Timers
+
+### One-shot Timer
+
+**Python:**
+```python
+import threading
+def TimerCallback(ctx):
+    print("Timer callback, context = " + ctx)
+
+timer = threading.Timer(5, TimerCallback, args=["green"])
+timer.start()
+```
+
+**VimScript:**
+```vim
+func TimerCallback(ctx, timer_id)
+  echo "Timer callback, context = " .. a:ctx .. ", id = " .. a:timer_id
+endfunc
+
+" Run a function after 5 seconds
+let timer_id = timer_start(5 * 1000, function('TimerCallback', ["green"]))
+```
+
+*Help:* [timer_start()](https://vimhelp.org/eval.txt.html#timer_start%28%29)
+
+### Periodic Timer
+
+**Python:**
+```python
+import threading
+def TimerCallback():
+    print("Timer callback")
+    threading.Timer(5, TimerCallback).start()
+
+# run a function every 5 seconds (approximately)
+timer = threading.Timer(5, TimerCallback)
+timer.start()
+```
+
+**VimScript:**
+```vim
+func TimerCallback(timer_id)
+  echo "Timer callback"
+endfunc
+
+" run a function every 5 seconds periodically
+let timer_id = timer_start(5 * 1000, function('TimerCallback'), {'repeat' : -1})
+```
+
+*Help:* [timer](https://vimhelp.org/eval.txt.html#timer)
+
+### Stopping a timer
+
+**Python:**
+```python
+import threading
+def TimerCallback():
+    print("Timer callback")
+
+timer = threading.Timer(1, TimerCallback)
+timer.start()
+timer.cancel()
+```
+
+**VimScript:**
+```vim
+func TimerCallback(timer_id)
+  echo "Timer callback"
+endfunc
+
+" start a timer and then stop it
+let timer_id = timer_start(1000, 'TimerCallback')
+call timer_stop(timer_id)
+
+" to stop all the timers
+call timer_stopall()
+```
+
+*Help:* [timer_start()](https://vimhelp.org/eval.txt.html#timer_start%28%29)
 
