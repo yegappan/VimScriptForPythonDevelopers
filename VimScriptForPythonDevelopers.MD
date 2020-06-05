@@ -467,12 +467,12 @@ endif
 
 **Python:**
 ```python
-s = ":".join(['a', 'b', 'c'])
+s = ":".join(['ab', 'cd', 'ef'])
 ```
 
 **VimScript:**
 ```vim
-let s = join(['a', 'b', 'c'], ':')
+let s = join(['ab', 'cd', 'ef'], ':')
 ```
 
 *Help:* [join()](https://vimhelp.org/eval.txt.html#join%28%29)
@@ -661,6 +661,26 @@ echo "Character with value 65 is " .. nr2char(65)
 ```
 
 *Help:* [char2nr()](https://vimhelp.org/eval.txt.html#chr%28%29), [nr2char()](https://vimhelp.org/eval.txt.html#or%28%29)
+
+### Getting the character values of a string
+
+**Python:**
+```python
+l = [ord(i) for i in 'Hello']
+s = ''.join(chr(i) for i in l)
+print(s)
+print(l)
+```
+
+**VimScript:**
+```vim
+let l = str2list('Hello')
+let s = list2str(l)
+echo s
+echo l
+```
+
+*Help:* [str2list()](https://vimhelp.org/eval.txt.html#str2list%28%29), [list2str()](https://vimhelp.org/eval.txt.html#list2str%28%29)
 
 ### String Methods
 
@@ -953,15 +973,35 @@ let n = l->len()
 ```python
 l = [3, 2, 1]
 l.sort()
+print(l)
 ```
 
 **VimScript:**
 ```vim
 let l = [3, 2, 1]
-call sort(l)
+echo l->sort()
 ```
 
 *Help:* [sort()](https://vimhelp.org/eval.txt.html#sort%28%29)
+
+### Getting unique elements in a List
+
+**Python:**
+```python
+l = ['a', 'b', 'b', 'c', 'c', 'd']
+# order of the elements is not retained
+tset = set(l)
+print(list(tset))
+```
+
+**VimScript:**
+```vim
+" needs a sorted list
+let l = ['a', 'b', 'b', 'c', 'c', 'd']
+echo copy(l)->uniq()
+```
+
+*Help:* [uniq()](https://vimhelp.org/eval.txt.html#uniq%28%29)
 
 ### Reverse a List
 
@@ -969,12 +1009,13 @@ call sort(l)
 ```python
 l = [1, 2, 3]
 l.reverse()
+print(l)
 ```
 
 **VimScript:**
 ```vim
 let l = [1, 2, 3]
-call reverse(l)
+echo reverse(l)
 ```
 
 *Help:* [reverse()](https://vimhelp.org/eval.txt.html#reverse%28%29)
