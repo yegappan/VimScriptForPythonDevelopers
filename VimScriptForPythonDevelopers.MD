@@ -3247,7 +3247,7 @@ sleep 5
 sleep 200m
 ```
 
-*Help:* [:sleep](https://vimhelp.org/eval.txt.html#%3asleep)
+*Help:* [:sleep](https://vimhelp.org/various.txt.html#%3asleep)
 
 ------------------------------------------------------------------------------
 
