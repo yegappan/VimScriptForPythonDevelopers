@@ -3230,6 +3230,25 @@ call timer_stopall()
 
 *Help:* [timer_start()](https://vimhelp.org/eval.txt.html#timer_start%28%29)
 
+### Sleeping for a specified number of seconds
+
+**Python:**
+```python
+import time
+time.sleep(5)
+time.sleep(0.2)
+```
+
+**VimScript:**
+```vim
+" sleep for 5 seconds
+sleep 5
+" sleep for 200 milliseconds
+sleep 200m
+```
+
+*Help:* [:sleep](https://vimhelp.org/eval.txt.html#%3asleep)
+
 ------------------------------------------------------------------------------
 
 ## JSON encoder and decoder
