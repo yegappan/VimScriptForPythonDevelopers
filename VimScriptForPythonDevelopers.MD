@@ -45,6 +45,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [Binary Data](#binary-data)
 * [Timers](#timers)
 * [JSON encoder and decoder](#json-encoder-and-decoder)
+* [Network Sockets](#network-sockets)
 
 ------------------------------------------------------------------------------
 
@@ -3275,4 +3276,61 @@ echo x
 ```
 
 *Help:* [json_encode()](https://vimhelp.org/eval.txt.html#json_encode%28%29), [json_decode()](https://vimhelp.org/eval.txt.html#json_decode%28%29), [js_encode()](https://vimhelp.org/eval.txt.html#js_encode%28%29), [js_decode()](https://vimhelp.org/eval.txt.html#js_decode%28%29)
+
+------------------------------------------------------------------------------
+
+## Network Sockets
+
+**Python:**
+```python
+import requests
+# Get a web page from http://httpbin.org
+def Display_Page():
+  r = requests.get('http://httpbin.org/')
+  if r.status_code == requests.codes.ok:
+    # display the received header and contents
+    print(r.headers)
+    print(r.text)
+  else:
+    print("Error: Failed to open URL")
+Display_Page()
+```
+
+**VimScript:**
+```vim
+let g:rcvd_data = []
+
+" channel data callback function. Called for every received line.
+func Chan_data_cb(ch, msg)
+  call add(g:rcvd_data, a:msg)
+endfunc
+
+" channel close callback function.
+func Chan_close_cb(ch)
+  echo g:rcvd_data
+endfunc
+
+func Display_Page()
+  let addr = "httpbin.org:80"
+  let ch_opt = {}
+  " data received is processed one line at a time
+  let ch_opt.mode = 'nl'
+  let ch_opt.waittime = -1
+  let ch_opt.drop = "never"
+  let ch_opt.callback = function('Chan_data_cb')
+  let ch_opt.close_cb = function('Chan_close_cb')
+  " open the channel
+  let ch = ch_open(addr, ch_opt)
+  if ch_status(ch) != "open"
+    echomsg "Failed to open channel, status = " .. ch_status(ch)
+    return
+  endif
+  " send a http request
+  call ch_sendraw(ch, "GET / HTTP/1.0\nHost: httpbin.org\n\n")
+endfunc
+
+call Display_Page()
+```
+
+*Help:* [job-channel-overview](https://vimhelp.org/channel.txt.html#job-channel-overview), [ch_open()](https://vimhelp.org/channel.txt.html#ch_open%28%29), [ch_status()](https://vimhelp.org/channel.txt.html#ch_status%28%29), [ch_sendraw()](https://vimhelp.org/channel.txt.html#ch_sendraw%28%29), [ch_close()](https://vimhelp.org/channel.txt.html#ch_close%28%29)
 
