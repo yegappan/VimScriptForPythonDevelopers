@@ -46,6 +46,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [Timers](#timers)
 * [JSON encoder and decoder](#json-encoder-and-decoder)
 * [Network Sockets](#network-sockets)
+* [Background Processes](#background-processes)
 
 ------------------------------------------------------------------------------
 
@@ -3334,3 +3335,38 @@ call Display_Page()
 
 *Help:* [job-channel-overview](https://vimhelp.org/channel.txt.html#job-channel-overview), [ch_open()](https://vimhelp.org/channel.txt.html#ch_open%28%29), [ch_status()](https://vimhelp.org/channel.txt.html#ch_status%28%29), [ch_sendraw()](https://vimhelp.org/channel.txt.html#ch_sendraw%28%29), [ch_close()](https://vimhelp.org/channel.txt.html#ch_close%28%29)
 
+------------------------------------------------------------------------------
+
+## Background Processes
+
+### Starting a background process and communicating with it
+
+The 'bc' calculator utility is used in the below example for illustrative purposes only.
+
+**Python:**
+```python
+import subprocess
+procObj = subprocess.Popen('bc',
+			stdin=subprocess.PIPE,
+			stdout=subprocess.PIPE,
+			shell=True)
+lines, err = procObj.communicate("12 * 6\n")
+print("Result = " + lines)
+print("Exitcode = " + str(procObj.returncode))
+```
+
+**VimScript:**
+```vim
+let job = job_start('bc')
+if job_status(job) != "run"
+  echo "Failed to start bc"
+else
+  let output = ch_evalraw(job, "6 * 12\n")
+  echo "Result =" output
+  call job_stop(job, "kill")
+  let info = job_info(job)
+  echo "Exitcode = " info.exitval
+endif
+```
+
+*Help:* [job](https://vimhelp.org/channel.txt.html#job), [job_start()](https://vimhelp.org/channel.txt.html#job_start%28%29), [job_status()](https://vimhelp.org/channel.txt.html#job_status%28%29), [job_stop()](https://vimhelp.org/channel.txt.html#job_stop%28%29), [job_info()](https://vimhelp.org/channel.txt.html#job_info%28%29)
