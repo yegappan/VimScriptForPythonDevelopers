@@ -47,6 +47,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [JSON encoder and decoder](#json-encoder-and-decoder)
 * [Network Sockets](#network-sockets)
 * [Background Processes](#background-processes)
+* [Unit Tests](#unit-tests)
 
 ------------------------------------------------------------------------------
 
@@ -3370,3 +3371,45 @@ endif
 ```
 
 *Help:* [job](https://vimhelp.org/channel.txt.html#job), [job_start()](https://vimhelp.org/channel.txt.html#job_start%28%29), [job_status()](https://vimhelp.org/channel.txt.html#job_status%28%29), [job_stop()](https://vimhelp.org/channel.txt.html#job_stop%28%29), [job_info()](https://vimhelp.org/channel.txt.html#job_info%28%29)
+
+------------------------------------------------------------------------------
+
+## Unit Tests
+
+**Python:**
+```python
+import unittest
+
+class TestDemoMethods(unittest.TestCase):
+    def test_abc(self):
+        self.assertEqual('FOO'.lower(), 'foo')
+        self.assertNotEqual(1, 2)
+        self.assertTrue('foo' == 'foo')
+        self.assertFalse('FOO' == 'foo')
+        self.assertIsNot('foo', 1)
+        self.assertRegex('ab123xy', '\d+')
+        self.assertNotRegex('abcd', '\d+')
+        with self.assertRaises(TypeError):
+            'a:b'.split(2)
+
+unittest.main()
+```
+
+**VimScript:**
+```vim
+let v:errors = []
+call assert_equal(tolower('FOO'), 'foo')
+call assert_notequal(1, 2)
+call assert_true('foo' == 'foo')
+call assert_false('FOO' == 'foo')
+call assert_fails('let l = split("a:b", [])', 'E730:')
+call assert_match('\d\+', 'ab123xy')
+call assert_notmatch('\d\+', 'abcd')
+if len(v:errors) == 0
+    echo "Test passed"
+else
+    echo "Test failed: ", v:errors
+endif
+```
+
+*Help:* [testing](https://vimhelp.org/testing.txt.html#testing)
