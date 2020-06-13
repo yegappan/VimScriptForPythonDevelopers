@@ -175,6 +175,23 @@ Boolean| `isinstance(x, bool)` | `type(x) is v:t_bool`
 
 *Help:* [type()](https://vimhelp.org/eval.txt.html#type%28%29)
 
+### Variable Namespaces
+
+All the variables in VimScript have a scope. The scope is specified by prefixing the variable name with one of the prefix strings shown in the table below. If a variable name is used without a scope prefix, then inside a function the function local scope is used. Otherwise the global variable scope is used.
+
+Scope Prefix|Description
+-----|-----------
+g: | global
+l: | function-local
+s: | script-local
+a: | function argument
+v: | internal
+b: | buffer local
+w: | window local
+t: | tab local
+
+*Help:* [global-variable](https://vimhelp.org/eval.txt.html#global-variable), [local-variable](https://vimhelp.org/eval.txt.html#local-variable), [script-variable](https://vimhelp.org/eval.txt.html#script-variable), [function-argument](https://vimhelp.org/eval.txt.html#function-argument), [vim-variable](https://vimhelp.org/eval.txt.html#vim-variable), [buffer-variable](https://vimhelp.org/eval.txt.html#buffer-variable), [window-variable](https://vimhelp.org/eval.txt.html#window-variable), [tabpage-variable](https://vimhelp.org/eval.txt.html#tabpage-variable)
+
 ------------------------------------------------------------------------------
 
 ## Operators
@@ -3412,4 +3429,4 @@ else
 endif
 ```
 
-*Help:* [testing](https://vimhelp.org/testing.txt.html#testing)
+*Help:* [testing](https://vimhelp.org/testing.txt.html#testing), [v:errors](https://vimhelp.org/eval.txt.html#errors-variable)
