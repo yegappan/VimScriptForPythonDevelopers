@@ -1749,7 +1749,7 @@ endif
 ```python
 if status == True:
     if a >= 1:
-	print("Nested if")
+        print("Nested if")
 ```
 
 **VimScript:**
@@ -1769,7 +1769,7 @@ endif
 
 **Python:**
 ```python
-for i in range(5) :
+for i in range(5):
     print(i)
 ```
 
@@ -1829,7 +1829,7 @@ endfor
 ```python
 for i in range(10):
     for j in range(10):
-	print(str(i) + 'x' + str(j) + '=' + str(i * j))
+        print(str(i) + 'x' + str(j) + '=' + str(i * j))
 ```
 
 **VimScript:**
@@ -1981,7 +1981,7 @@ endfunction
 def Sum(v1, *args):
     sum = v1
     for i in *args:
-	sum += i
+        sum += i
     return sum
 ```
 
@@ -2140,7 +2140,7 @@ echo Bar(6)
 ```python
 def Foo(base):
     def Bar(val):
-	return base + val
+        return base + val
     return Bar
 
 F = Foo(10)
@@ -2326,7 +2326,7 @@ try:
     raise Exception('MyException')
 except Exception as e:
     if str(e) == 'MyException':
-	print("Caught MyException")
+        print("Caught MyException")
 finally:
     print("Finally block")
 ```
@@ -2684,8 +2684,8 @@ echo "Elasped time" reltimefloat(elapsed_time)
 ```python
 import subprocess
 procObj = subprocess.Popen('grep class *.java',
-			stdout=subprocess.PIPE,
-			shell=True)
+    stdout=subprocess.PIPE,
+    shell=True)
 lines, err = procObj.communicate()
 print(lines)
 print("Error = " + str(procObj.returncode))
@@ -2706,8 +2706,8 @@ echo "Error = " .. v:shell_error
 ```python
 import subprocess
 procObj = subprocess.Popen('grep class *.java',
-			stdout=subprocess.PIPE,
-			shell=True)
+    stdout=subprocess.PIPE,
+    shell=True)
 lines, err = procObj.communicate()
 print("Number of matches = " + str(len(lines.splitlines())))
 ```
@@ -2726,9 +2726,9 @@ echo "Number of matches = " .. len(lines)
 ```python
 import subprocess
 procObj = subprocess.Popen('wc',
-			stdout=subprocess.PIPE,
-			stdin=subprocess.PIPE,
-			shell=True)
+    stdout=subprocess.PIPE,
+    stdin=subprocess.PIPE,
+    shell=True)
 lines, err = procObj.communicate("one\ntwo\n")
 print(lines)
 print("Error = " + str(procObj.returncode))
@@ -3365,9 +3365,9 @@ The 'bc' calculator utility is used in the below example for illustrative purpos
 ```python
 import subprocess
 procObj = subprocess.Popen('bc',
-			stdin=subprocess.PIPE,
-			stdout=subprocess.PIPE,
-			shell=True)
+    stdin=subprocess.PIPE,
+    stdout=subprocess.PIPE,
+    shell=True)
 lines, err = procObj.communicate("12 * 6\n")
 print("Result = " + lines)
 print("Exitcode = " + str(procObj.returncode))
