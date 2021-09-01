@@ -205,7 +205,7 @@ subtraction| `a = 30 - 10` | `let a = 30 - 10`
 multiplication| `a = 3 * 5` | `let a = 3 * 5`
 division| `a = 22 / 7` | `let a = 22 / 7`
 modulus| `a = 10 % 3` | `let a = 10 % 3`
-exponentiation| `a = 2 ** 3` | `let a = float2nr(pow(2, 3))`
+exponentiation| `a = 2 ** 3` | `let a = pow(2, 3)`
 floor division| `a = 10 // 3` | `let a = floor(10 / 3.0)`
 
 *Help:* [expr5](https://vimhelp.org/eval.txt.html#expr5)
