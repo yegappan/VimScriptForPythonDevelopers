@@ -160,7 +160,7 @@ String to List| `eval(str)` | `eval(str)`
 Dict to String| `str(d)` | `string(d)`
 String to Dict| `eval(str)` | `eval(str)`
 
-*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29), [str2nr()](https://vimhelp.org/eval.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/eval.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/eval.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
+*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29), [str2nr()](https://vimhelp.org/builtin.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/builtin.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/builtin.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/builtin.txt.html#floor%28%29), [eval()](https://vimhelp.org/builtin.txt.html#eval%28%29)
 
 ### Type Check
 
@@ -173,7 +173,7 @@ Dictionary| `isintance(x, dict)` | `type(x) is v:t_dict`
 Float| `isintance(x, float)` | `type(x) is v:t_float`
 Boolean| `isinstance(x, bool)` | `type(x) is v:t_bool`
 
-*Help:* [type()](https://vimhelp.org/eval.txt.html#type%28%29)
+*Help:* [type()](https://vimhelp.org/builtin.txt.html#type%28%29)
 
 ### Variable Namespaces
 
@@ -256,7 +256,7 @@ bitwise XOR| `c = a ^ b` | `let c = xor(a, b)`
 left shift| `c = a << b` | `let c = a * float2nr(pow(2, b))`
 right shift| `c = a >> b` | `let c = float2nr(floor(a / pow(2, b)))`
 
-*Help:* [and()](https://vimhelp.org/eval.txt.html#and%28%29), [or()](https://vimhelp.org/eval.txt.html#or%28%29), [invert()](https://vimhelp.org/eval.txt.html#invert%28%29), [xor()](https://vimhelp.org/eval.txt.html#xor%28%29)
+*Help:* [and()](https://vimhelp.org/builtin.txt.html#and%28%29), [or()](https://vimhelp.org/builtin.txt.html#or%28%29), [invert()](https://vimhelp.org/builtin.txt.html#invert%28%29), [xor()](https://vimhelp.org/builtin.txt.html#xor%28%29)
 
 ### Identity Operators
 
@@ -306,7 +306,7 @@ let n = strlen("Hello World")
 let n = strwidth("Hello World")
 ```
 
-*Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29), [strlen()](https://vimhelp.org/eval.txt.html#strlen%28%29), [strwidth()](https://vimhelp.org/eval.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/eval.txt.html#strdisplaywidth%28%29)
+*Help:* [len()](https://vimhelp.org/builtin.txt.html#len%28%29), [strlen()](https://vimhelp.org/builtin.txt.html#strlen%28%29), [strwidth()](https://vimhelp.org/builtin.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/builtin.txt.html#strdisplaywidth%28%29)
 
 ### String Concatenation
 
@@ -417,7 +417,7 @@ let sub = strpart(str, 2, 3)
 let sub = strcharpart(str, 2, 3)
 ```
 
-*Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/eval.txt.html#strpart%28%29)
+*Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/builtin.txt.html#strpart%28%29)
 
 ### Counting the occurrences of a substring
 
@@ -433,7 +433,7 @@ let str = "Hello World"
 let c = str->count("l")
 ```
 
-*Help:* [count()](https://vimhelp.org/eval.txt.html#count%28%29)
+*Help:* [count()](https://vimhelp.org/builtin.txt.html#count%28%29)
 
 ### Finding the position of a substring
 
@@ -453,7 +453,7 @@ let idx = str->strridx("ing")  " rightmost
 " idx == -1 if the substring is not present
 ```
 
-*Help:* [stridx()](https://vimhelp.org/eval.txt.html#stridx%28%29), [strridx()](https://vimhelp.org/eval.txt.html#strridx%28%29)
+*Help:* [stridx()](https://vimhelp.org/builtin.txt.html#stridx%28%29), [strridx()](https://vimhelp.org/builtin.txt.html#strridx%28%29)
 
 ### Checking whether a string starts with or ends with a substring
 
@@ -495,7 +495,7 @@ s = ":".join(['ab', 'cd', 'ef'])
 let s = join(['ab', 'cd', 'ef'], ':')
 ```
 
-*Help:* [join()](https://vimhelp.org/eval.txt.html#join%28%29)
+*Help:* [join()](https://vimhelp.org/builtin.txt.html#join%28%29)
 
 ### Changing the case of letters in a string
 
@@ -513,7 +513,7 @@ let l = s->tolower()
 let l = s->toupper()
 ```
 
-*Help:* [tolower()](https://vimhelp.org/eval.txt.html#tolower%28%29), [toupper()](https://vimhelp.org/eval.txt.html#toupper%28%29)
+*Help:* [tolower()](https://vimhelp.org/builtin.txt.html#tolower%28%29), [toupper()](https://vimhelp.org/builtin.txt.html#toupper%28%29)
 
 ### Replace a substring
 
@@ -529,7 +529,7 @@ let s = "Hello World"
 let s2 = s->substitute("Hello", "New", 'g')
 ```
 
-*Help:* [substitute()](https://vimhelp.org/eval.txt.html#substitute%28%29)
+*Help:* [substitute()](https://vimhelp.org/builtin.txt.html#substitute%28%29)
 
 ### Split a string
 
@@ -545,14 +545,22 @@ let s = "a:b:c"
 let s2 = s->split(":")
 ```
 
-*Help:* [split()](https://vimhelp.org/eval.txt.html#split%28%29), [join()](https://vimhelp.org/eval.txt.html#join%28%29),
+*Help:* [split()](https://vimhelp.org/builtin.txt.html#split%28%29), [join()](https://vimhelp.org/builtin.txt.html#join%28%29),
 
 ### Stripping leading and trailing whitespace from a string
 
 **Python:**
 ```python
-s = "  vim  "
+s = "  python  "
+# strip leading and trailing whitespace
 s2 = s.strip()
+print(f"<{s2}>")
+# strip leading space characters
+s2 = s.lstrip(' ')
+print(f"<{s2}>")
+# strip trailing space characters
+s2 = s.rstrip(' ')
+print(f"<{s2}>")
 ```
 
 **VimScript:**
@@ -560,13 +568,16 @@ s2 = s.strip()
 let s = "  vim  "
 " strip leading and trailing whitespace
 let s2 = s->trim()
+echo $"<{s2}>"
 " strip leading space characters
 let s2 = s->trim(' ', 1)
+echo $"<{s2}>"
 " strip trailing space characters
 let s2 = s->trim(' ', 2)
+echo $"<{s2}>"
 ```
 
-*Help:* [trim()](https://vimhelp.org/eval.txt.html#trim%28%29)
+*Help:* [trim()](https://vimhelp.org/builtin.txt.html#trim%28%29)
 
 ### Checking whether a string contains specific type of characters
 
@@ -630,7 +641,7 @@ let s = string([1, 2, 3])
 let s = string({'a' : 1, 'b' : 2})
 ```
 
-*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
+*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29)
 
 ### Evaluating a string
 
@@ -650,7 +661,7 @@ echo y
 let n = eval("min([4, 3, 5])")
 ```
 
-*Help:* [eval()](https://vimhelp.org/eval.txt.html#eval%28%29)
+*Help:* [eval()](https://vimhelp.org/builtin.txt.html#eval%28%29)
 
 ### Executing commands in a string
 
@@ -666,6 +677,32 @@ execute "for i in range(5)\necho i\nendfor"
 
 *Help:* [:execute](https://vimhelp.org/eval.txt.html#:execute)
 
+### Substituting variables in a string (String Interpolation)
+
+**Python:**
+```python
+aVar = 10
+str = f"Value of 'a' is {aVar}"
+print(str)
+
+bList = [1, 2, 3]
+str = f"bList is {bList}"
+print(str)
+```
+
+**VimScript:**
+```vim
+let aVar = 10
+let str = $"Value of 'a' is {aVar}"
+echo str
+
+let bList = [1, 2, 3]
+let str = $"bList is {string(bList)}"
+echo str
+```
+
+*Help:* [interp-string](https://vimhelp.org/eval.txt.html#interp-string)
+
 ### Getting the Unicode value of a character and vice versa
 
 **Python:**
@@ -680,7 +717,7 @@ echo "Ordinal value of 'a' is " .. char2nr('a')
 echo "Character with value 65 is " .. nr2char(65)
 ```
 
-*Help:* [char2nr()](https://vimhelp.org/eval.txt.html#chr%28%29), [nr2char()](https://vimhelp.org/eval.txt.html#or%28%29)
+*Help:* [char2nr()](https://vimhelp.org/builtin.txt.html#chr%28%29), [nr2char()](https://vimhelp.org/builtin.txt.html#or%28%29)
 
 ### Getting the character values of a string
 
@@ -700,7 +737,7 @@ echo s
 echo l
 ```
 
-*Help:* [str2list()](https://vimhelp.org/eval.txt.html#str2list%28%29), [list2str()](https://vimhelp.org/eval.txt.html#list2str%28%29)
+*Help:* [str2list()](https://vimhelp.org/builtin.txt.html#str2list%28%29), [list2str()](https://vimhelp.org/builtin.txt.html#list2str%28%29)
 
 ### String Methods
 
@@ -814,7 +851,7 @@ call add(l, 5)
 let l += [5, 6]
 ```
 
-*Help:* [add()](https://vimhelp.org/eval.txt.html#add%28%29)
+*Help:* [add()](https://vimhelp.org/builtin.txt.html#add%28%29)
 
 ### Extending a List using another List
 
@@ -832,7 +869,7 @@ call extend(l, [2, 3])
 let l += [6, 7]
 ```
 
-*Help:* [extend()](https://vimhelp.org/eval.txt.html#extend%28%29)
+*Help:* [extend()](https://vimhelp.org/builtin.txt.html#extend%28%29)
 
 ### Inserting an item in a List
 
@@ -851,7 +888,7 @@ eval l->insert(2, 1)
 eval l->insert(5)
 ```
 
-*Help:* [insert()](https://vimhelp.org/eval.txt.html#insert%28%29)
+*Help:* [insert()](https://vimhelp.org/builtin.txt.html#insert%28%29)
 
 ### Removing an item from a List
 
@@ -872,7 +909,7 @@ endif
 unlet l[0]
 ```
 
-*Help:* [remove()](https://vimhelp.org/eval.txt.html#remove%28%29), [:unlet](https://vimhelp.org/eval.txt.html#%3aunlet)
+*Help:* [remove()](https://vimhelp.org/builtin.txt.html#remove%28%29), [:unlet](https://vimhelp.org/eval.txt.html#%3aunlet)
 
 ### Removing the last element from a List
 
@@ -888,7 +925,7 @@ let l = [1, 2, 3]
 let v = l->remove(-1)
 ```
 
-*Help:* [remove()](https://vimhelp.org/eval.txt.html#remove%28%29)
+*Help:* [remove()](https://vimhelp.org/builtin.txt.html#remove%28%29)
 
 ### Find the index of an item in a List
 
@@ -904,7 +941,25 @@ let l = [1, 2, 3]
 let x = l->index(2)
 ```
 
-*Help:* [index()](https://vimhelp.org/eval.txt.html#index%28%29)
+*Help:* [index()](https://vimhelp.org/builtin.txt.html#index%28%29)
+
+### Find the index of an item in a List of Dicts by a Dict item value
+
+**Python:**
+```python
+colors = [{'color': 'red'}, {'color': 'blue'}, {'color': 'green'}]
+idx = next((i for i, v in enumerate(colors) if v['color'] == 'blue'), -1)
+print(idx)
+```
+
+**VimScript:**
+```vim
+let colors = [{'color': 'red'}, {'color': 'blue'}, {'color': 'green'}]
+let idx = indexof(colors, {i, v -> v.color == 'blue'})
+echo idx
+```
+
+*Help:* [indexof()](https://vimhelp.org/builtin.txt.html#indexof%28%29)
 
 ### List slices
 
@@ -953,7 +1008,7 @@ l = ['vim'] * 4
 let l = ['vim']->repeat(4)
 ```
 
-*Help:* [repeat()](https://vimhelp.org/eval.txt.html#repeat%28%29)
+*Help:* [repeat()](https://vimhelp.org/builtin.txt.html#repeat%28%29)
 
 ### Count the number of occurrences of an item in a List
 
@@ -969,7 +1024,7 @@ let l = [2, 4, 4, 5]
 let x = l->count(2)
 ```
 
-*Help:* [count()](https://vimhelp.org/eval.txt.html#count%28%29)
+*Help:* [count()](https://vimhelp.org/builtin.txt.html#count%28%29)
 
 ### Finding the List length
 
@@ -985,7 +1040,44 @@ let l = ['a', 'b', 'c']
 let n = l->len()
 ```
 
-*Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29)
+*Help:* [len()](https://vimhelp.org/builtin.txt.html#len%28%29)
+
+### List Iteration
+
+**Python:**
+```python
+l = [10, 20, 30]
+for v in l:
+  print(v)
+
+# Print both the list index and the value
+for i, v in enumerate(l):
+  print(i, v)
+
+# Use a for loop for list iteration
+for i in range(len(l)):
+  print(i, l[i])
+```
+
+**VimScript:**
+```vim
+let l = [10, 20, 30]
+for v in l
+  echo v
+endfor
+
+" Print both the list index and the value
+for [i, v] in items(l)
+  echo i v
+endfor
+
+" Use a for loop for list iteration
+for i in range(len(l))
+  echo i l[i]
+endfor
+```
+
+*Help:* [:for](https://vimhelp.org/eval.txt.html#%3Afor)
 
 ### Sort a List
 
@@ -1002,7 +1094,7 @@ let l = [3, 2, 1]
 echo l->sort()
 ```
 
-*Help:* [sort()](https://vimhelp.org/eval.txt.html#sort%28%29)
+*Help:* [sort()](https://vimhelp.org/builtin.txt.html#sort%28%29)
 
 ### Getting unique elements in a List
 
@@ -1021,7 +1113,7 @@ let l = ['a', 'b', 'b', 'c', 'c', 'd']
 echo copy(l)->uniq()
 ```
 
-*Help:* [uniq()](https://vimhelp.org/eval.txt.html#uniq%28%29)
+*Help:* [uniq()](https://vimhelp.org/builtin.txt.html#uniq%28%29)
 
 ### Reverse a List
 
@@ -1038,7 +1130,7 @@ let l = [1, 2, 3]
 echo reverse(l)
 ```
 
-*Help:* [reverse()](https://vimhelp.org/eval.txt.html#reverse%28%29)
+*Help:* [reverse()](https://vimhelp.org/builtin.txt.html#reverse%28%29)
 
 ### Copying a List
 
@@ -1054,7 +1146,7 @@ let l = [3, 2, 1]
 let l2 = l->copy()
 ```
 
-*Help:* [copy()](https://vimhelp.org/eval.txt.html#copy%28%29)
+*Help:* [copy()](https://vimhelp.org/builtin.txt.html#copy%28%29)
 
 ### Deep Copying a List
 
@@ -1071,7 +1163,7 @@ let a = [[1, 2], [3, 4]]
 let b = a->deepcopy()
 ```
 
-*Help:* [deepcopy()](https://vimhelp.org/eval.txt.html#deepcopy%28%29)
+*Help:* [deepcopy()](https://vimhelp.org/builtin.txt.html#deepcopy%28%29)
 
 ### Empty a List
 
@@ -1142,7 +1234,7 @@ odd = [x for x in range(10) if x % 2]
 let odd = filter(range(10), {idx, v -> v % 2})
 ```
 
-*Help:* [filter()](https://vimhelp.org/eval.txt.html#filter%28%29)
+*Help:* [filter()](https://vimhelp.org/builtin.txt.html#filter%28%29)
 
 ### Map List elements
 
@@ -1159,7 +1251,7 @@ num_str = [str(x) for x in range(10)]
 let num_str = map(range(10), {idx, v -> string(v)})
 ```
 
-*Help:* [map()](https://vimhelp.org/eval.txt.html#map%28%29)
+*Help:* [map()](https://vimhelp.org/builtin.txt.html#map%28%29)
 
 ### Reducing List elements
 
@@ -1188,7 +1280,7 @@ let sum = reduce([1, 2, 3, 4], function('SumNum'))
 echo sum
 ```
 
-*Help:* [reduce()](https://vimhelp.org/eval.txt.html#reduce%28%29)
+*Help:* [reduce()](https://vimhelp.org/builtin.txt.html#reduce%28%29)
 
 ### Finding the mix/max value in a List
 
@@ -1208,7 +1300,7 @@ let v2 = l->max()
 echo v1 v2
 ```
 
-*Help:* [max()](https://vimhelp.org/eval.txt.html#max%28%29), [min()](https://vimhelp.org/eval.txt.html#min%28%29)
+*Help:* [max()](https://vimhelp.org/builtin.txt.html#max%28%29), [min()](https://vimhelp.org/builtin.txt.html#min%28%29)
 
 ### Converting a List to a string
 
@@ -1222,7 +1314,7 @@ s = str([3, 5, 7])
 let s = string([3, 5, 7])
 ```
 
-*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
+*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29)
 
 ### List Methods
 
@@ -1310,7 +1402,7 @@ let d = {'red' : 10, 'blue' : 20}
 let v = get(d, 'red')
 ```
 
-*Help:* [get()](https://vimhelp.org/eval.txt.html#get%28%29)
+*Help:* [get()](https://vimhelp.org/builtin.txt.html#get%28%29)
 
 ### Adding a new Dict item
 
@@ -1342,7 +1434,7 @@ let d = {}
 eval d->extend({'color' : 'grey'})
 ```
 
-*Help:* [extend()](https://vimhelp.org/eval.txt.html#extend%28%29)
+*Help:* [extend()](https://vimhelp.org/builtin.txt.html#extend%28%29)
 
 ### Removing an item from a Dict
 
@@ -1358,7 +1450,7 @@ let d = {'red' : 10, 'blue' : 20}
 call remove(d, 'red')
 ```
 
-*Help:* [remove()](https://vimhelp.org/eval.txt.html#remove%28%29),
+*Help:* [remove()](https://vimhelp.org/builtin.txt.html#remove%28%29),
 
 ### Clearing all the items from a Dict
 
@@ -1390,7 +1482,7 @@ let d = {'red' : 10, 'blue' : 20}
 let n = d->len()
 ```
 
-*Help:* [len()](https://vimhelp.org/eval.txt.html#len%28%29)
+*Help:* [len()](https://vimhelp.org/builtin.txt.html#len%28%29)
 
 ### Count the number of occurrences of a value in a Dict
 
@@ -1408,7 +1500,7 @@ let x = d->count(10)
 echo x
 ```
 
-*Help:* [count()](https://vimhelp.org/eval.txt.html#count%28%29)
+*Help:* [count()](https://vimhelp.org/builtin.txt.html#count%28%29)
 
 ### Checking Dict membership
 
@@ -1427,7 +1519,7 @@ if d->has_key('red')
 endif
 ```
 
-*Help:* [has_key()](https://vimhelp.org/eval.txt.html#has_key%28%29)
+*Help:* [has_key()](https://vimhelp.org/builtin.txt.html#has_key%28%29)
 
 ### Iterating through all the keys in a Dict
 
@@ -1451,7 +1543,7 @@ for k in d->keys()
 endfor
 ```
 
-*Help:* [keys()](https://vimhelp.org/eval.txt.html#keys%28%29)
+*Help:* [keys()](https://vimhelp.org/builtin.txt.html#keys%28%29)
 
 ### Iterating through all the values in a Dict
 
@@ -1470,7 +1562,7 @@ for v in d->values()
 endfor
 ```
 
-*Help:* [values()](https://vimhelp.org/eval.txt.html#values%28%29)
+*Help:* [values()](https://vimhelp.org/builtin.txt.html#values%28%29)
 
 ### Iterating through all the key, value pairs in a Dict
 
@@ -1489,7 +1581,7 @@ for [k, v] in d->items()
 endfor
 ```
 
-*Help:* [items()](https://vimhelp.org/eval.txt.html#items%28%29)
+*Help:* [items()](https://vimhelp.org/builtin.txt.html#items%28%29)
 
 ### Copying a Dict
 
@@ -1505,7 +1597,7 @@ let d = {'red' : 10, 'blue' : 20}
 let new_d = d->copy()
 ```
 
-*Help:* [copy()](https://vimhelp.org/eval.txt.html#copy%28%29)
+*Help:* [copy()](https://vimhelp.org/builtin.txt.html#copy%28%29)
 
 ### Deep Copying a Dict
 
@@ -1522,7 +1614,7 @@ let a = {'x' : [1, 2], 'y' : [3, 4]}
 let b = a->deepcopy()
 ```
 
-*Help:* [deepcopy()](https://vimhelp.org/eval.txt.html#deepcopy%28%29)
+*Help:* [deepcopy()](https://vimhelp.org/builtin.txt.html#deepcopy%28%29)
 
 ### Comparing two Dicts
 
@@ -1580,7 +1672,7 @@ let d2 = copy(d1)->filter({k, v -> v == 10})
 echo d1 d2
 ```
 
-*Help:* [filter()](https://vimhelp.org/eval.txt.html#filter%28%29)
+*Help:* [filter()](https://vimhelp.org/builtin.txt.html#filter%28%29)
 
 ### Map Dict elements
 
@@ -1605,7 +1697,7 @@ let d2 = copy(d1)->map({k, v -> v + 5})
 echo d1 d2
 ```
 
-*Help:* [map()](https://vimhelp.org/eval.txt.html#map%28%29)
+*Help:* [map()](https://vimhelp.org/builtin.txt.html#map%28%29)
 
 ### Finding the min/max value in a Dict
 
@@ -1625,7 +1717,7 @@ let v2 = d->max()
 echo v1 v2
 ```
 
-*Help:* [max()](https://vimhelp.org/eval.txt.html#max%28%29), [min()](https://vimhelp.org/eval.txt.html#min%28%29)
+*Help:* [max()](https://vimhelp.org/builtin.txt.html#max%28%29), [min()](https://vimhelp.org/builtin.txt.html#min%28%29)
 
 ### Converting a Dict to a string
 
@@ -1639,7 +1731,7 @@ d = str({'a' : 1, 'b' : 2})
 let d = string({'a' : 1, 'b' : 2})
 ```
 
-*Help:* [string()](https://vimhelp.org/eval.txt.html#string%28%29)
+*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29)
 
 ### Dictionary Methods
 
@@ -2383,7 +2475,7 @@ let lines = readfile("myfile.txt")
 " lines == ['line1', 'line2'] 
 ```
 
-*Help:* [readfile()](https://vimhelp.org/eval.txt.html#readfile%28%29)
+*Help:* [readfile()](https://vimhelp.org/builtin.txt.html#readfile%28%29)
 
 ### Writing lines to a file
 **Python:**
@@ -2402,7 +2494,7 @@ with open('myfile.txt', 'w') as fh:
 call writefile(['line1', 'line2'], 'myfile.txt')
 ```
 
-*Help:* [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
+*Help:* [writefile()](https://vimhelp.org/builtin.txt.html#writefile%28%29)
 
 ### Appending lines to a file
 **Python:**
@@ -2417,7 +2509,7 @@ with open('myfile.txt', 'a') as fh:
 call writefile(['line3', 'line4'], 'myfile.txt', 'a')
 ```
 
-*Help:* [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
+*Help:* [writefile()](https://vimhelp.org/builtin.txt.html#writefile%28%29)
 
 ### Checking whether a file exists
 **Python:**
@@ -2434,7 +2526,7 @@ if filereadable('myfile.txt')
 endif
 ```
 
-*Help:* [filereadable()](https://vimhelp.org/eval.txt.html#filereadable%28%29)
+*Help:* [filereadable()](https://vimhelp.org/builtin.txt.html#filereadable%28%29)
 
 ### Deleting a file
 **Python:**
@@ -2448,7 +2540,7 @@ os.remove('myfile.txt')
 call delete('myfile.txt')
 ```
 
-*Help:* [remove()](https://vimhelp.org/eval.txt.html#remove%28%29)
+*Help:* [remove()](https://vimhelp.org/builtin.txt.html#remove%28%29)
 
 ### Renaming a file
 **Python:**
@@ -2462,7 +2554,7 @@ os.rename('myfile.txt', 'somefile.txt)
 call rename('myfile.txt', 'somefile.txt')
 ```
 
-*Help:* [rename()](https://vimhelp.org/eval.txt.html#rename%28%29)
+*Help:* [rename()](https://vimhelp.org/builtin.txt.html#rename%28%29)
 
 ### Getting the size of a file
 **Python:**
@@ -2476,7 +2568,7 @@ sz = os.path.getsize('move.py')
 let sz = getfsize('move.py')
 ```
 
-*Help:* [getfsize()](https://vimhelp.org/eval.txt.html#getfsize%28%29)
+*Help:* [getfsize()](https://vimhelp.org/builtin.txt.html#getfsize%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2493,7 +2585,7 @@ os.mkdir('somedir')
 call mkdir('somedir')
 ```
 
-*Help:* [mkdir()](https://vimhelp.org/eval.txt.html#mkdir%28%29)
+*Help:* [mkdir()](https://vimhelp.org/builtin.txt.html#mkdir%28%29)
 
 ### Changing to a directory
 **Python:**
@@ -2506,7 +2598,7 @@ os.chdir('someotherdir')
 call chdir('someotherdir')
 ```
 
-*Help:* [chdir()](https://vimhelp.org/eval.txt.html#chdir%28%29)
+*Help:* [chdir()](https://vimhelp.org/builtin.txt.html#chdir%28%29)
 
 ### Getting the current directory
 **Python:**
@@ -2519,7 +2611,7 @@ dir = os.getcwd()
 let dir = getcwd()
 ```
 
-*Help:* [getcwd()](https://vimhelp.org/eval.txt.html#getcwd%28%29)
+*Help:* [getcwd()](https://vimhelp.org/builtin.txt.html#getcwd%28%29)
 
 ### Deleting a directory
 **Python:**
@@ -2532,7 +2624,7 @@ os.rmdir('somedir')
 call delete('somedir', 'd')
 ```
 
-*Help:* [delete()](https://vimhelp.org/eval.txt.html#delete%28%29)
+*Help:* [delete()](https://vimhelp.org/builtin.txt.html#delete%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2550,7 +2642,7 @@ r = random.randint(0, 2147483647)
 let r = rand()
 ```
 
-*Help:* [rand()](https://vimhelp.org/eval.txt.html#rand%28%29)
+*Help:* [rand()](https://vimhelp.org/builtin.txt.html#rand%28%29)
 
 ### Generating a random number from a seed
 **Python:**
@@ -2567,7 +2659,7 @@ let seed = srand()
 let r = rand(seed)
 ```
 
-*Help:* [srand()](https://vimhelp.org/eval.txt.html#srand%28%29)
+*Help:* [srand()](https://vimhelp.org/builtin.txt.html#srand%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2596,7 +2688,7 @@ tan| `f = math.tan(4)` | `let f = tan(4)`
 tanh| `f = math.tanh(4)` | `let f = tanh(4)`
 trunc| `f = math.trunc(1.3)` | `let f = trunc(1.3)`
 
-*Help:* [ceil()](https://vimhelp.org/eval.txt.html#ceil%28%29), [abs()](https://vimhelp.org/eval.txt.html#abs%28%29), [floor()](https://vimhelp.org/eval.txt.html#floor%28%29), [fmod()](https://vimhelp.org/eval.txt.html#fmod%28%29), [trunc()](https://vimhelp.org/eval.txt.html#trunc%28%29), [exp()](https://vimhelp.org/eval.txt.html#exp%28%29), [log()](https://vimhelp.org/eval.txt.html#log%28%29), [log10()](https://vimhelp.org/eval.txt.html#log10%28%29), [pow()](https://vimhelp.org/eval.txt.html#pow%28%29), [sqrt()](https://vimhelp.org/eval.txt.html#sqrt%28%29), [cos()](https://vimhelp.org/eval.txt.html#cos%28%29), [sin()](https://vimhelp.org/eval.txt.html#sin%28%29), [tan()](https://vimhelp.org/eval.txt.html#tan%28%29), [cosh()](https://vimhelp.org/eval.txt.html#cosh%28%29), [sinh()](https://vimhelp.org/eval.txt.html#sinh%28%29), [tanh()](https://vimhelp.org/eval.txt.html#tanh%28%29), [acos()](https://vimhelp.org/eval.txt.html#acos%28%29), [asin()](https://vimhelp.org/eval.txt.html#asin%28%29), [atan()](https://vimhelp.org/eval.txt.html#atan%28%29), [atan2()](https://vimhelp.org/eval.txt.html#atan2%28%29)
+*Help:* [ceil()](https://vimhelp.org/builtin.txt.html#ceil%28%29), [abs()](https://vimhelp.org/builtin.txt.html#abs%28%29), [floor()](https://vimhelp.org/builtin.txt.html#floor%28%29), [fmod()](https://vimhelp.org/builtin.txt.html#fmod%28%29), [trunc()](https://vimhelp.org/builtin.txt.html#trunc%28%29), [exp()](https://vimhelp.org/builtin.txt.html#exp%28%29), [log()](https://vimhelp.org/builtin.txt.html#log%28%29), [log10()](https://vimhelp.org/builtin.txt.html#log10%28%29), [pow()](https://vimhelp.org/builtin.txt.html#pow%28%29), [sqrt()](https://vimhelp.org/builtin.txt.html#sqrt%28%29), [cos()](https://vimhelp.org/builtin.txt.html#cos%28%29), [sin()](https://vimhelp.org/builtin.txt.html#sin%28%29), [tan()](https://vimhelp.org/builtin.txt.html#tan%28%29), [cosh()](https://vimhelp.org/builtin.txt.html#cosh%28%29), [sinh()](https://vimhelp.org/builtin.txt.html#sinh%28%29), [tanh()](https://vimhelp.org/builtin.txt.html#tanh%28%29), [acos()](https://vimhelp.org/builtin.txt.html#acos%28%29), [asin()](https://vimhelp.org/builtin.txt.html#asin%28%29), [atan()](https://vimhelp.org/builtin.txt.html#atan%28%29), [atan2()](https://vimhelp.org/builtin.txt.html#atan2%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2616,7 +2708,7 @@ print(d.strftime("%c"))
 echo strftime("%c")
 ```
 
-*Help:* [strftime()](https://vimhelp.org/eval.txt.html#strftime%28%29)
+*Help:* [strftime()](https://vimhelp.org/builtin.txt.html#strftime%28%29)
 
 ### Parse a date/time string
 
@@ -2631,7 +2723,7 @@ print(datetime.strptime("1997 Apr 27 11:49:23", "%Y %b %d %X"))
 echo strptime("%Y %b %d %X", "1997 Apr 27 11:49:23")
 ```
 
-*Help:* [strptime()](https://vimhelp.org/eval.txt.html#strptime%28%29)
+*Help:* [strptime()](https://vimhelp.org/builtin.txt.html#strptime%28%29)
 
 ### Getting the time in seconds since epoch
 
@@ -2646,7 +2738,7 @@ print int(time.time())
 echo localtime()
 ```
 
-*Help:* [localtime()](https://vimhelp.org/eval.txt.html#localtime%28%29)
+*Help:* [localtime()](https://vimhelp.org/builtin.txt.html#localtime%28%29)
 
 ### Measuring elapsed time
 
@@ -2672,7 +2764,7 @@ let elapsed_time = reltime(start)
 echo "Elasped time" reltimefloat(elapsed_time)
 ```
 
-*Help:* [reltime()](https://vimhelp.org/eval.txt.html#reltime%28%29), [reltimestr()](https://vimhelp.org/eval.txt.html#reltimestr%28%29), [reltimefloat()](https://vimhelp.org/eval.txt.html#reltimefloat%28%29)
+*Help:* [reltime()](https://vimhelp.org/builtin.txt.html#reltime%28%29), [reltimestr()](https://vimhelp.org/builtin.txt.html#reltimestr%28%29), [reltimefloat()](https://vimhelp.org/builtin.txt.html#reltimefloat%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2698,7 +2790,7 @@ echo lines
 echo "Error = " .. v:shell_error
 ```
 
-*Help:* [system()](https://vimhelp.org/eval.txt.html#system%28%29), [v:shell_error](https://vimhelp.org/eval.txt.html#v%3ashell_error)
+*Help:* [system()](https://vimhelp.org/builtin.txt.html#system%28%29), [v:shell_error](https://vimhelp.org/eval.txt.html#v%3ashell_error)
 
 ### Splitting the output of an external command into lines
 
@@ -2718,7 +2810,7 @@ let lines = systemlist('grep class *.java')
 echo "Number of matches = " .. len(lines)
 ```
 
-*Help:* [systemlist()](https://vimhelp.org/eval.txt.html#systemlist%28%29)
+*Help:* [systemlist()](https://vimhelp.org/builtin.txt.html#systemlist%28%29)
 
 ### Sending input to an external command and getting the output
 
@@ -2741,7 +2833,7 @@ echo lines
 echo "Error = " .. v:shell_error
 ```
 
-*Help:* [system()](https://vimhelp.org/eval.txt.html#system%28%29)
+*Help:* [system()](https://vimhelp.org/builtin.txt.html#system%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2761,7 +2853,7 @@ let ans = input("coffee or tea? ", "tea")
 echo "You selected " .. ans
 ```
 
-*Help:* [input()](https://vimhelp.org/eval.txt.html#input%28%29), [inputlist()](https://vimhelp.org/eval.txt.html#inputlist%28%29), [inputdialog()](https://vimhelp.org/eval.txt.html#inputdialog%28%29)
+*Help:* [input()](https://vimhelp.org/builtin.txt.html#input%28%29), [inputlist()](https://vimhelp.org/builtin.txt.html#inputlist%28%29), [inputdialog()](https://vimhelp.org/builtin.txt.html#inputdialog%28%29)
 
 ### Getting password from the user
 
@@ -2778,7 +2870,7 @@ let passwd = inputsecret("Password: ")
 echo "You entered " .. passwd
 ```
 
-*Help:* [inputsecret()](https://vimhelp.org/eval.txt.html#inputsecret%28%29)
+*Help:* [inputsecret()](https://vimhelp.org/builtin.txt.html#inputsecret%28%29)
 
 ### Print an expression
 
@@ -2796,7 +2888,7 @@ let s = "vim"
 echo "Editor = " .. s
 ```
 
-*Help:* [:echo](https://vimhelp.org/eval.txt.html#%3Aecho), [:echon](https://vimhelp.org/eval.txt.html#%3Aechon), [echoraw()](https://vimhelp.org/eval.txt.html#echoraw%28%29), [:echohl](https://vimhelp.org/eval.txt.html#%3Aechohl), [:echoerr](https://vimhelp.org/eval.txt.html#%3Aechoerr), [:echomsg](https://vimhelp.org/eval.txt.html#%3Aechomsg)
+*Help:* [:echo](https://vimhelp.org/eval.txt.html#%3Aecho), [:echon](https://vimhelp.org/eval.txt.html#%3Aechon), [echoraw()](https://vimhelp.org/builtin.txt.html#echoraw%28%29), [:echohl](https://vimhelp.org/eval.txt.html#%3Aechohl), [:echoerr](https://vimhelp.org/eval.txt.html#%3Aechoerr), [:echomsg](https://vimhelp.org/eval.txt.html#%3Aechomsg)
 
 ### Formatted Output
 
@@ -2816,7 +2908,7 @@ let id = 1001
 echo printf("Name: %s, ID: %d", name, id)
 ```
 
-*Help:* [printf()](https://vimhelp.org/eval.txt.html#printf%28%29)
+*Help:* [printf()](https://vimhelp.org/builtin.txt.html#printf%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2850,7 +2942,7 @@ else
 endif
 ```
 
-*Help:* [getenv()](https://vimhelp.org/eval.txt.html#getenv%28%29), [expr-env](https://vimhelp.org/eval.txt.html#expr-env), [exists()](https://vimhelp.org/eval.txt.html#exists%28%29)
+*Help:* [getenv()](https://vimhelp.org/builtin.txt.html#getenv%28%29), [expr-env](https://vimhelp.org/eval.txt.html#expr-env), [exists()](https://vimhelp.org/builtin.txt.html#exists%28%29)
 
 ### Setting an environment variable
 
@@ -2867,7 +2959,7 @@ call setenv('FOO', 'BAR')
 let $FOO = 'BAR'
 ```
 
-*Help:* [setenv()](https://vimhelp.org/eval.txt.html#setenv%28%29), [:let-environment](https://vimhelp.org/eval.txt.html#%3alet-environment)
+*Help:* [setenv()](https://vimhelp.org/builtin.txt.html#setenv%28%29), [:let-environment](https://vimhelp.org/eval.txt.html#%3alet-environment)
 
 ### Removing an environment variable
 
@@ -2884,7 +2976,7 @@ call setenv('FOO', v:null)
 unlet $FOO
 ```
 
-*Help:* [setenv()](https://vimhelp.org/eval.txt.html#setenv%28%29), [:unlet-environment](https://vimhelp.org/eval.txt.html#%3aunlet-environment)
+*Help:* [setenv()](https://vimhelp.org/builtin.txt.html#setenv%28%29), [:unlet-environment](https://vimhelp.org/eval.txt.html#%3aunlet-environment)
 
 ### Getting all the environment variables
 
@@ -2899,7 +2991,7 @@ print(os.environ)
 echo environ()
 ```
 
-*Help:* [environ()](https://vimhelp.org/eval.txt.html#environ%28%29)
+*Help:* [environ()](https://vimhelp.org/builtin.txt.html#environ%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -2980,7 +3072,7 @@ let l = matchstrpos("Abc 123 Def", '\d\+')
 echo "start:" l[1] "end:" l[2]
 ```
 
-*Help:* [match()](https://vimhelp.org/eval.txt.html#match%28%29), [matchend()](https://vimhelp.org/eval.txt.html#matchend%28%29), [matchstrpos()](https://vimhelp.org/eval.txt.html#matchstrpos%28%29)
+*Help:* [match()](https://vimhelp.org/builtin.txt.html#match%28%29), [matchend()](https://vimhelp.org/builtin.txt.html#matchend%28%29), [matchstrpos()](https://vimhelp.org/builtin.txt.html#matchstrpos%28%29)
 
 ### Getting matching substring using a pattern
 
@@ -2998,7 +3090,7 @@ if m is not None:
 let s = matchstr("Abc 123 Def", '\d\+')
 ```
 
-*Help:* [matchstr()](https://vimhelp.org/eval.txt.html#matchstr%28%29)
+*Help:* [matchstr()](https://vimhelp.org/builtin.txt.html#matchstr%28%29)
 
 ### Getting multiple matches using a pattern
 
@@ -3018,7 +3110,7 @@ echo "Full match:" list[0]
 echo "1:" list[1] "2:" list[2] "3:" list[3]
 ```
 
-*Help:* [matchlist()](https://vimhelp.org/eval.txt.html#matchlist%28%29)
+*Help:* [matchlist()](https://vimhelp.org/builtin.txt.html#matchlist%28%29)
 
 ### Substituting text using a pattern
 
@@ -3035,7 +3127,7 @@ let s = substitute("foo bar", 'bar', 'baz', '')
 echo s
 ```
 
-*Help:* [substitute()](https://vimhelp.org/eval.txt.html#substitute%28%29)
+*Help:* [substitute()](https://vimhelp.org/builtin.txt.html#substitute%28%29)
 
 ### Using a function to get the replacement string
 
@@ -3064,7 +3156,7 @@ let s = substitute("pro----gram-files", '-\{1,2}', function('Dashrepl'), 'g')
 echo s
 ```
 
-*Help:* [substitute()](https://vimhelp.org/eval.txt.html#substitute%28%29)
+*Help:* [substitute()](https://vimhelp.org/builtin.txt.html#substitute%28%29)
 
 ### Regular expression comparison
 
@@ -3165,7 +3257,7 @@ let data = readfile('datafile.bin', 'B')
 call writefile(data, 'data2.bin')
 ```
 
-*Help:* [readfile()](https://vimhelp.org/eval.txt.html#readfile%28%29), [writefile()](https://vimhelp.org/eval.txt.html#writefile%28%29)
+*Help:* [readfile()](https://vimhelp.org/builtin.txt.html#readfile%28%29), [writefile()](https://vimhelp.org/builtin.txt.html#writefile%28%29)
 
 ------------------------------------------------------------------------------
 
@@ -3193,7 +3285,7 @@ endfunc
 let timer_id = timer_start(5 * 1000, function('TimerCallback', ["green"]))
 ```
 
-*Help:* [timer_start()](https://vimhelp.org/eval.txt.html#timer_start%28%29)
+*Help:* [timer_start()](https://vimhelp.org/builtin.txt.html#timer_start%28%29)
 
 ### Periodic Timer
 
@@ -3248,7 +3340,7 @@ call timer_stop(timer_id)
 call timer_stopall()
 ```
 
-*Help:* [timer_start()](https://vimhelp.org/eval.txt.html#timer_start%28%29)
+*Help:* [timer_start()](https://vimhelp.org/builtin.txt.html#timer_start%28%29)
 
 ### Sleeping for a specified number of seconds
 
@@ -3294,7 +3386,7 @@ let x = str->json_decode()
 echo x
 ```
 
-*Help:* [json_encode()](https://vimhelp.org/eval.txt.html#json_encode%28%29), [json_decode()](https://vimhelp.org/eval.txt.html#json_decode%28%29), [js_encode()](https://vimhelp.org/eval.txt.html#js_encode%28%29), [js_decode()](https://vimhelp.org/eval.txt.html#js_decode%28%29)
+*Help:* [json_encode()](https://vimhelp.org/builtin.txt.html#json_encode%28%29), [json_decode()](https://vimhelp.org/builtin.txt.html#json_decode%28%29), [js_encode()](https://vimhelp.org/builtin.txt.html#js_encode%28%29), [js_decode()](https://vimhelp.org/builtin.txt.html#js_decode%28%29)
 
 ------------------------------------------------------------------------------
 
