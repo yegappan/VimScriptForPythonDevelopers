@@ -1,6 +1,6 @@
 # Vim Script for Python Developers
 
-A guide to Vim Script development for Python developers. Sample code for the various expressions, statements, functions and programming constructs is shown in both Python and Vim Script. This is not intended to be a tutorial for developing Vim scripts. It is assumed that the reader is familiar with Python programming.
+This is a guide to Vim Script development for Python developers. Sample code for the various expressions, statements, functions and programming constructs is shown in both Python and Vim Script. This is not intended to be a tutorial for developing Vim scripts. It is assumed that the reader is familiar with Python programming.
 
 For an introduction to Vim Script development, refer to [usr_41.txt](https://vimhelp.org/usr_41.txt.html), [eval.txt](https://vimhelp.org/eval.txt.html) and [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
 
@@ -744,10 +744,10 @@ echo l
 Method|Python|VimScript
 ----|------|---------
 capitalize()| `'one two'.capitalize()` | `'one two'->substitute('.', '\u&', '')`
-center()| `'abc'.center(10)` | `Not availalbe`
+center()| `'abc'.center(10)` | `Not available`
 count()| `"abbc".count('b')` | `"abbc"->count('b')`
-decode()| `str.decode()` | `Not availalbe`
-encode()| `str.encode()` | `Not availalbe`
+decode()| `str.decode()` | `Not available`
+encode()| `str.encode()` | `Not available`
 endswith()| `'running'.endswith('ing')` | `'running' =~# 'ing$'`
 expandtabs()| `"a\tb".expandtabs()` | `"a\tb"->substitute("\t", repeat(' ', 8), 'g')`
 find()| `"running".find('nn')` | `"running"->stridx('nn')`
@@ -760,26 +760,26 @@ isspace()| `str.isspace()` | `str =~ '^\s\+$'`
 istitle()| `str.istitle()` | `str =~ '\(\<\u\l\+\>\)\s\?'`
 isupper()| `str.isupper()` | `str =~ '^\u\+$'`
 join()| `':'.join(['a', 'b', 'c'])` | `join(['a', 'b', 'c'], ':')`
-ljust()| `'abc'.ljust(10)` | `Not availalbe`
+ljust()| `'abc'.ljust(10)` | `Not available`
 lower()| `'Hello'.lower()` | `'Hello'->tolower()`
 lstrip()| `'  vim  '.lstrip()` | `'  vim  '->trim(' ', 1)`
 partition()| `'ab-cd-ef'.partition('-')` | `'ab-cd-ef'->matchlist('\(.\{-}\)\(-\)\(.*\)')[1:3]`
 replace()| `'abc'.replace('abc', 'xyz')` | `'abc'->substitute('abc', 'xyz', 'g')`
 rfind()| `'running'.rfind('ing')` | `'running'->strridx('ing')`
 rindex()| `'running'.rindex('ing')` | `'running'->strridx('ing')`
-rjust()| `'abc'.rjust(10)` | `Not availalbe`
+rjust()| `'abc'.rjust(10)` | `Not available`
 rpartition()| `'ab-cd-ef'.rpartition('-')` | `'ab-cd-ef'->matchlist('\(.*\)\(-\)\(.*\)')[1:3]`
-rsplit()| `'a-b-c-d'.rsplit('-', 2)` | `Not availalbe`
+rsplit()| `'a-b-c-d'.rsplit('-', 2)` | `Not available`
 rstrip()| `'  vim  '.rstrip()` | `'  vim  '->trim(' ', 2)`
 split()| `'a-b-c'.split('-')` | `'a-b-c'->split('-')`
 splitlines()| `"one\ntwo".splitlines()` | `"one\ntwo"->split("\n")`
 startswith()| `'running'.startswith('run')` | `'running' =~# '^run'`
 strip()| `'  vim  '.strip()` | `'  vim  '->trim()`
-swapcase()| `'Abc'.swapcase()` | `Not availalbe`
+swapcase()| `'Abc'.swapcase()` | `Not available`
 title()| `'onE twO'.title()` | `'onE twO'->substitute('\<\(.\)\(\S\+\)\>', '\u\1\L\2', 'g')`
 translate()| `'abcd'.translate(string.maketrans('bd', '12'))` | `'abcd'->tr('bd', '12')`
 upper()| `'Hello'.upper()` | `'Hello'->toupper()`
-zfill()| `str.zfill(10)` | `Not availalbe`
+zfill()| `str.zfill(10)` | `Not available`
 
 *Help:* [string-functions](https://vimhelp.org/usr_41.txt.html#string-functions)
 
@@ -1282,6 +1282,24 @@ echo sum
 
 *Help:* [reduce()](https://vimhelp.org/builtin.txt.html#reduce%28%29)
 
+### Flattening a List
+
+**Python:**
+```python
+l = [[5, 9], [1, 3], [10, 20]]
+flattenlist = [i for subl in l for i in subl]
+print(flattenlist)
+```
+
+**VimScript:**
+```vim
+let l = [[5, 9], [1, 3], [10, 20]]
+let flattenlist = flattennew(l)
+echo flattenlist
+```
+
+*Help:* [flatten()](https://vimhelp.org/builtin.txt.html#flatten%28%29), [flattennew()](https://vimhelp.org/builtin.txt.html#flattennew%28%29)
+
 ### Finding the mix/max value in a List
 
 **Python:**
@@ -1739,14 +1757,14 @@ Method|Python|VimScript
 ----|------|---------
 clear()| `d.clear()` | `call filter(d, '0')`
 copy()| `newDict = d.copy()` | `let newDict = d->copy()`
-fromkeys()| `d = dict.fromkeys(x)` | `Not availalbe`
+fromkeys()| `d = dict.fromkeys(x)` | `Not available`
 get()| `v = d.get('red')` | `let v = d->get('red')`
 in or has_key() | `'red' in d` | `d->has_key('red')`
 items()| `d.items()` | `d->items()`
 keys()| `d.keys()` | `d->keys()`
 pop()| `d.pop('red')` | `call d->remove('red')`
-popitem()| `d.popitem()` | `Not availalbe`
-setdefault()| `d.setdefault('red', 10)` | `Not availalbe`
+popitem()| `d.popitem()` | `Not available`
+setdefault()| `d.setdefault('red', 10)` | `Not available`
 update()| `d.update({'a' : 10, 'b' : 20}` | `d->extend({'a' : 10, 'b' : 20})`
 values()| `d.values()` | `d->values()`
 
@@ -3239,6 +3257,32 @@ echo data
 ```
 
 *Help:* [blob-index](https://vimhelp.org/eval.txt.html#blob-index), [blob-modification](https://vimhelp.org/eval.txt.html#blob-modification)
+
+### Converting a List of numbers to binary data and vice versa
+
+**Python:**
+```python
+l = [11, 12, 14]
+data = bytearray(l)
+print(data)
+
+data = bytearray(b'\xDE\xAD\xBE\xEF')
+l = list(data)
+print(l)
+```
+
+**VimScript:**
+```vim
+let l = [11, 12, 14]
+let data = list2blob(l)
+echo data
+
+let data = 0zDEADBEEF
+let  l = blob2list(data)
+echo l
+```
+
+*Help:* [list2blob()](https://vimhelp.org/builtin.txt.html#list2blob%28%29), [blob2list()](https://vimhelp.org/builtin.txt.html#blob2list%28%29)
 
 ### Reading and writing binary data from a file
 
