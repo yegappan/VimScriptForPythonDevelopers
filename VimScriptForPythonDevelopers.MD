@@ -303,10 +303,12 @@ let n = len("Hello World")
 " count the number of bytes in a string
 let n = strlen("Hello World")
 " count the number of characters in a string
+let n = strcharlen("Hello World")
+" count the number of characters in a string
 let n = strwidth("Hello World")
 ```
 
-*Help:* [len()](https://vimhelp.org/builtin.txt.html#len%28%29), [strlen()](https://vimhelp.org/builtin.txt.html#strlen%28%29), [strwidth()](https://vimhelp.org/builtin.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/builtin.txt.html#strdisplaywidth%28%29)
+*Help:* [len()](https://vimhelp.org/builtin.txt.html#len%28%29), [strlen()](https://vimhelp.org/builtin.txt.html#strlen%28%29), [strcharlen()](https://vimhelp.org/builtin.txt.html#strcharlen%28%29), [strwidth()](https://vimhelp.org/builtin.txt.html#strwidth%28%29), [strdisplaywidth()](https://vimhelp.org/builtin.txt.html#strdisplaywidth%28%29)
 
 ### String Concatenation
 
@@ -395,7 +397,7 @@ endif
 
 ### Getting a substring
 
-In Python, when using an index range to specify a sequence of characters in a string, the character at the end index is not included. In Vim, the character at the end index is included.
+In Python, when using an index range to specify a sequence of characters in a string, the character at the end index is not included. In Vim, the character at the end index is included.  The slice() function excludes the character at the end index.
 
 **Python:**
 ```python
@@ -407,17 +409,21 @@ sub = str[2:5]
 ```vim
 let str = "HelloWorld"
 " use byte index range
-let sub = str[2:4]
+echo str[2:4]
 " use a negative byte range
-let sub = str[-3:]
-let sub = str[2:-3]
+echo str[-3:]
+echo str[2:-3]
 " use byte index and length
-let sub = strpart(str, 2, 3)
+echo strpart(str, 2, 3)
 " use character index and length
-let sub = strcharpart(str, 2, 3)
+echo strcharpart(str, 2, 3)
+" use the start and end character indexes
+echo slice(str, 2, 3)
+" exclude the last character
+echo slice(str, 6, -1)
 ```
 
-*Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/builtin.txt.html#strpart%28%29)
+*Help:* [expr-[:]](https://vimhelp.org/eval.txt.html#expr-[%3a]), [strpart()](https://vimhelp.org/builtin.txt.html#strpart%28%29), [slice()](https://vimhelp.org/builtin.txt.html#slice%28%29)
 
 ### Counting the occurrences of a substring
 
@@ -739,6 +745,27 @@ echo l
 
 *Help:* [str2list()](https://vimhelp.org/builtin.txt.html#str2list%28%29), [list2str()](https://vimhelp.org/builtin.txt.html#list2str%28%29)
 
+### Fuzzy matching strings
+
+**Python:**
+```python
+from fuzzywuzzy import process
+from fuzzywuzzy import fuzz
+
+str_list = ['crow', 'clay', 'cobb']
+m = process.extractOne('cay', str_list, scorer=fuzz.partial_ratio)
+print(m)
+```
+
+**VimScript:**
+```vim
+let str_list = ['crow', 'clay', 'cobb']
+let m = matchfuzzy(str_list, 'cay')
+echo m
+```
+
+*Help:* [matchfuzzy()](https://vimhelp.org/builtin.txt.html#matchfuzzy%28%29), [matchfuzzypos()](https://vimhelp.org/builtin.txt.html#matchfuzzypos%28%29)
+
 ### String Methods
 
 Method|Python|VimScript
@@ -963,24 +990,28 @@ echo idx
 
 ### List slices
 
-In Python, when using an index range to specify a series of items in a List, the item at the end index is not included. In Vim, the item at the end index is included.
+In Python, when using an index range to specify a series of items in a List, the item at the end index is not included. In Vim, the item at the end index is included.  The slice() function excludes the item at the end index.
 
 **Python:**
 ```python
 l = [1, 2, 3, 4]
-m = l[1:3]
-m = l[2:]
+print(l[1:3])
+print(l[2:])
 ```
 
 **VimScript:**
 ```vim
 let l = [1, 2, 3, 4]
-let m = l[1:3]
-let m = l[2:]
-let m = l[-2:]
+echo l[1:3]
+echo l[2:]
+echo l[-2:]
+
+" slice() function excludes the item at the end index.
+echo slice(l, 2, 3)
+echo slice(l, 2)
 ```
 
-*Help:* [sublist](https://vimhelp.org/eval.txt.html#sublist)
+*Help:* [sublist](https://vimhelp.org/eval.txt.html#sublist), [slice()](https://vimhelp.org/builtin.txt.html#slice%28%29)
 
 ### List Concatenation
 
@@ -2644,6 +2675,36 @@ call delete('somedir', 'd')
 
 *Help:* [delete()](https://vimhelp.org/builtin.txt.html#delete%28%29)
 
+### Reading the directory contents
+**Python:**
+```python
+import os
+dir = os.scandir('.')
+for f in dir:
+  print(f.name)
+
+# get extended file information
+dir = os.scandir('.')
+for f in dir:
+  print(f.stat())
+```
+
+**VimScript:**
+```vim
+let dir = readdir('.')
+for f in dir
+  echo f
+endfor
+
+" get extended file information
+let dir = readdirex('.')
+for f in dir
+  echo f
+endfor
+```
+
+*Help:* [readdir()](https://vimhelp.org/builtin.txt.html#readdir%28%29), [readdirex()](https://vimhelp.org/builtin.txt.html#readdirex%28%29), [glob()](https://vimhelp.org/builtin.txt.html#glob%28%29)
+
 ------------------------------------------------------------------------------
 
 ## Random numbers
@@ -3297,11 +3358,11 @@ with open("data2.bin", "wb") as bin_fh:
 
 **VimScript:**
 ```vim
-let data = readfile('datafile.bin', 'B')
+let data = readblob('datafile.bin')
 call writefile(data, 'data2.bin')
 ```
 
-*Help:* [readfile()](https://vimhelp.org/builtin.txt.html#readfile%28%29), [writefile()](https://vimhelp.org/builtin.txt.html#writefile%28%29)
+*Help:* [readblob()](https://vimhelp.org/builtin.txt.html#readblob%28%29), [writefile()](https://vimhelp.org/builtin.txt.html#writefile%28%29)
 
 ------------------------------------------------------------------------------
 
