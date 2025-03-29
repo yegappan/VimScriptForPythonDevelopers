@@ -20,6 +20,7 @@ The Github repository for this gist is available at: https://github.com/yegappan
 * [Operators](#operators)
 * [String](#string)
 * [List](#list)
+* [Tuple](#tuple)
 * [Dictionary](#dictionary)
 * [If Statement](#if-statement)
 * [For Loop](#for-loop)
@@ -63,10 +64,11 @@ float| `3.14, -1.5e2` | `3.14, -1.5e2`
 string| `"hello", 'world'` | `"hello", 'world'`
 boolean| `True, False` | `v:true, v:false`
 list| `[], [5, 9], ['a', 'b']` | `[], [5, 9], ['a', 'b']`
+tuple| `(), (1,), (5, 9), ('a', 'b')` | `(), (1,), (5, 9), ('a', 'b')`
 dict| `{}, {'idx' : 2, 'name' : 'abc'}` | `{}, {'idx' : 2, 'name' : 'abc'}`
 special| `None` | `v:none, v:null`
 
-*Help:* [expr-number](https://vimhelp.org/eval.txt.html#expr-number), [string](https://vimhelp.org/eval.txt.html#string), [Boolean](https://vimhelp.org/eval.txt.html#Boolean), [list](https://vimhelp.org/eval.txt.html#list), [dict](https://vimhelp.org/eval.txt.html#dict), [v:none](https://vimhelp.org/eval.txt.html#v:none), [v:null](https://vimhelp.org/eval.txt.html#v:null)
+*Help:* [expr-number](https://vimhelp.org/eval.txt.html#expr-number), [string](https://vimhelp.org/eval.txt.html#string), [Boolean](https://vimhelp.org/eval.txt.html#Boolean), [list](https://vimhelp.org/eval.txt.html#list), [tuple](https://vimhelp.org/eval.txt.html#tuple), [dict](https://vimhelp.org/eval.txt.html#dict), [v:none](https://vimhelp.org/eval.txt.html#v:none), [v:null](https://vimhelp.org/eval.txt.html#v:null)
 
 ------------------------------------------------------------------------------
 
@@ -141,6 +143,7 @@ Float| `f = 3.4` | `let f = 3.4`
 Booelan| `done = True` | `let done = v:true`
 String| `str = "green"` | `let str = "green"`
 List| `l = [1, 2, 3]` | `let l = [1, 2, 3]`
+Tuple| `t = (1, 2, 3)` | `let t = (1, 2, 3)`
 Dictionary| `d = {'a' : 5, 'b' : 6}` | `let d = #{a : 5, b : 6}`
 
 *Help:* [variables](https://vimhelp.org/eval.txt.html#variables)
@@ -157,10 +160,14 @@ Float to String| `str(f)` | `string(f)`
 String to Float| `float(str)` | `str2float(str)`
 List to String| `str(l)` | `string(l)`
 String to List| `eval(str)` | `eval(str)`
+List to Tuple| `tuple(l)` | `list2tuple(l)`
+Tuple to List| `list(t)` | `tuple2list(t)`
+Tuple to String| `str(t)` | `string(t)`
+String to Tuple| `eval(str)` | `eval(str)`
 Dict to String| `str(d)` | `string(d)`
 String to Dict| `eval(str)` | `eval(str)`
 
-*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29), [str2nr()](https://vimhelp.org/builtin.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/builtin.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/builtin.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/builtin.txt.html#floor%28%29), [eval()](https://vimhelp.org/builtin.txt.html#eval%28%29)
+*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29), [str2nr()](https://vimhelp.org/builtin.txt.html#str2nr%28%29), [str2float()](https://vimhelp.org/builtin.txt.html#str2float%28%29), [float2nr()](https://vimhelp.org/builtin.txt.html#float2nr%28%29), [floor()](https://vimhelp.org/builtin.txt.html#floor%28%29), [eval()](https://vimhelp.org/builtin.txt.html#eval%28%29), [list2tuple()](https://vimhelp.org/builtin.txt.html#list2tuple%28%29), [tuple2list()](https://vimhelp.org/builtin.txt.html#tuple2list%28%29)
 
 ### Type Check
 
@@ -169,6 +176,7 @@ Type|Python|VimScript
 Number| `isintance(x, int)` | `type(x) is v:t_number`
 String| `isinstance(x, str)` | `type(x) is v:t_string`
 List| `isintance(x, list)` | `type(x) is v:t_list`
+Tuple| `isintance(x, tuple)` | `type(x) is v:t_tuple`
 Dictionary| `isintance(x, dict)` | `type(x) is v:t_dict`
 Float| `isintance(x, float)` | `type(x) is v:t_float`
 Boolean| `isinstance(x, bool)` | `type(x) is v:t_bool`
@@ -1385,6 +1393,377 @@ sort()| `m.sort()` | `m->sort()`
 
 ------------------------------------------------------------------------------
 
+## Tuple
+
+### Creating a Tuple
+
+**Python:**
+```python
+t = (1, 2, 3, 4)
+```
+
+**VimScript:**
+```vim
+let t = (1, 2, 3, 4)
+```
+
+*Help:* [Tuple](https://vimhelp.org/eval.txt.html#Tuple)
+
+### Accessing a Tuple element
+
+**Python:**
+```python
+t = (1, 2, 3, 4)
+v1 = t[2]
+v2 = t[-2]
+```
+
+**VimScript:**
+```vim
+let t = (1, 2, 3, 4)
+let v1 = t[2]
+let v2 = t[-2]
+```
+
+*Help:* [tuple-index](https://vimhelp.org/eval.txt.html#tuple-index)
+
+### Changing the value of a List/Dict item in a Tuple
+
+**Python:**
+```python
+t = (1, [2, 3], {'a': 4})
+t[1][0] = 5
+t[2]['a'] = 10
+```
+
+**VimScript:**
+```vim
+let t = (1, [2, 3], {'a': 6})
+let t[1][0] = 5
+let t[2]['a'] = 10
+```
+
+*Help:* [tuple-modification](https://vimhelp.org/eval.txt.html#tuple-modification)
+
+### Find the index of an item in a Tuple
+
+**Python:**
+```python
+t = (1, 2, 3)
+x = t.index(2)
+```
+
+**VimScript:**
+```vim
+let t = (1, 2, 3)
+let x = t->index(2)
+```
+
+*Help:* [index()](https://vimhelp.org/builtin.txt.html#index%28%29)
+
+### Find the index of an item in a Tuple of Dicts by a Dict item value
+
+**Python:**
+```python
+colors = ({'color': 'red'}, {'color': 'blue'}, {'color': 'green'})
+idx = next((i for i, v in enumerate(colors) if v['color'] == 'blue'), -1)
+print(idx)
+```
+
+**VimScript:**
+```vim
+let colors = ({'color': 'red'}, {'color': 'blue'}, {'color': 'green'})
+let idx = indexof(colors, {i, v -> v.color == 'blue'})
+echo idx
+```
+
+*Help:* [indexof()](https://vimhelp.org/builtin.txt.html#indexof%28%29)
+
+### Tuple slices
+
+In Python, when using an index range to specify a series of items in a Tuple, the item at the end index is not included. In Vim, the item at the end index is included.  The slice() function excludes the item at the end index.
+
+**Python:**
+```python
+t = (1, 2, 3, 4)
+print(t[1:3])
+print(t[2:])
+```
+
+**VimScript:**
+```vim
+let t = (1, 2, 3, 4)
+echo t[1:3]
+echo t[2:]
+echo t[-2:]
+
+" slice() function excludes the item at the end index.
+echo slice(t, 2, 3)
+echo slice(t, 2)
+```
+
+*Help:* [subtuple](https://vimhelp.org/eval.txt.html#subtuple), [slice()](https://vimhelp.org/builtin.txt.html#slice%28%29)
+
+### Tuple Concatenation
+
+**Python:**
+```python
+t = (1, 2) + (3 ,4)
+```
+
+**VimScript:**
+```vim
+let t = (1, 2) + (3 ,4)
+```
+
+*Help:* [tuple-concatenation](https://vimhelp.org/eval.txt.html#tuple-concatenation)
+
+### Adding multiple items to a Tuple using repetition
+
+**Python:**
+```python
+t = ('vim',) * 4
+```
+
+**VimScript:**
+```vim
+let t = ('vim')->repeat(4)
+```
+
+*Help:* [repeat()](https://vimhelp.org/builtin.txt.html#repeat%28%29)
+
+### Count the number of occurrences of an item in a Tuple
+
+**Python:**
+```python
+t = (2, 4, 4, 5)
+x = t.count(4)
+```
+
+**VimScript:**
+```vim
+let t = (2, 4, 4, 5)
+let x = t->count(2)
+```
+
+*Help:* [count()](https://vimhelp.org/builtin.txt.html#count%28%29)
+
+### Finding the Tuple length
+
+**Python:**
+```python
+t = ('a', 'b', 'c')
+n = len(t)
+```
+
+**VimScript:**
+```vim
+let t = ('a', 'b', 'c')
+let n = t->len()
+```
+
+*Help:* [len()](https://vimhelp.org/builtin.txt.html#len%28%29)
+
+### Tuple Iteration
+
+**Python:**
+```python
+t = (10, 20, 30)
+for v in t:
+  print(v)
+
+# Print both the tuple index and the value
+for i, v in enumerate(t):
+  print(i, v)
+
+# Use a for loop for tuple iteration
+for i in range(len(t)):
+  print(i, t[i])
+```
+
+**VimScript:**
+```vim
+let t = (10, 20, 30)
+for v in t
+  echo v
+endfor
+
+" Print both the tuple index and the value
+for [i, v] in items(t)
+  echo i v
+endfor
+
+" Use a for loop for tuple iteration
+for i in range(len(t))
+  echo i t[i]
+endfor
+```
+
+*Help:* [:for](https://vimhelp.org/eval.txt.html#%3Afor)
+
+### Reverse a Tuple
+
+**Python:**
+```python
+t = (1, 2, 3)
+t.reverse()
+print(t)
+```
+
+**VimScript:**
+```vim
+let t = (1, 2, 3)
+echo reverse(t)
+```
+
+*Help:* [reverse()](https://vimhelp.org/builtin.txt.html#reverse%28%29)
+
+### Copying a Tuple
+
+**Python:**
+```python
+t = (3, 2, 1)
+t2 = t.copy()
+```
+
+**VimScript:**
+```vim
+let t = (3, 2, 1)
+let t2 = t->copy()
+```
+
+*Help:* [copy()](https://vimhelp.org/builtin.txt.html#copy%28%29)
+
+### Deep Copying a Tuple
+
+**Python:**
+```python
+import copy
+a = ([1, 2], [3, 4])
+b = copy.deepcopy(a)
+```
+
+**VimScript:**
+```vim
+let a = ([1, 2], [3, 4])
+let b = a->deepcopy()
+```
+
+*Help:* [deepcopy()](https://vimhelp.org/builtin.txt.html#deepcopy%28%29)
+
+### Comparing two Tuples
+
+**Python:**
+```python
+t1 = (1, 2)
+t2 = l1
+t3 = (1, 2)
+if t1 is t2:
+  print("Tuples t1 and t2 refer to the same tuple")
+if t1 is not t3:
+  print("Tuples t1 and t3 do not refer to the same tuple")
+if t1 == t3:
+  print("Tuples t1 and t3 contain the same elements")
+if t1 != t3:
+  print("Tuples t1 and t3 are different")
+```
+
+**VimScript:**
+```vim
+let t1 = (1, 2)
+let t2 = l1
+let t3 = (1, 2)
+if t1 is t2
+  echo "Tuples t1 and t2 refer to the same tuple"
+endif
+if t1 isnot t3
+  echo "Tuples t1 and t2 do not refer to the same tuple"
+endif
+if t1 == t3
+  echo "Tuples t1 and t3 contain the same elements"
+endif
+if t1 != t3
+  echo "Tuples t1 and t3 are different"
+endif
+```
+
+*Help:* [tuple-identity](https://vimhelp.org/eval.txt.html#tuple-identity)
+
+### Reducing Tuple elements
+
+**Python:**
+```python
+# using a lambda function
+from functools import reduce
+sum = reduce((lambda x, y: x + y), (1, 2, 3, 4))
+
+# using a function
+def SumNum(a, b):
+    return a + b
+sum = reduce(SumNum, (1, 2, 3, 4))
+```
+
+**VimScript:**
+```vim
+" using a lambda function
+let sum = reduce((1, 2, 3, 4), {x, y -> x + y})
+
+" using a function
+func SumNum(x, y)
+  return a:x + a:y
+endfunc
+let sum = reduce((1, 2, 3, 4), function('SumNum'))
+echo sum
+```
+
+*Help:* [reduce()](https://vimhelp.org/builtin.txt.html#reduce%28%29)
+
+### Finding the mix/max value in a Tuple
+
+**Python:**
+```python
+t = (3, 10, 8)
+v1 = min(t)
+v2 = max(t)
+print(v1, v2)
+```
+
+**VimScript:**
+```vim
+let t = (3, 10, 8)
+let v1 = t->min()
+let v2 = t->max()
+echo v1 v2
+```
+
+*Help:* [max()](https://vimhelp.org/builtin.txt.html#max%28%29), [min()](https://vimhelp.org/builtin.txt.html#min%28%29)
+
+### Converting a Tuple to a string
+
+**Python:**
+```python
+s = str((3, 5, 7))
+```
+
+**VimScript:**
+```vim
+let s = string((3, 5, 7))
+```
+
+*Help:* [string()](https://vimhelp.org/builtin.txt.html#string%28%29)
+
+### Tuple Methods
+
+Method|Python|VimScript
+----|------|---------
+copy()| `m.copy()` | `m->copy()`
+count()| `m.count(6)` | `m->count(6)`
+index()| `m.index(6)` | `m-index(6)`
+reverse()| `m.reverse()` | `m->reverse()`
+
+*Help:* [tuple-functions](https://vimhelp.org/usr_41.txt.html#tuple-functions)
+
+------------------------------------------------------------------------------
 ## Dictionary
 
 ### Creating a Dict
